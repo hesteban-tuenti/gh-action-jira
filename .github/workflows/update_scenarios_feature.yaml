@@ -1,0 +1,40 @@
+name: Update scenarios feature
+on:
+  workflow_dispatch:
+    inputs:
+      feature:
+        description: 'Feature name'
+        required: true
+
+jobs:
+  get_feature:
+    runs-on: ubuntu-latest
+    env:
+      PROJECT: "QANOV"
+      LOCALES: "blaude:blaude_de-de,vivobr:vivobr_pt-br,o2uk:o2uk_en-gb,moves:moves_es-es,o2de:o2de_de-de,o2es:o2es_es-es"
+      ENVIRONMENTS: "blaude:blaude-live,vivobr:vivobr-live,o2uk:o2uk-live,moves:moves-live,o2de:o2de-live,o2es:o2es-live"
+    steps:
+      - run: echo "My input is ${{ github.event.inputs.feature }}"
+      
+      - name: Checkout repo
+        uses: actions/checkout@v4 
+
+      - name: get_feature
+        id: get_feature
+        shell: bash
+        run: | 
+          file=$(find . -type f -name "${{ github.event.inputs.feature }}" | sed 's|./acceptance/||')
+          echo "file=$file" >> $GITHUB_OUTPUT
+          
+      - name: Run action
+        id: get-jira-version
+        uses: './.github/actions/update-scenarios'
+        with:
+          project: ${{ env.PROJECT }}
+          feature: ${{ steps.get_feature.outputs.file }}
+          locales: ${{ env.LOCALES }}
+          environments: ${{ env.ENVIRONMENTS }}
+
+          
+
+  
