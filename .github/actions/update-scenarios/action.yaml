@@ -1,0 +1,24 @@
+name: Update scenarios
+description: 'Update scenarios in Jira with jira upload' 
+
+inputs:
+  project:
+    required: true
+    description: "project"
+  feature:
+    required: true
+    description: "feature"
+  locales:
+    required: true
+    description: "locales"
+  environments:
+    required: true
+    description: "environments"
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run jira upload
+      shell: bash
+      run: echo "toolium jira-upload -p ${{ inputs.project }} -f ${{ inputs.feature }} -l '${{ inputs.locales }}' -e '${{ inputs.environments }}' -u"
+  
