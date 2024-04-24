@@ -6,7 +6,7 @@ on:
         - 'main'
 
 jobs:
-  trigger:
+  get_basenames_and_trigger_workflows:
     runs-on: ubuntu-latest
     env:
         FEATURES_PATH: "./acceptance/features/e2e/app/novum"
@@ -32,5 +32,6 @@ jobs:
                 "basename": "$name"
               }
             }'
+            break
           done
           

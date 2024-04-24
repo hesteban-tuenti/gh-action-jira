@@ -7,7 +7,46 @@ on:
         required: true
 
 jobs:
-  myJob:
-    runs-on: [self-hosted, VM]
+  get_matrix_features:
+    runs-on: ubuntu-latest
+    outputs:
+        matrix: ${{ steps.set-matrix-features.outputs.matrix }}
     steps:
       - run: echo "My input is ${{ github.event.inputs.basename }}"
+      
+      - name: Checkout repo
+        uses: actions/checkout@v4 
+
+      - name: Retrieve all features and set matrix
+        id: set-matrix-features
+        shell: bash
+        run: |
+          files=$(find ${{ github.event.inputs.basename }} -type f -name "*.feature")
+          matrix="::set-output name=matrix::{\"include\":["
+          for file in $files; do
+            matrix="${matrix}{\"feature\":\"${file}\"},"
+          done
+          matrix="${matrix%?}]}" # remove trailing comma and close array
+          echo $matrix
+      
+      - name: Print matrix
+        run: echo ${{ steps.set-matrix-features.outputs.matrix }}
+
+  run-action:
+    needs: get_matrix_features
+    runs-on: ubuntu-latest
+    env:
+        PROJECT: "QANOV"
+        LOCALES: "blaude:blaude_de-de,vivobr:vivobr_pt-br,o2uk:o2uk_en-gb,moves:moves_es-es,o2de:o2de_de-de,o2es:o2es_es-es"
+        ENVIRONMENTS: "blaude:blaude-live,vivobr:vivobr-live,o2uk:o2uk-live,moves:moves-live,o2de:o2de-live,o2es:o2es-live"
+    strategy:
+        matrix: ${{fromJson(needs.get_matrix_features.outputs.matrix)}}
+    steps:
+        - name: Run action for each file
+          id: get-jira-version
+          uses: './.github/actions/update-scenarios'
+          with:
+            project: ${{ env.PROJECT }}
+            feature: ${{ matrix.feature }}
+            locales: ${{ env.LOCALES }}
+            environments: ${{ env.ENVIRONMENTS }}
