@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       basename:
-        description: 'the basename'
+        description: 'the basename of the directory to search for features'
         required: true
 
 jobs:

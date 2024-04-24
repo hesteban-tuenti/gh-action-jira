@@ -1,9 +1,7 @@
 name: Triggering Workflow
 
 on:
-    push: 
-      branches:
-        - 'main'
+    workflow_dispatch:
 
 jobs:
   get_basenames_and_trigger_workflows:
@@ -32,6 +30,5 @@ jobs:
                   \"basename\": \"$name\"
                     }
                 }"
-            break
           done
           
