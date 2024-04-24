@@ -1,0 +1,36 @@
+name: Triggering Workflow
+
+on:
+    push: 
+      branches:
+        - 'main'
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    env:
+        FEATURES_PATH: "./acceptance/features/e2e/app/novum"
+        EXCLUDED_PATH_REGEX: '.*\/(_setup|jenkins)'
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      - name: Retrieve all basenames and trigger workflows
+        id: set-matrix-base
+        shell: bash
+        run: |
+          basenames=$(find ${{ env.FEATURES_PATH }} -maxdepth 1 -type d | grep -v -E "${{ env.EXCLUDED_PATH_REGEX }}" | grep -v "/novum$" )
+          for name in $basenames; do
+            echo "Basename: $name"
+            curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/triggered_wf.yaml/dispatches \
+            -d '{
+              "ref": "NOV-243394_gh_update_jira",
+              "inputs": {
+                "basename": "$name"
+              }
+            }'
+          done
+          

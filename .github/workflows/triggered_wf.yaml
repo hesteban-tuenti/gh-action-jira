@@ -1,0 +1,13 @@
+name: Triggered Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      basename:
+        description: 'the basename'
+        required: true
+
+jobs:
+  myJob:
+    runs-on: [self-hosted, VM]
+    steps:
+      - run: echo "My input is ${{ github.event.inputs.basename }}"
