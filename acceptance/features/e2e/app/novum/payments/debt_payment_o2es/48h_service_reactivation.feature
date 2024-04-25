@@ -3,8 +3,8 @@
 Feature: 48h Service Reactivation
 
 
-  @jira.QANOV-600461 @android @ios @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449 @manual @mobile
-  @o2es @qa @smoke @webapp @e2e
+  @jira.QANOV-600461 @android @e2e @ios @jira.link.parent_test_plan.QANOV-142826 @jira.link.parent_test_plan.QANOV-600449
+  @manual @mobile @o2es @qa @smoke @webapp
   Scenario: A telco postpay user logged in as admin that can request the 48h service reactivation access to the "Bill Selection" screen
     Given user has a "telco postpay" account type
       And user has a "admin" role
@@ -22,8 +22,8 @@ Feature: 48h Service Reactivation
       And clicks on the "navigation_top_bar.back_button" button to go back to the previous page
       And the "Debt Detail" page is displayed
 
-  @jira.QANOV-600462 @android @ios @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449 @manual @mobile
-  @o2es @qa @sanity @webapp @e2e
+  @jira.QANOV-600462 @android @e2e @ios @jira.link.parent_test_plan.QANOV-142826 @jira.link.parent_test_plan.QANOV-600449
+  @manual @mobile @o2es @qa @sanity @webapp
   Scenario: A telco postpay user logged in as admin that can not request the 48h service reactivation access to the "Bill Selection" screen
     Given user has a "telco postpay" account type
       And user has a "admin" role
@@ -36,8 +36,8 @@ Feature: 48h Service Reactivation
       And the "reactivation_info" textfield is not displayed
       And the "reactivation_link" link is not displayed
 
-  @jira.QANOV-600463 @android @ios @jira.parent_test_plan.QANOV-142826@jira.parent_test_plan.QANOV-600449 @manual @mobile
-  @o2es @qa @regression @e2e
+  @jira.QANOV-600463 @android @e2e @ios @jira.link.parent_test_plan.QANOV-142826 @jira.link.parent_test_plan.QANOV-600449
+  @manual @mobile @o2es @qa @regression
   Scenario: A telco postpay user logged in as admin that can request the 48h service reactivation clicks on the "reactivate" button
     Given user has a "telco postpay" account type
       And user has a "admin" role
@@ -63,8 +63,8 @@ Feature: 48h Service Reactivation
       And clicks on the "navigation_top_bar.back_button" button
       And the "Bill Selection" page is displayed
 
-  @jira.QANOV-600464 @android @ios @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449 @manual @mobile
-  @o2es @qa @regression @webapp @e2e
+  @jira.QANOV-600464 @android @e2e @ios @jira.link.parent_test_plan.QANOV-142826 @jira.link.parent_test_plan.QANOV-600449
+  @manual @mobile @o2es @qa @regression @webapp
   Scenario: A telco postpay user logged in as admin that can request the 48h service reactivation checks the information for payment at a physical location
     Given user has a "telco postpay" account type
       And user has a "admin" role
@@ -87,8 +87,8 @@ Feature: 48h Service Reactivation
       And clicks on the "navigation_top_bar.back_button" button to go back to the previous page
       And the "Reactivation" page is displayed
 
-  @jira.QANOV-600465 @android @ios @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449 @manual @mobile
-  @o2es @qa @smoke @webapp @e2e
+  @jira.QANOV-600465 @android @e2e @ios @jira.link.parent_test_plan.QANOV-142826 @jira.link.parent_test_plan.QANOV-600449
+  @manual @mobile @o2es @qa @smoke @webapp
   Scenario: A telco postpay user logged in as admin that can request the 48h service reactivation confirms service reactivation successfully
     Given user has a "telco postpay" account type
       And user has a "admin" role
@@ -113,8 +113,8 @@ Feature: 48h Service Reactivation
       And switches to original frame
       And the "Invoices" page is displayed
 
-  @jira.QANOV-600466 @android @ios @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449 @manual @mobile
-  @o2es @qa @regression @webapp @e2e
+  @jira.QANOV-600466 @android @e2e @ios @jira.link.parent_test_plan.QANOV-142826 @jira.link.parent_test_plan.QANOV-600449
+  @manual @mobile @o2es @qa @regression @webapp
   Scenario: A telco postpay user logged in as admin who has requested the 48h service reactivation returns to invoices
     Given user has a "telco postpay" account type
       And user has a "admin" role
@@ -134,8 +134,8 @@ Feature: 48h Service Reactivation
       And switches to original frame
      Then the "Invoices" page is displayed
 
-  @jira.QANOV-600467 @android @impeded_mock @ios @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449
-  @manual @mobile @o2es @regression @e2e
+  @jira.QANOV-600467 @android @e2e @impeded_mock @ios @jira.link.parent_test_plan.QANOV-142826
+  @jira.link.parent_test_plan.QANOV-600449 @manual @mobile @o2es @regression
   Scenario: A telco postpay user logged in as admin that can request the 48h service reactivation confirms service reactivation. Error happen during reactivation.
     Given user has a "telco postpay" account type
       And user has a "admin" role
@@ -152,8 +152,8 @@ Feature: 48h Service Reactivation
       And the "back_to_account" button with "[LANG:payments.back_button]" text is displayed
       And the "navigation_top_bar.back_button" button is not displayed
 
-  @jira.QANOV-600468 @android @impeded_mock @ios @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449
-  @manual @mobile @o2es @regression @e2e
+  @jira.QANOV-600468 @android @e2e @impeded_mock @ios @jira.link.parent_test_plan.QANOV-142826
+  @jira.link.parent_test_plan.QANOV-600449 @manual @mobile @o2es @regression
   Scenario: A telco postpay user logged in as admin who received an error when is requesting the 48h service reactivation returns to account
     other_affected_versions="2021-35"
     Given user has a "telco postpay" account type
@@ -168,8 +168,8 @@ Feature: 48h Service Reactivation
       And clicks on the "back_to_account" link
      Then the "Invoices" page is displayed
 
-  @jira.QANOV-600469 @android @impeded_mock @ios @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449
-  @manual @mobile @o2es @regression @e2e
+  @jira.QANOV-600469 @android @e2e @impeded_mock @ios @jira.link.parent_test_plan.QANOV-142826
+  @jira.link.parent_test_plan.QANOV-600449 @manual @mobile @o2es @regression
   Scenario: A telco postpay user logged in as admin who received an error when is requesting the 48h service reactivation can retry the request
     other_affected_versions="2021-35"
     Given user has a "telco postpay" account type
@@ -184,8 +184,8 @@ Feature: 48h Service Reactivation
       And clicks on the "retry" link
      Then the "Reactivation" page is displayed
 
-  @jira.QANOV-600470 @android @ios @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449 @manual @mobile
-  @o2es @qa @regression @e2e
+  @jira.QANOV-600470 @android @e2e @ios @jira.link.parent_test_plan.QANOV-142826 @jira.link.parent_test_plan.QANOV-600449
+  @manual @mobile @o2es @qa @regression
   Scenario: A telco postpay user logged in as admin that can request the 48h service reactivation clicks on the "reactivate" button: Error is shown
     Given user has a "telco postpay" account type
       And user has a "admin" role
@@ -206,8 +206,8 @@ Feature: 48h Service Reactivation
       And clicks on the "navigation_top_bar.back_button" button
       And the "Bill Selection" page is displayed
 
-  @jira.QANOV-600471 @android @ios @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449 @manual @mobile
-  @o2es @qa @regression @e2e
+  @jira.QANOV-600471 @android @e2e @ios @jira.link.parent_test_plan.QANOV-142826 @jira.link.parent_test_plan.QANOV-600449
+  @manual @mobile @o2es @qa @regression
   Scenario: A telco postpay user logged in as admin that can request the 48h service reactivation clicks on the "reactivate" button without connection: Error is shown
     Given user has a "telco postpay" account type
       And user has a "admin" role
@@ -231,22 +231,22 @@ Feature: 48h Service Reactivation
       And clicks on the "navigation_top_bar.back_button" button
       And the "Bill Selection" page is displayed
 
-  @jira.QANOV-600472 @android @ios @jira.depends_on.QANOV-600471 @jira.parent_test_plan.QANOV-142826
-  @jira.parent_test_plan.QANOV-600449 @manual @mobile @o2es @qa @regression @e2e
+  @jira.QANOV-600472 @android @e2e @ios @jira.depends_on.QANOV-600471 @jira.link.parent_test_plan.QANOV-142826
+  @jira.link.parent_test_plan.QANOV-600449 @manual @mobile @o2es @qa @regression
   Scenario: A telco postpay user logged in as admin clicks back button in "No Connectivity Feedback" screen: returns to Bill Selection
     Given user is in the "Payments No Connectivity" page
      When clicks on the "back" button with "Volver" text
       And the "Invoices" page is displayed
 
-  @jira.QANOV-600473 @android @ios @jira.depends_on.QANOV-600471 @jira.parent_test_plan.QANOV-142826
-  @jira.parent_test_plan.QANOV-600449 @manual @mobile @o2es @qa @regression @e2e
+  @jira.QANOV-600473 @android @e2e @ios @jira.depends_on.QANOV-600471 @jira.link.parent_test_plan.QANOV-142826
+  @jira.link.parent_test_plan.QANOV-600449 @manual @mobile @o2es @qa @regression
   Scenario: A telco postpay user logged in as admin clicks back button in "No Connectivity Feedback" screen: returns to Bill Selection
     Given user is in the "Payments No Connectivity" page
      When clicks on the "retry" button with "Reintentar" text
       And the "Bill Selection" page is displayed
 
-  @jira.QANOV-600474 @android @ios @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449 @manual @mobile
-  @o2es @qa @regression @e2e
+  @jira.QANOV-600474 @android @e2e @ios @jira.link.parent_test_plan.QANOV-142826 @jira.link.parent_test_plan.QANOV-600449
+  @manual @mobile @o2es @qa @regression
   Scenario: A telco postpay user logged in as admin without payment methods available that can request the 48h service reactivation clicks on the "reactivate" button
     Given user has a "telco postpay" account type
       And user has a "admin" role

@@ -24,12 +24,6 @@ Feature: Session Management
           | o2uk    | Android | android | QANOV-35253      | [LANG:profile.security_and_privacy.session_management.current_device_title_android] | 10.3 | QANOV-8452  |
           | o2uk    | iOS     | ios     |                  | [LANG:profile.security_and_privacy.session_management.current_device_title_ios]     | 10.3 | QANOV-38293 |
 
-    @automatic @cert2 @deprecate_profile_moves @jira.dv.Future @live @next
-    Examples:
-          | product | OS      | os      | parent_test_plan | current_device_title                                                                | cv   | jira_id     |
-          | moves   | Android | android |                  | [LANG:profile.security_and_privacy.session_management.current_device_title_android] | 10.3 | QANOV-8453  |
-          | moves   | iOS     | ios     |                  | [LANG:profile.security_and_privacy.session_management.current_device_title_ios]     | 10.3 | QANOV-38294 |
-
   @jira.QANOV-484861 @android @automatic @ber @ios @jira.cv.14.10 @jira.link.parent_test_plan.QANOV-437387 @live @mobile
   @qa @sanity @vivobr
   Scenario: User can access to the session management screen and see the current device information
@@ -66,12 +60,6 @@ Feature: Session Management
           | o2uk    | android | 10.3 | QANOV-8457   |
           | o2uk    | ios     | 10.3 | QANOV-108438 |
 
-    @automatic @cert2 @deprecate_profile_moves @jira.dv.Future @live @next
-    Examples:
-          | product | client  | cv   | jira_id      |
-          | moves   | android | 10.3 | QANOV-8458   |
-          | moves   | ios     | 10.3 | QANOV-108439 |
-
   @jira.<jira_id> @<product> @android @jira.cv.<cv> @jira.link.relates_to.NOV-47304 @mobile @no_automatable
   @regression
   Scenario Outline: User who only has one session will see an information message in the other device's session when accessing to the session management in Android devices
@@ -90,11 +78,6 @@ Feature: Session Management
     Examples:
           | product | cv   | jira_id    |
           | o2uk    | 10.3 | QANOV-8461 |
-
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | jira_id    |
-          | moves   | 10.3 | QANOV-8463 |
 
   @jira.<jira_id> @<product> @ios @jira.cv.<cv> @mobile @no_automatable @regression
   Scenario Outline: User who only has one session will see an information message in the other device's session when accessing to the session management in iOS devices
@@ -115,11 +98,6 @@ Feature: Session Management
           | product | cv   | jira_id    |
           | o2uk    | 10.3 | QANOV-8466 |
 
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | jira_id    |
-          | moves   | 10.3 | QANOV-8467 |
-
   @jira.<jira_id> @<product> @android @jira.cv.<cv> @jira.link.relates_to.NOV-47305 @mobile @no_automatable @smoke @har
   Scenario Outline: User who has several sessions opened will see the other device's session information when accessing to the session management in Android devices
     Given user is in the "Security And Privacy" page
@@ -135,11 +113,6 @@ Feature: Session Management
     Examples:
           | product | cv   | jira_id    |
           | o2uk    | 10.3 | QANOV-8471 |
-
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | jira_id    |
-          | moves   | 10.3 | QANOV-8472 |
 
   @jira.QANOV-484863 @android @jira.cv.14.10 @jira.link.parent_test_plan.QANOV-437387 @mobile @no_automatable @smoke @har
   @vivobr
@@ -170,11 +143,6 @@ Feature: Session Management
     Examples:
           | product | cv   | jira_id    |
           | o2uk    | 10.3 | QANOV-8474 |
-
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | jira_id    |
-          | moves   | 10.3 | QANOV-8476 |
 
   @jira.QANOV-484864 @ios @jira.cv.14.10 @jira.link.parent_test_plan.QANOV-437387 @mobile @no_automatable @smoke @vivobr @har
   Scenario: User who has several sessions opened will see the other device's session information when accessing to the session management in iOS devices
@@ -224,12 +192,6 @@ Feature: Session Management
           | o2uk    | android | 10.3 | QANOV-8479 |
           | o2uk    | ios     | 10.3 | QANOV-8480 |
 
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | client  | cv   | jira_id    |
-          | moves   | android | 10.3 | QANOV-8481 |
-          | moves   | ios     | 10.3 | QANOV-8483 |
-
   @jira.<jira_id> @<product> @android @jira.cv.<cv> @jira.link.relates_to.NOV-47306 @mobile @no_automatable @smoke @har
   Scenario Outline: User can close all sessions opened in other devices in Android devices
     Given user is in the "Session Management" page
@@ -243,11 +205,6 @@ Feature: Session Management
     Examples:
           | product | cv   | jira_id    |
           | o2uk    | 10.3 | QANOV-8485 |
-
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | jira_id    |
-          | moves   | 10.3 | QANOV-8486 |
 
   @jira.<jira_id> @<product> @android @jira.cv.<cv> @jira.link.relates_to.NOV-47308 @mobile @no_automatable @regression
   @har
@@ -264,11 +221,6 @@ Feature: Session Management
     Examples:
           | product | cv   | jira_id    |
           | o2uk    | 10.3 | QANOV-8489 |
-
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | jira_id    |
-          | moves   | 10.3 | QANOV-8490 |
 
   @jira.QANOV-453458 @android @jira.cv.14.10 @jira.link.parent_test_plan.QANOV-437387 @mobile @no_automatable @regression
   @vivobr
@@ -426,11 +378,6 @@ Feature: Session Management
           | product | cv   | jira_id    |
           | o2uk    | 10.3 | QANOV-8493 |
 
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | jira_id    |
-          | moves   | 10.3 | QANOV-8496 |
-
   @jira.<jira_id> @<product> @ios @jira.cv.<cv> @jira.link.relates_to.NOV-47310 @mobile @no_automatable @regression @har
   Scenario Outline: User can close a specific session opened in other devices using the edit button on iOS devices
     internal_checkpoint="User should be logged in with the same account in more than 2 devices"
@@ -448,11 +395,6 @@ Feature: Session Management
           | product | cv   | jira_id    |
           | o2uk    | 10.3 | QANOV-8498 |
 
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | jira_id    |
-          | moves   | 10.3 | QANOV-8499 |
-
   @jira.<jira_id> @<product> @ios @jira.cv.<cv> @jira.link.relates_to.NOV-47309 @mobile @no_automatable @regression
   Scenario Outline: User can close a specific session opened in other devices swiping on the specific session in iOS devices
     internal_checkpoint="User should be logged in with the same account in more than 2 devices"
@@ -468,8 +410,3 @@ Feature: Session Management
     Examples:
           | product | cv   | jira_id    |
           | o2uk    | 10.3 | QANOV-8503 |
-
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | jira_id    |
-          | moves   | 10.3 | QANOV-8504 |

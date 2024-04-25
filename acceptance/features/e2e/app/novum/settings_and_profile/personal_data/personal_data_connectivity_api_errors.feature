@@ -2,48 +2,6 @@
 @jira.QANOV-126728
 Feature: Personal data with connectivity or API errors
 
-
-  @jira.QANOV-7437 @android @cert2 @deprecate_profile_moves @impeded_mock @ios @jira.cv.10.6 @jira.dv.Future
-  @jira.link.relates_to.NOV-91235 @live @mobile @moves @next @no_automatable @regression
-  Scenario: A user access to "Contact method" screen and API error occurs: API error screen will be shown
-    commented_tags="@depends_on.NOV-47205"
-    Given user has a "telco postpay" account type
-      And user has a "any_admin" role
-      And user is in the "Security And Privacy" page
-     When clicks on the "contact_method" entrypoint
-      And there is an API error
-     Then the "api_error_message" textfield with "[LANG:profile.security_and_privacy.contact_method.api_error_message]" text is displayed
-      And the "reload" button is displayed
-
-  @jira.QANOV-7446 @android @automatic @cert2 @deprecate_profile_moves @jira.cv.10.6 @jira.dv.Future
-  @jira.link.relates_to.NOV-81207 @live @mobile @moves @next @regression
-  Scenario: A user without data connectivity cannot access to "Contact method" screen in Android devices
-    commented_tags="@depends_on.NOV-47205"
-    Given user has a "telco postpay" account type
-      And user has a "any_admin" role
-      And user turns on the Airplane mode
-      And waits until the "No Connectivity Warning" warning is not displayed
-      And user is in the "Security And Privacy" page
-     When clicks on the "contact_method_entrypoint" entrypoint
-     Then the "No Connectivity Webview" internal webview is displayed
-      And the "no_connectivity_title" textfield with "[LANG:noconnectivity.no_connectivity_title]" text is displayed
-      And the "no_connectivity_text" textfield with "[LANG:noconnectivity.no_connectivity_text]" text is displayed
-      And the "retry_button" button with "[LANG:noconnectivity.retry_button]" text is displayed
-
-  @jira.QANOV-169536 @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.10.6 @jira.dv.Future
-  @jira.link.relates_to.NOV-81207 @live @mobile @moves @next @regression
-  Scenario: A user without data connectivity cannot access to "Contact method" screen in iOS devices
-    commented_tags="@depends_on.NOV-47205"
-    Given user has a "telco postpay" account type
-      And user has a "any_admin" role
-      And user turns on the Airplane mode
-      And user is in the "Security And Privacy" page
-     When clicks on the "contact_method_entrypoint" entrypoint
-     Then the "No Connectivity Webview" page is displayed
-      And the "no_connectivity_title" textfield with "[LANG:noconnectivity.no_connectivity_title]" text is displayed
-      And the "no_connectivity_text" textfield with "[LANG:noconnectivity.no_connectivity_text]" text is displayed
-      And the "retry_button" button with "[LANG:noconnectivity.retry_button]" text is displayed
-
   @jira.QANOV-59918 @android @automation.pending_mock @impeded_mock @ios @jira.cv.12.1
   @jira.link.parent_test_plan.QANOV-525498 @jira.link.parent_test_plan.QANOV-56957 @manual @mobile @moves @regression
   Scenario: A telco admin user cannot modify the email if an error happens

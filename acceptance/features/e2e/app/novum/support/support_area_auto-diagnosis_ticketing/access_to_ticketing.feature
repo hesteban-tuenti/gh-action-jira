@@ -61,6 +61,8 @@ Feature: Access to ticketing
       And user has tickets created
       And clicks on the "historical_incidences" module
      Then the internal webview is displayed
+      And clicks on the "navigation_top_bar.back_button" button
+      And the "Support" page is displayed
 
   @jira.QANOV-408268 @android @ios @jira.cv.Future @manual @mobile @o2es @smoke
   Scenario: An o2es user without incidences can see the incidences module
@@ -71,11 +73,11 @@ Feature: Access to ticketing
       And the "incidences_module.title" textfield with "Incidencias" text is displayed
       And the "incidences_module.description" textfield with "No tienes incidencias abiertas" text is displayed
 
-  @jira.<jira_id> @<ber> @<priority> @android @ios @jira.cv.Future @manual @mobile @o2es
-  Scenario Outline: An o2es user with an open incidence can see the incidences module
+  @jira.<jira_id> @<ber> @<priority> @android @e2e @ios @jira.cv.Future @manual @mobile @o2es
+  Scenario Outline: An o2es user with an <status> incidence can see the incidences module
     Given user is in the "Support" page
       And user has the "Incidences" module configured in CMS for "Support" page
-      And user has "1" tickets in "<status>" status
+      And user has ">0" tickets in "<status>" status
      Then the "incidences_module" module is displayed
       And the "incidences_module.incidence_card.tag" tag with "<tag_text>" text is displayed
       And the "incidences_module.incidence_card.title" textfield is displayed
@@ -84,36 +86,30 @@ Feature: Access to ticketing
       And the "incidences_module.incidence_card.chevron" element is on display
 
     Examples:
-          | status   | tag_text    | priority | ber | jira_id      |
-          | received | Recibida    | sanity   | ber | QANOV-408269 |
-          | ongoing  | En revisión | smoke    |     | QANOV-408270 |
+          | status   | tag_text             | priority | ber | jira_id      |
+          | received | Recibida             | sanity   | ber | QANOV-408269 |
+          | ongoing  | En revisión          | smoke    |     | QANOV-408270 |
+          | resolved | Pendiente de cliente | smoke    |     | QANOV-621104 |
 
-  @jira.QANOV-408271 @android @ios @jira.cv.Future @manual @mobile @o2es @regression
-  Scenario: An o2es user with >1 incidences can see the incidences module
+  @jira.QANOV-408271 @android @e2e @ios @jira.cv.Future @manual @mobile @o2es @regression
+  Scenario Outline: An o2es user with <open_incidences> incidences can see the incidences module
     The max num of cards to be displayed is 15
     Given user is in the "Support" page
       And user has the "Incidences" module configured in CMS for "Support" page
-      And user has ">1" tickets in "open" status
+      And user has "<open_incidences>" tickets in "open" status
      Then the "incidences_module" module is displayed
       And the "incidences_module" carousel has "[CONTEXT:user.open_incidences]" cards
 
+    Examples:
+          | open_incidences | jira_id      |
+          | >1              | QANOV-408271 |
+          | 1               | QANOV-408271 |
+
   @jira.QANOV-408272 @android @ber @ios @jira.cv.Future @manual @mobile @o2es @sanity
-  Scenario: An o2es user can open the incidences OB webview from the incidences module
+  Scenario: An o2es user can open the incidence detail OB webview from the incidences module
     Given user is in the "Support" page
       And user has the "Incidences" module configured in CMS for "Support" page
      When clicks on the "incidences_module" module
-     Then the internal webview with "Tus incidencias" header is displayed
+     Then the internal webview is displayed
       And clicks on the "navigation_top_bar.back_button" button
       And the "Support" page is displayed
-
-  @jira.QANOV-408273 @android @ios @jira.cv.Future @manual @mobile @o2es @smoke @tbd
-  Scenario: An o2es user with tickets can see an incidence detail from the OB webview
-    Given user is in the "Support" page
-      And user has the "Incidences" module configured in CMS for "Support" page
-      And user has tickets created
-     When clicks on the "incidences_module" module
-      And the "Incidences" internal webview is displayed
-      And clicks on any element in the "incidences" list
-     Then the internal webview with "tbd" header is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Incidences" internal webview is displayed

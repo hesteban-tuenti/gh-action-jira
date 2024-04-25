@@ -97,37 +97,19 @@ Feature: Technical support
      Then the "dialer" app is displayed
       And the "1551" phone number is inserted on the dialer
 
-  @jira.QANOV-408277 @android @ios @jira.cv.Future @manual @mobile @o2es @smoke @tbd
-  Scenario: An o2es user with Whatsapp installed can click on the whatsapp card
-    TBD the elements for the popup. Support service time from 9 to 22 (Mon-Sun)
-    Given user is in the "Support" page
-      And user has the "Whatsapp Assistance" module configured in CMS for "Support" page
-      And user is logged in the "WhatsApp" app
-      And the current time is within the support service time
-     When clicks on the "contact_methods.whatsapp" card
-     Then the "Use Whatsapp" popup is displayed
-      And clicks on the "popup.close" button
-     Then the "Support" page is displayed
-
   @jira.QANOV-408278 @android @ios @jira.cv.Future @manual @mobile @o2es @regression
   Scenario: An o2es user with Whatsapp installed user can use whatsapp for technical assistance
-    Support service time from 9 to 22 (Mon-Sun)
     Given user is in the "Support" page
       And user has the "Whatsapp Assistance" module configured in CMS for "Support" page
       And user is logged in the "WhatsApp" app
-      And the current time is within the support service time
      When clicks on the "contact_methods.whatsapp" card
-      And the "Use Whatsapp" popup is displayed
-      And clicks on the "popup.accept" button
-      And the O2es conversation will be displayed on the WhatsApp app
+     Then the O2es conversation will be displayed on the WhatsApp app
 
   @jira.<jira_id> @jira.cv.Future @manual @mobile @o2es @regression
   Scenario Outline: An o2es user without Whatsapp installed will be redirected to the <store> when asks for assistance
-    Support service time from 9 to 22 (Mon-Sun)
     Given user is in the "Support" page
       And user has the "Whatsapp Assistance" module configured in CMS for "Support" page
       And user does not have installed the "whatsapp" app
-      And the current time is within the support service time
      When clicks on the "contact_methods.whatsapp" card
      Then the "<store>" app is displayed
 
@@ -141,13 +123,6 @@ Feature: Technical support
           | store     | jira_id      |
           | App Store | QANOV-408280 |
 
-  @jira.QANOV-408281 @android @ios @jira.cv.Future @manual @mobile @o2es @regression
-  Scenario: An o2es user can not see the whatsapp contact card in out of service hours
-    Support service time from 9 to 22 (Mon-Sun)
-    Given user is in the "Support" page
-      And user has the "Whatsapp Assistance" module configured in CMS for "Support" page
-      And the current time is not within the support service time
-     Then the "contact_methods.whatsapp" card is not displayed
 
   @jira.<jira_id> @android @ios @jira.cv.Future @manual @mobile @o2es @regression
   Scenario Outline: An <role> o2es user can contact support assistance by email

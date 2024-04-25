@@ -4,12 +4,12 @@ Feature: My Handy details
 
   Actions Before each Scenario:
     Given user has a "postpay" account type
-      And user has the "My Handy card" module configured in CMS for "Account" page
+      And user has any of the "device-plan,device-plan-terminated" modules configured in CMS for "dashboard" page
       And user has the "My Handy Details" module configured in CMS for "My Handy Details" page
 
 
   @jira.<jira_id> @<ber> @<test_priority> @android @ios @jira.cv.14.2 @jira.link.depends_on.QANOV-203275
-  @jira.link.detects.<detects> @manual @mobile @o2de
+  @jira.link.detects.<detects> @mobile @o2de @webapp
   Scenario Outline: Postpay user can access to the details screen for an active MyHandy product with a <contract_status> contract
     Given user has a "my_handy" product in "active" status
       And user has a "my_handy" product with a "<contract_status>" contract
@@ -23,41 +23,46 @@ Feature: My Handy details
       And the "myhandy_header.amount_value" textfield with the "\d+,\d{2} €" format is displayed
       And the "early_payment" module is displayed
       And the "contract_status.title" textfield with "VERTRAGSSTATUS" text is displayed
-      And the "contract_status.status_label" textfield with "Status" text is displayed
-      And the "contract_status.status_value" textfield that contains the "<contract_status_text>" text is displayed
-      And the "contract_status.monthly_rate_label" textfield with "Monatliche Rate" text is displayed
-      And the "contract_status.monthly_rate_value" textfield with the "\d+,\d{2} €" format is displayed
-      And the "contract_status.already_paid_label" textfield with "Bereits gezahlt" text is displayed
-      And the "contract_status.already_paid_value" textfield with the "\d+,\d{2} €" format is displayed
-      And the "contract_status.balance_label" textfield with "Restbetrag" text is displayed
-      And the "contract_status.balance_value" textfield with the "\d+,\d{2} €" format is displayed
-      And the "contract_status.payment_due_date_label" textfield with "Näschste Zahlung am" text is displayed
-      And the "contract_status.payment_due_date_value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
-      And the "contract_status.payment_history_entrypoint" entrypoint with "Zahlungen" text is displayed
+      And the "contract_status.status.label" textfield with "Status" text is displayed
+      And the "contract_status.status.value" textfield that contains the "<contract_status_text>" text is displayed
+      And the "contract_status.monthly_rate.label" textfield with "Monatliche Rate" text is displayed
+      And the "contract_status.monthly_rate.value" textfield with the "\d+,\d{2} €" format is displayed
+      And the "contract_status.already_paid.label" textfield with "Bereits gezahlt" text is displayed
+      And the "contract_status.already_paid.value" textfield with the "\d+,\d{2} €" format is displayed
+      And the "contract_status.remaining_amount.label" textfield with "Restbetrag" text is displayed
+      And the "contract_status.remaining_amount.value" textfield with the "\d+,\d{2} €" format is displayed
+      And the "contract_status.payment_due_date.label" textfield with "Nächste Zahlung am" text is displayed
+      And the "contract_status.payment_due_date.value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
+      And the "contract_status.payment_history_entrypoint_text" entrypoint with "Zahlungen" text is displayed
       And the "contract_details.title" textfield with "VERTRAGSDETAILS" text is displayed
-      And the "contract_details.device_label" textfield with "Dein Gerät" text is displayed
-      And the "contract_details.device_value" textfield is displayed
-      And the "contract_details.contract_number_label" textfield with "Vertragsnummer" text is displayed
-      And the "contract_details.contract_number_value" textfield with the "\d+" format is displayed
-      And the "contract_details.contract_duration_label" textfield with "Vertragsdauer" text is displayed
-      And the "contract_details.contract_duration_value" textfield with the "\d+ Monate" format is displayed
-      And the "contract_details.contract_start_date_label" textfield with "Vertragsbeginn" text is displayed
-      And the "contract_details.contract_start_date_value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
-      And the "contract_details.contract_end_date_label" textfield with "Laufzeit des Vertrages" text is displayed
-      And the "contract_details.contract_end_date_value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
-      And the "contract_details.total_amount_label" textfield with "Gesamtbetrag" text is displayed
-      And the "contract_details.total_amount_value" textfield with the "\d+,\d{2} €" format is displayed
+      And the "contract_details.device.label" textfield with "Dein Gerät" text is displayed
+      And the "contract_details.device.value" textfield is displayed
+      And the "contract_details.contract_number.label" textfield with "Vertragsnummer" text is displayed
+      And the "contract_details.contract_number.value" textfield with the "\d+" format is displayed
+      And the "contract_details.contract_duration.label" textfield with "Vertragsdauer" text is displayed
+      And the "contract_details.contract_duration.value" textfield with the "\d+ Monate" format is displayed
+      And the "contract_details.contract_start_date.label" textfield with "Vertragsbeginn" text is displayed
+      And the "contract_details.contract_start_date.value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
+      And the "contract_details.contract_end_date.label" textfield with "Laufzeit des Vertrages" text is displayed
+      And the "contract_details.contract_end_date.value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
+      And the "contract_details.total_amount.label" textfield with "Gesamtbetrag" text is displayed
+      And the "contract_details.total_amount.value" textfield with the "\d+,\d{2} €" format is displayed
       And the "vat_message" textfield with "*Alle Preise sind inkl. Mehrwertsteuer angegeben." text is displayed
       And the "billing_information.title" textfield with "INFORMATIONEN ZUR RECHNUNG" text is displayed
-      And the "billing_information.payment_plan_entrypoint" entrypoint with "Ratenplan" text is displayed
-      And the "billing_information.invoices_entrypoint" entrypoint with "Rechnung" text is displayed
+      And the "billing_information.payment_plan_entrypoint_text" entrypoint with "Ratenplan" text is displayed
+      And the "billing_information.invoices_entrypoint_text" entrypoint with "Rechnung" text is displayed
       And the "myhandy_repair" module is displayed
-      And clicks on the "navigation_top_bar.back_button" button
+      And clicks on the "navigation_top_bar.back_button" button to go back to the previous page
       And the "Account" page is displayed
 
+    @automatic @qa
+    Examples:
+          | contract_status | contract_status_text | test_priority | ber | detects   | jira_id      |
+          | ongoing         | Zahlung fällig am    | sanity        | ber | O2DE-1520 | QANOV-215952 |
+
+    @manual 
     Examples:
           | contract_status         | contract_status_text           | test_priority | ber | detects   | jira_id      |
-          | ongoing                 | Zahlung fällig am              | sanity        | ber | O2DE-1520 | QANOV-215952 |
           | early_payment_requested | Vorzeitige Abzahlung angefragt | smoke         |     | O2DE-1520 | QANOV-215953 |
           | early_payment_cancelled | Vorzeitige Abzahlung storniert | smoke         |     | O2DE-2937 | QANOV-215954 |
 
@@ -75,30 +80,30 @@ Feature: My Handy details
       And the "myhandy_header.amount_value" textfield with the "\d+,\d{2} €" format is displayed
       And the "early_payment" module is displayed
       And the "contract_status.title" textfield with "VERTRAGSSTATUS" text is displayed
-      And the "contract_status.status_label" textfield with "Status" text is displayed
-      And the "contract_status.status_value" textfield with "Overdue" text is displayed
-      And the "contract_status.monthly_rate_label" textfield with "Monatliche Rate" text is displayed
-      And the "contract_status.monthly_rate_value" textfield with the "\d+,\d{2} €" format is displayed
-      And the "contract_status.already_paid_label" textfield with "Bereits gezahlt" text is displayed
-      And the "contract_status.already_paid_value" textfield with the "\d+,\d{2} €" format is displayed
-      And the "contract_status.balance_label" textfield with "Restbetrag" text is displayed
-      And the "contract_status.balance_value" textfield with the "\d+,\d{2} €" format is displayed
-      And the "contract_status.payment_due_date_label" textfield with "Näschste Zahlung am" text is displayed
-      And the "contract_status.payment_due_date_value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
+      And the "contract_status.status.label" textfield with "Status" text is displayed
+      And the "contract_status.status.value" textfield with "Overdue" text is displayed
+      And the "contract_status.monthly_rate.label" textfield with "Monatliche Rate" text is displayed
+      And the "contract_status.monthly_rate.value" textfield with the "\d+,\d{2} €" format is displayed
+      And the "contract_status.already_paid.label" textfield with "Bereits gezahlt" text is displayed
+      And the "contract_status.already_paid.value" textfield with the "\d+,\d{2} €" format is displayed
+      And the "contract_status.remaining_amount.label" textfield with "Restbetrag" text is displayed
+      And the "contract_status.remaining_amount.value" textfield with the "\d+,\d{2} €" format is displayed
+      And the "contract_status.payment_due_date.label" textfield with "Nächste Zahlung am" text is displayed
+      And the "contract_status.payment_due_date.value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
       And the "contract_status.payment_history_entrypoint" entrypoint with "Zahlungen" text is displayed
       And the "contract_details.title" textfield with "VERTRAGSDETAILS" text is displayed
-      And the "contract_details.device_label" textfield with "Dein Gerät" text is displayed
-      And the "contract_details.device_value" textfield is displayed
-      And the "contract_details.contract_number_label" textfield with "Vertragsnummer" text is displayed
-      And the "contract_details.contract_number_value" textfield with the "\d+" format is displayed
-      And the "contract_details.contract_duration_label" textfield with "Vertragsdauer" text is displayed
-      And the "contract_details.contract_duration_value" textfield with the "\d+ Monate" format is displayed
-      And the "contract_details.contract_start_date_label" textfield with "Vertragsbeginn" text is displayed
-      And the "contract_details.contract_start_date_value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
-      And the "contract_details.contract_end_date_label" textfield with "Laufzeit des Vertrages" text is displayed
-      And the "contract_details.contract_end_date_value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
-      And the "contract_details.total_amount_label" textfield with "Gesamtbetrag" text is displayed
-      And the "contract_details.total_amount_value" textfield with the "\d+,\d{2} €" format is displayed
+      And the "contract_details.device.label" textfield with "Dein Gerät" text is displayed
+      And the "contract_details.device.value" textfield is displayed
+      And the "contract_details.contract_number.label" textfield with "Vertragsnummer" text is displayed
+      And the "contract_details.contract_number.value" textfield with the "\d+" format is displayed
+      And the "contract_details.contract_duration.label" textfield with "Vertragsdauer" text is displayed
+      And the "contract_details.contract_duration.value" textfield with the "\d+ Monate" format is displayed
+      And the "contract_details.contract_start_date.label" textfield with "Vertragsbeginn" text is displayed
+      And the "contract_details.contract_start_date.value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
+      And the "contract_details.contract_end_date.label" textfield with "Laufzeit des Vertrages" text is displayed
+      And the "contract_details.contract_end_date.value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
+      And the "contract_details.total_amount.label" textfield with "Gesamtbetrag" text is displayed
+      And the "contract_details.total_amount.value" textfield with the "\d+,\d{2} €" format is displayed
       And the "vat_message" textfield with "*Alle Preise sind inkl. Mehrwertsteuer angegeben." text is displayed
       And the "billing_information.title" textfield with "INFORMATIONEN ZUR RECHNUNG" text is displayed
       And the "billing_information.payment_plan_entrypoint" entrypoint with "Ratenplan" text is displayed
@@ -124,28 +129,28 @@ Feature: My Handy details
       And the "myhandy_header.amount_value" textfield is not displayed
       And the "early_payment" module is not displayed
       And the "contract_status.title" textfield with "VERTRAGSSTATUS" text is displayed
-      And the "contract_status.status_label" textfield with "Status" text is displayed
-      And the "contract_status.status_value" textfield with "Abbezahlt" text is displayed
-      And the "contract_status.monthly_rate_label" textfield with "Monatliche Rate" text is displayed
-      And the "contract_status.monthly_rate_value" textfield with the "\d+,\d{2} €" format is displayed
-      And the "contract_status.already_paid_label" textfield with "Bereits gezahlt" text is displayed
-      And the "contract_status.already_paid_value" textfield with the "\d+,\d{2} €" format is displayed
-      And the "contract_status.balance_label" textfield with "Restbetrag" text is displayed
-      And the "contract_status.balance_value" textfield with the "\d+,\d{2} €" format is displayed
+      And the "contract_status.status.label" textfield with "Status" text is displayed
+      And the "contract_status.status.value" textfield with "Abbezahlt" text is displayed
+      And the "contract_status.monthly_rate.label" textfield with "Monatliche Rate" text is displayed
+      And the "contract_status.monthly_rate.value" textfield with the "\d+,\d{2} €" format is displayed
+      And the "contract_status.already_paid.label" textfield with "Bereits gezahlt" text is displayed
+      And the "contract_status.already_paid.value" textfield with the "\d+,\d{2} €" format is displayed
+      And the "contract_status.remaining_amount.label" textfield with "Restbetrag" text is displayed
+      And the "contract_status.remaining_amount.value" textfield with the "\d+,\d{2} €" format is displayed
       And the "contract_status.payment_history_entrypoint" entrypoint with "Zahlungen" text is displayed
       And the "contract_details.title" textfield with "VERTRAGSDETAILS" text is displayed
-      And the "contract_details.device_label" textfield with "Dein Gerät" text is displayed
-      And the "contract_details.device_value" textfield is displayed
-      And the "contract_details.contract_number_label" textfield with "Vertragsnummer" text is displayed
-      And the "contract_details.contract_number_value" textfield with the "\d+" format is displayed
-      And the "contract_details.contract_duration_label" textfield with "Vertragsdauer" text is displayed
-      And the "contract_details.contract_duration_value" textfield with the "\d+ Monate" format is displayed
-      And the "contract_details.contract_start_date_label" textfield with "Vertragsbeginn" text is displayed
-      And the "contract_details.contract_start_date_value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
-      And the "contract_details.contract_end_date_label" textfield with "Laufzeit des Vertrages" text is displayed
-      And the "contract_details.contract_end_date_value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
-      And the "contract_details.total_amount_label" textfield with "Gesamtbetrag" text is displayed
-      And the "contract_details.total_amount_value" textfield with the "\d+,\d{2} €" format is displayed
+      And the "contract_details.device.label" textfield with "Dein Gerät" text is displayed
+      And the "contract_details.device.value" textfield is displayed
+      And the "contract_details.contract_number.label" textfield with "Vertragsnummer" text is displayed
+      And the "contract_details.contract_number.value" textfield with the "\d+" format is displayed
+      And the "contract_details.contract_duration.label" textfield with "Vertragsdauer" text is displayed
+      And the "contract_details.contract_duration.value" textfield with the "\d+ Monate" format is displayed
+      And the "contract_details.contract_start_date.label" textfield with "Vertragsbeginn" text is displayed
+      And the "contract_details.contract_start_date.value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
+      And the "contract_details.contract_end_date.label" textfield with "Laufzeit des Vertrages" text is displayed
+      And the "contract_details.contract_end_date.value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
+      And the "contract_details.total_amount.label" textfield with "Gesamtbetrag" text is displayed
+      And the "contract_details.total_amount.value" textfield with the "\d+,\d{2} €" format is displayed
       And the "vat_message" textfield with "*Alle Preise sind inkl. Mehrwertsteuer angegeben." text is displayed
       And the "billing_information.title" textfield with "INFORMATIONEN ZUR RECHNUNG" text is displayed
       And the "billing_information.payment_plan_entrypoint" entrypoint with "Ratenplan" text is displayed
@@ -171,28 +176,28 @@ Feature: My Handy details
       And the "myhandy_header.amount_value" textfield is not displayed
       And the "early_payment" module is not displayed
       And the "contract_status.title" textfield with "VERTRAGSSTATUS" text is displayed
-      And the "contract_status.status_label" textfield with "Status" text is displayed
-      And the "contract_status.status_value" textfield with "Abbezahlt" text is displayed
-      And the "contract_status.monthly_rate_label" textfield is not displayed
-      And the "contract_status.monthly_rate_value" textfield is not displayed
-      And the "contract_status.already_paid_label" textfield is not displayed
-      And the "contract_status.already_paid_value" textfield is not displayed
-      And the "contract_status.balance_label" textfield is not displayed
-      And the "contract_status.balance_value" textfield is not displayed
+      And the "contract_status.status.label" textfield with "Status" text is displayed
+      And the "contract_status.status.value" textfield with "Abbezahlt" text is displayed
+      And the "contract_status.monthly_rate.label" textfield is not displayed
+      And the "contract_status.monthly_rate.value" textfield is not displayed
+      And the "contract_status.already_paid.label" textfield is not displayed
+      And the "contract_status.already_paid.value" textfield is not displayed
+      And the "contract_status.remaining_amount.label" textfield is not displayed
+      And the "contract_status.remaining_amount.value" textfield is not displayed
       And the "contract_status.payment_history_entrypoint" entrypoint with "Zahlungen" text is displayed
       And the "contract_details.title" textfield with "VERTRAGSDETAILS" text is displayed
-      And the "contract_details.device_label" textfield with "Dein Gerät" text is displayed
-      And the "contract_details.device_value" textfield is displayed
-      And the "contract_details.contract_number_label" textfield is not displayed
-      And the "contract_details.contract_number_value" textfield is not displayed
-      And the "contract_details.contract_duration_label" textfield is not displayed
-      And the "contract_details.contract_duration_value" textfield is not displayed
-      And the "contract_details.contract_start_date_label" textfield with "Vertragsbeginn" text is displayed
-      And the "contract_details.contract_start_date_value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
-      And the "contract_details.contract_end_date_label" textfield with "Laufzeit des Vertrages" text is displayed
-      And the "contract_details.contract_end_date_value" textfield with the "(\d{2}.\d{2}.\d{4}|--)" format is displayed
-      And the "contract_details.total_amount_label" textfield with "Gesamtbetrag" text is displayed
-      And the "contract_details.total_amount_value" textfield with "--" text is displayed
+      And the "contract_details.device.label" textfield with "Dein Gerät" text is displayed
+      And the "contract_details.device.value" textfield is displayed
+      And the "contract_details.contract_number.label" textfield is not displayed
+      And the "contract_details.contract_number.value" textfield is not displayed
+      And the "contract_details.contract_duration.label" textfield is not displayed
+      And the "contract_details.contract_duration.value" textfield is not displayed
+      And the "contract_details.contract_start_date.label" textfield with "Vertragsbeginn" text is displayed
+      And the "contract_details.contract_start_date.value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
+      And the "contract_details.contract_end_date.label" textfield with "Laufzeit des Vertrages" text is displayed
+      And the "contract_details.contract_end_date.value" textfield with the "\d{2}.\d{2}.\d{4}" format is displayed
+      And the "contract_details.total_amount.label" textfield with "Gesamtbetrag" text is displayed
+      And the "contract_details.total_amount.value" textfield with "-" text is displayed
       And the "vat_message" textfield with "*Alle Preise sind inkl. Mehrwertsteuer angegeben." text is displayed
       And the "billing_information.title" textfield with "INFORMATIONEN ZUR RECHNUNG" text is displayed
       And the "billing_information.payment_plan_entrypoint" entrypoint is not displayed

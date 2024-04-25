@@ -14,15 +14,15 @@ Feature: Access to Profile Main Screen
       And clicks on the "<button>" button
      Then the "<main_tab>" page is displayed
 
-    @automatic @cert2 @deprecate_profile_moves @jira.dv.Future @live @next
+    @automatic @cert2 @jira.dv.Future @live @next
     Examples:
           | product | cv   | main_tab  | button                          | client  | har | jira_id     |
           | moves   | 11.7 | Dashboard | navigation_top_bar.back_button  | android | har | QANOV-6021  |
           | moves   | 11.7 | Dashboard | navigation_top_bar.close_button | ios     | har | QANOV-44508 |
           | moves   | 11.7 | Explore   | navigation_top_bar.back_button  | android |     | QANOV-6023  |
           | moves   | 11.7 | Explore   | navigation_top_bar.close_button | ios     |     | QANOV-44518 |
-          | moves   | 11.7 | Support   | navigation_top_bar.close_button | ios     |     | QANOV-44509 |
-          | moves   | 11.7 | Support   | navigation_top_bar.back_button  | android |     | QANOV-47862 |
+          | moves   | 11.7 | Gestiones | navigation_top_bar.close_button | ios     |     | QANOV-44509 |
+          | moves   | 11.7 | Gestiones | navigation_top_bar.back_button  | android |     | QANOV-47862 |
 
     @automatic @cert0 @cert1 @live @next
     Examples:
@@ -46,33 +46,31 @@ Feature: Access to Profile Main Screen
 
     @manual
     Examples:
-          | product | cv     | main_tab  | button                          | client  | har | jira_id      |
-          | vivobr  | 12.4   | Menu Mais | navigation_top_bar.back_button  | android |     | QANOV-599497 |
-          | vivobr  | 12.4   | Menu Mais | navigation_top_bar.back_button  | ios     |     | QANOV-599498 |
-          | blaude  | 13.9   | Account   | navigation_top_bar.back_button  | android |     | QANOV-217411 |
-          | blaude  | 13.9   | Account   | navigation_top_bar.close_button | ios     |     | QANOV-217412 |
-          | blaude  | 13.9   | Explore   | navigation_top_bar.back_button  | android | har | QANOV-217413 |
-          | blaude  | 13.9   | Explore   | navigation_top_bar.close_button | ios     | har | QANOV-217414 |
-          | blaude  | 13.9   | Support   | navigation_top_bar.back_button  | android |     | QANOV-217415 |
-          | blaude  | 13.9   | Support   | navigation_top_bar.close_button | ios     |     | QANOV-217416 |
-          | blaude  | 14.0   | Start     | navigation_top_bar.back_button  | android |     | QANOV-271654 |
-          | blaude  | 14.0   | Start     | navigation_top_bar.close_button | ios     |     | QANOV-271655 |
-          | o2de    | 14.2   | Account   | navigation_top_bar.back_button  | android |     | QANOV-217417 |
-          | o2de    | 14.2   | Account   | navigation_top_bar.close_button | ios     |     | QANOV-217418 |
-          | o2de    | 14.2   | Explore   | navigation_top_bar.back_button  | android |     | QANOV-217419 |
-          | o2de    | 14.2   | Explore   | navigation_top_bar.close_button | ios     |     | QANOV-217420 |
-          | o2de    | 14.2   | Support   | navigation_top_bar.back_button  | android |     | QANOV-217421 |
-          | o2de    | 14.2   | Support   | navigation_top_bar.close_button | ios     |     | QANOV-217422 |
-          | o2de    | 14.2   | Start     | navigation_top_bar.back_button  | android | har | QANOV-271656 |
-          | o2de    | 14.2   | Start     | navigation_top_bar.close_button | ios     | har | QANOV-271657 |
-          | o2es    | Future | Account   | navigation_top_bar.back_button  | android |     | QANOV-410671 |
-          | o2es    | Future | Account   | navigation_top_bar.close_button | ios     |     | QANOV-410672 |
-          | o2es    | Future | Explore   | navigation_top_bar.back_button  | android |     | QANOV-410673 |
-          | o2es    | Future | Explore   | navigation_top_bar.close_button | ios     |     | QANOV-410674 |
-          | o2es    | Future | Support   | navigation_top_bar.back_button  | android |     | QANOV-410675 |
-          | o2es    | Future | Support   | navigation_top_bar.close_button | ios     |     | QANOV-410676 |
-          | o2es    | Future | Invoices  | navigation_top_bar.back_button  | android | har | QANOV-410677 |
-          | o2es    | Future | Invoices  | navigation_top_bar.close_button | ios     | har | QANOV-410678 |
+          | product | cv     | main_tab | button                          | client  | jira_id      |
+          | blaude  | 13.9   | Account  | navigation_top_bar.back_button  | android | QANOV-217411 |
+          | blaude  | 13.9   | Account  | navigation_top_bar.close_button | ios     | QANOV-217412 |
+          | blaude  | 13.9   | Explore  | navigation_top_bar.back_button  | android | QANOV-217413 |
+          | blaude  | 13.9   | Explore  | navigation_top_bar.close_button | ios     | QANOV-217414 |
+          | blaude  | 13.9   | Support  | navigation_top_bar.back_button  | android | QANOV-217415 |
+          | blaude  | 13.9   | Support  | navigation_top_bar.close_button | ios     | QANOV-217416 |
+          | blaude  | 14.0   | Start    | navigation_top_bar.back_button  | android | QANOV-271654 |
+          | blaude  | 14.0   | Start    | navigation_top_bar.close_button | ios     | QANOV-271655 |
+          | o2de    | 14.2   | Account  | navigation_top_bar.back_button  | android | QANOV-217417 |
+          | o2de    | 14.2   | Account  | navigation_top_bar.close_button | ios     | QANOV-217418 |
+          | o2de    | 14.2   | Explore  | navigation_top_bar.back_button  | android | QANOV-217419 |
+          | o2de    | 14.2   | Explore  | navigation_top_bar.close_button | ios     | QANOV-217420 |
+          | o2de    | 14.2   | Support  | navigation_top_bar.back_button  | android | QANOV-217421 |
+          | o2de    | 14.2   | Support  | navigation_top_bar.close_button | ios     | QANOV-217422 |
+          | o2de    | 14.2   | Start    | navigation_top_bar.back_button  | android | QANOV-271656 |
+          | o2de    | 14.2   | Start    | navigation_top_bar.close_button | ios     | QANOV-271657 |
+          | o2es    | Future | Account  | navigation_top_bar.back_button  | android | QANOV-410671 |
+          | o2es    | Future | Account  | navigation_top_bar.close_button | ios     | QANOV-410672 |
+          | o2es    | Future | Explore  | navigation_top_bar.back_button  | android | QANOV-410673 |
+          | o2es    | Future | Explore  | navigation_top_bar.close_button | ios     | QANOV-410674 |
+          | o2es    | Future | Support  | navigation_top_bar.back_button  | android | QANOV-410675 |
+          | o2es    | Future | Support  | navigation_top_bar.close_button | ios     | QANOV-410676 |
+          | o2es    | Future | Invoices | navigation_top_bar.back_button  | android | QANOV-410677 |
+          | o2es    | Future | Invoices | navigation_top_bar.close_button | ios     | QANOV-410678 |
 
   @jira.<jira_id> @<product> @android @har @ios @jira.cv.<cv> @jira.link.parent_test_plan.QANOV-24947
   @jira.link.relates_to.NOV-186940 @mobile @smoke
@@ -81,13 +79,13 @@ Feature: Access to Profile Main Screen
     Given user is in the "<main_tab>" page
      Then the "navigation_top_bar.profile_icon" icon is displayed
 
-    @automatic @cert2 @deprecate_profile_moves @jira.dv.Future @live @next
+    @automatic @cert2 @jira.dv.Future @live @next
     Examples:
           | product | cv   | main_tab  | jira_id    |
           | moves   | 11.7 | Dashboard | QANOV-6042 |
           | moves   | 11.7 | Explore   | QANOV-6045 |
 
-    @manual @deprecate_profile_moves @jira.dv.Future
+    @manual @jira.dv.Future
     Examples:
           | product | cv   | main_tab  | jira_id    |
           | moves   | 24.1 | Gestiones | QANOV-6048 |
@@ -182,7 +180,7 @@ Feature: Access to Profile Main Screen
      Then the "Profile" page is displayed
       And the "navigation_top_bar.back_button" button is displayed
 
-    @automatic @cert2 @deprecate_profile_moves @jira.dv.Future @live @next
+    @automatic @cert2 @jira.dv.Future @live @next
     Examples:
           | product | cv   | main_tab  | jira_id    |
           | moves   | 11.7 | Dashboard | QANOV-6068 |
@@ -231,7 +229,7 @@ Feature: Access to Profile Main Screen
      Then the "Profile" page is displayed
       And the "navigation_top_bar.close_button" button is displayed
 
-    @automatic @cert2 @deprecate_profile_moves @jira.dv.Future @live @next
+    @automatic @cert2 @jira.dv.Future @live @next
     Examples:
           | product | cv   | main_tab  | jira_id    |
           | moves   | 11.7 | Dashboard | QANOV-6124 |
@@ -276,34 +274,21 @@ Feature: Access to Profile Main Screen
           | o2es    | Future | Support  | QANOV-410689 |
           | o2es    | Future | Invoices | QANOV-410690 |
 
-  @jira.QANOV-6136 @android @automatic @cert2 @deprecate_profile_moves @har @ios @jira.cv.10.6 @jira.dv.Future
-  @jira.link.relates_to.NOV-72203 @live @mobile @moves @next @sanity
-  Scenario: Moves admin user with data connection selects Profile icon: Profile's title is updated according to the user's type
-    Given user has a "admin" role
-     When the "title" textfield with "[CONTEXT:user.user_name]" text is displayed
-      And the "subtitle" textfield with "Titular" text is displayed
 
-  @jira.QANOV-556370 @android @ber @har @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
+  @jira.QANOV-556370 @android @ber @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
   @moves @sanity
   Scenario: Admin user can see his/her name on top of the profile tab
     Given user has a "admin" role
      Then the "title" textfield with "[CONTEXT:user.user_name]" text is displayed
 
-  @jira.QANOV-6137 @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.10.6 @jira.dv.Future
-  @jira.link.relates_to.NOV-72203 @live @mobile @moves @next @regression
-  Scenario: A moves user with admin-light role and data connection selects Profile icon: Profile's title is updated according to the user's type
-    Given user has a "admin-light" role
-     When the "title" element with user number is displayed with the correct format
-      And the "subtitle" textfield with "Línea móvil" text is displayed
-
-  @jira.QANOV-556371 @android @ber @har @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
+  @jira.QANOV-556371 @android @ber @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
   @moves @smoke
   Scenario: Admin light user can see the admin's name on top of the profile tab
     Given user has a "admin-light" role
      Then the "title" textfield with "Titular" text is displayed
       And the "subtitle" textfield with "[CONTEXT:user.admin_name]" text is displayed
 
-  @jira.QANOV-410691 @android @ios @jira.cv.Future @live @manual @mobile @o2es @sanity
+  @jira.QANOV-410691 @android @ios @jira.cv.24.3 @live @manual @mobile @o2es @sanity
   Scenario: O2es admin user selects Profile icon: DNI is displayed in the profile title
     Given user has a "admin" role
      Then the "title" textfield with "[CONTEXT:user.user_name]" text is displayed
@@ -402,7 +387,7 @@ Feature: Access to Profile Main Screen
           | product | cv   | jira_id      |
           | o2de    | 14.2 | QANOV-217447 |
 
-  @jira.QANOV-518135 @android @blaude @ios @jira.cv.14.10 @mobile @raitt_drop1 @sanity @har
+  @jira.QANOV-518135 @android @blaude @ios @jira.cv.14.10 @mobile @raitt_drop1 @manual @sanity @har
   Scenario: A RAITT blaude user with just 1 mobile line selects Profile icon: Profile's title is updated according to the user's type
     We don't display the phone number for RAITT users because we cannot detect the main msisdn.
     Given user has a "raitt" account type
@@ -442,11 +427,6 @@ Feature: Access to Profile Main Screen
     Examples:
           | product | cv   | jira_id      |
           | vivobr  | 10.0 | QANOV-410693 |
-
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | jira_id      |
-          | moves   | 10.0 | QANOV-410695 |
 
     Examples:
           | product | cv     | jira_id      |
@@ -488,14 +468,19 @@ Feature: Access to Profile Main Screen
       And the "verify_alert.message" textfield is displayed
       And the "verify_alert.link" link is displayed
 
-  @jira.QANOV-491888 @android @ios @jira.cv.Future @manual @mobile @o2es @regression
+  @jira.QANOV-491888 @android @e2e @ios @jira.cv.Future @manual @mobile @o2es @smoke
   Scenario: An admin user clicks on the alert to verify contact methods: OB webview is displayed
     Given user has not verified the personal data
       And user has a "admin" role
       And clicks on the "alert.link" link
-     Then the internal webview is displayed
-      And clicks on the "navigation_top_bar.back_button" button
+     Then the browser webview is displayed
+      And clicks on the "navigation_top_bar.close_button" button
       And the "Profile" page is displayed
+
+  @jira.QANOV-621101 @android @e2e @ios @jira.cv.Future @manual @mobile @o2es @regression
+  Scenario: A user has  verified the contacts methods: An alert is not displayed in the Profile page
+    Given user has verified the personal data
+     Then the "verify_alert" alert is not displayed
 
   @jira.<jira_id> @android @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   Scenario Outline: User who is in the <main_tab> tab can access to the Profile tab

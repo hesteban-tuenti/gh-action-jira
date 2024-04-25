@@ -1,35 +1,35 @@
 Feature: Test
 
 
-  @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @jira.link.depends_on.<depends_on>
-  @jira.link.relates_to.NOV-195451 @mobile @sanity
-  Scenario Outline: User can see a card within a Featured content module
-    Given user is in the "Explore" page
-      And user has a "featured content" module in the Explore content
-     When searches the "card"
-     Then the selected explore "card" has the "title" field with "[CONTEXT:card_title]" text
-      And the selected explore "card" has the "description" field with "[CONTEXT:card_description]" text
-      And the selected explore card has the "image_or_bumper" media field displayed
+# @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @jira.link.depends_on.<depends_on>
+# @jira.link.relates_to.NOV-195451 @mobile @sanity
+# Scenario Outline: User can see a card within a Featured content module
+# Given user is in the "Explore" page
+# And user has a "featured content" module in the Explore content
+# When searches the "card"
+# Then the selected explore "card" has the "title" field with "[CONTEXT:card_title]" text
+# And the selected explore "card" has the "description" field with "[CONTEXT:card_description]" text
+# And the selected explore card has the "image_or_bumper" media field displayed
 
-    @automatic @live @next @qa @webapp
-    Examples:
-          | product | depends_on  | cv   | jira_id     |
-          | vivobr  | QANOV-10121 | 13.3 | QANOV-10139 |
+# @automatic @live @next @qa @webapp
+# Examples:
+# | product | depends_on  | cv   | jira_id     |
+# | vivobr  | QANOV-10121 | 13.3 | QANOV-10139 |
 
-    @automatic @cert0 @cert1 @live @next @qa @webapp
-    Examples:
-          | product | depends_on  | cv   | jira_id     |
-          | o2uk    | QANOV-10121 | 13.3 | QANOV-10141 |
+# @automatic @cert0 @cert1 @live @next @qa @webapp
+# Examples:
+# | product | depends_on  | cv   | jira_id     |
+# | o2uk    | QANOV-10121 | 13.3 | QANOV-10141 |
 
-    @automatic @cert2 @live @next @qa @webapp
-    Examples:
-          | product | depends_on  | cv   | jira_id     |
-          | moves   | QANOV-10121 | 13.3 | QANOV-10142 |
+# @automatic @cert2 @live @next @qa @webapp
+# Examples:
+# | product | depends_on  | cv   | jira_id     |
+# | moves   | QANOV-10121 | 13.3 | QANOV-10142 |
 
-    @automatic @cert3 @live @next @qa @webapp
-    Examples:
-          | product | depends_on   | cv   | jira_id      |
-          | blaude  | QANOV-228469 | 13.9 | QANOV-228483 |
+# @automatic @cert3 @live @next @qa @webapp
+# Examples:
+# | product | depends_on   | cv   | jira_id      |
+# | blaude  | QANOV-228469 | 13.9 | QANOV-228483 |
 
 # @android @ios @mobile @blaude @moves @o2de @o2uk @vivobr @webapp @test
 # @smoke @sanity @regression @ber @dev @qa @cert0 @cert1 @cert2 @cert3 @next @live @automatic
@@ -69,41 +69,23 @@ Feature: Test
 
 
 
-# @jira.<jira_id> @android @automatic @ios @jira.cv.24.3 @mobile @<product> @qa @smoke @webapp
-# @fixture.cms.explore.set_explore_cms_director
-# @fixture.cms.explore.add_featured_content_module @fixture.cms.explore.add_card_featured_content_module
-# @fixture.cms.explore.publish_changes
-# @fixture.cms.page.configurable_modules_explore @fixture.cms.module.explore_module
-# Scenario Outline: A user can see a Explore Module with a Featured Content module without title
-# To be executed in QA
-# Given the "Explore Module" module is configured in CMS for "Modular Page Explore" page
-# And user is in the "Modular Page Explore" modular page
-# Then the "featured_content_modules_list" list is displayed
-# And the element in "0" position in the "featured_content_modules_list" list has not the "title" field
+  @jira.<jira_id> @android @automatic @ios @jira.cv.24.3 @mobile @<product> @qa @smoke @webapp
+  @fixture.cms.explore.set_explore_cms_director
+  @fixture.cms.explore.add_featured_content_module @fixture.cms.explore.add_card_featured_content_module
+  @fixture.cms.explore.publish_changes
+  @fixture.cms.page.configurable_modules_explore @fixture.cms.module.explore_module
+  Scenario Outline: A user can see a Explore Module with a Featured Content module without title
+    To be executed in QA
+    Given the "Explore Module" module is configured in CMS for "Modular Page Explore" page
+      And user is in the "Modular Page Explore" modular page
+     Then the "featured_content_modules_list" list is displayed
+      And the element in "0" position in the "featured_content_modules_list" list has not the "title" field
 
-# Examples:
-# | product | jira_id |
-# | vivobr  |         |
-# | o2uk    |         |
-# | moves   |         |
-# | blaude  |         |
-# | o2de    |         |
-# | o2es    |         |
+    @automatic @qa @smoke
+    Examples:
+          | product | cv   | jira_id    |
+          | o2uk    | 13.3 | QANOV-9963 |
 
-# @automatic @qa @smoke
-# Examples:
-# | product | cv   | jira_id    |
-# | o2uk    | 13.3 | QANOV-9963 |
-
-# @automatic @qa @smoke
-# Examples:
-# | product | cv   | jira_id    |
-# | moves   | 13.3 | QANOV-9965 |
-
-# @automatic @qa @smoke
-# Examples:
-# | product | cv   | jira_id      |
-# | blaude  | 13.9 | QANOV-228454 |
 
 
 # @android @ios @mobile @blaude @moves @o2de @o2uk @vivobr @webapp @test

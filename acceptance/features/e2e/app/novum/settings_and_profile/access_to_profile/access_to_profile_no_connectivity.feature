@@ -23,11 +23,6 @@ Feature: Access to Profile without connectivity
       And clicks on the "retry_button" button
       And the "Profile" page is displayed
 
-    @automatic @cert2 @deprecate_profile_moves @jira.dv.Future @live @next
-    Examples:
-          | cv   | product | client  | page      | jira_id    |
-          | 11.7 | moves   | android | Dashboard | QANOV-6038 |
-
     @automatic @cert0 @cert1 @live @next
     Examples:
           | cv   | product | client  | page    | jira_id    |
@@ -41,7 +36,7 @@ Feature: Access to Profile without connectivity
 
     @jira.link.parent_test_plan.QANOV-437387 @manual
     Examples:
-          | cv     | product | client  | page      | jira_id      |
+          | cv   | product | client  | page      | jira_id      |
           | 24.3 | vivobr  | android | Menu Mais | QANOV-453431 |
 
     @manual
@@ -50,22 +45,9 @@ Feature: Access to Profile without connectivity
           | 13.9 | blaude  | android | Account | QANOV-217463 |
           | 14.2 | o2de    | android | Account | QANOV-217464 |
 
-    @deprecate_profile_moves @impeded_mock @jira.dv.Future @no_automatable
-    Examples:
-          | cv   | product | client | page      | jira_id      |
-          | 11.7 | moves   | ios    | Dashboard | QANOV-77640  |
-          | 11.7 | o2uk    | ios    | Account   | QANOV-77641  |
-          | 13.9 | blaude  | ios    | Account   | QANOV-217465 |
-          | 14.2 | o2de    | ios    | Account   | QANOV-217466 |
-
-    @deprecate_profile_moves @impeded_mock @jira.dv.Future @no_automatable @old_app
-    Examples:
-          | cv   | product | client | page      | jira_id      |
-          | 11.7 | vivobr  | ios    | Account   | QANOV-77642  |
-
     @impeded_mock @jira.link.parent_test_plan.QANOV-437387 @no_automatable
     Examples:
-          | cv     | product | client | page      | jira_id      |
+          | cv   | product | client | page      | jira_id      |
           | 24.3 | vivobr  | ios    | Menu Mais | QANOV-453432 |
 
   @jira.QANOV-47937 @android @automatic @cert0 @cert1 @har @jira.cv.10.3 @jira.link.relates_to.NOV-54251
@@ -122,80 +104,6 @@ Feature: Access to Profile without connectivity
       And the "configuration_textfield" textfield with "[LANG:profile.dashboard.configuration.title]" text is displayed
       And the "configuration_list" list with "[LANG:profile.dashboard.configuration.security_and_privacy]" entrypoints is displayed
       And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-  @jira.QANOV-205469 @android @automatic @cert2 @deprecate_profile_moves @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @regression
-  Scenario: Moves telco admin without data connection selects Profile icon: Profile screen is opened with all common options for telco in Android devices
-    Given user has a "telco" account type
-      And user has a "admin" role
-      And user turns on the Airplane mode
-      And waits until the "No Connectivity Warning" warning is displayed
-      And waits until the "No Connectivity Warning" warning is not displayed
-     Then the "settings" list with "[LANG:profile.dashboard.configuration.personal_data];[LANG:profile.dashboard.my_orders];[LANG:profile.dashboard.invoicing.entrypoint];[LANG:profile.dashboard.my_tickets];[LANG:profile.dashboard.configuration.security_and_privacy];[LANG:profile.dashboard.app_configuration.entrypoint];[LANG:profile.dashboard.transparency_center.entrypoint]" textfields is displayed
-      And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-  @jira.QANOV-212613 @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @regression
-  Scenario: Moves telco admin without data connection selects Profile icon: Profile screen is opened with all common options for telco in iOS devices
-    Given user has a "telco" account type
-      And user has a "admin" role
-      And user turns on the Airplane mode
-     Then the "settings" list with "[LANG:profile.dashboard.configuration.personal_data];[LANG:profile.dashboard.my_orders];[LANG:profile.dashboard.invoicing.entrypoint];[LANG:profile.dashboard.my_tickets];[LANG:profile.dashboard.configuration.security_and_privacy];[LANG:profile.dashboard.app_configuration.entrypoint];[LANG:profile.dashboard.transparency_center.entrypoint]" textfields is displayed
-      And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-  @jira.QANOV-205470 @android @automatic @cert2 @deprecate_profile_moves @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @regression
-  Scenario: Moves telco admin-light without data connection selects Profile icon: Profile screen is opened with all common options for telco in Android devices
-    Given user has a "telco" account type
-      And user has a "admin-light" role
-      And user turns on the Airplane mode
-      And waits until the "No Connectivity Warning" warning is displayed
-      And waits until the "No Connectivity Warning" warning is not displayed
-     Then the "settings" list with "[LANG:profile.dashboard.configuration.personal_data];[LANG:profile.dashboard.my_orders];[LANG:profile.dashboard.configuration.security_and_privacy];[LANG:profile.dashboard.my_tickets];[LANG:profile.dashboard.app_configuration.entrypoint];[LANG:profile.dashboard.transparency_center.entrypoint]" textfields is displayed
-      And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-  @jira.QANOV-212614 @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @regression
-  Scenario: Moves telco admin-light without data connection selects Profile icon: Profile screen is opened with all common options for telco in iOS devices
-    Given user has a "telco" account type
-      And user has a "admin-light" role
-      And user turns on the Airplane mode
-     Then the "settings" list with "[LANG:profile.dashboard.configuration.personal_data];[LANG:profile.dashboard.my_orders];[LANG:profile.dashboard.configuration.security_and_privacy];[LANG:profile.dashboard.my_tickets];[LANG:profile.dashboard.app_configuration.entrypoint];[LANG:profile.dashboard.transparency_center.entrypoint]" textfields is displayed
-      And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-  @jira.QANOV-205471 @android @deprecate_profile_moves @impeded_legacy @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @manual @mobile @moves @regression
-  Scenario: Moves legado admin without data connection selects Profile icon: Profile screen is opened with all options enabled in Android devices
-    Given user has a "legado" account type
-      And user has a "any_admin" role
-      And user turns on the Airplane mode
-      And waits until the "No Connectivity Warning" warning is displayed
-      And waits until the "No Connectivity Warning" warning is not displayed
-     Then the "settings" list with "[LANG:profile.dashboard.configuration.personal_data];[LANG:profile.dashboard.configuration.security_and_privacy];[LANG:profile.dashboard.app_configuration.entrypoint];[LANG:profile.dashboard.transparency_center.entrypoint]" textfields is displayed
-      And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-  @jira.QANOV-212615 @deprecate_profile_moves @impeded_legacy @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @manual @mobile @moves @regression
-  Scenario: Moves legado admin without data connection selects Profile icon: Profile screen is opened with all options enabled in iOS devices
-    Given user has a "legado" account type
-      And user has a "any_admin" role
-      And user turns on the Airplane mode
-     Then the "settings" list with "[LANG:profile.dashboard.configuration.personal_data];[LANG:profile.dashboard.configuration.security_and_privacy];[LANG:profile.dashboard.app_configuration.entrypoint];[LANG:profile.dashboard.transparency_center.entrypoint]" textfields is displayed
-      And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-  @jira.QANOV-242830 @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.13.4 @jira.dv.Future @live @mobile
-  @moves @next @smoke
-  Scenario: A moves user without data connection and with a tv product will see the 'Mi usuario Movistar Plus+ en dispositivos' in the "Seguridad" page
-    Given user has a "tv" product
-      And user turns on the Airplane mode
-     Then the "settings" list with "[LANG:profile.dashboard.privacy_and_security.movistarplus_email_change_entrypoint]" textfields is displayed
-
-  @jira.QANOV-242831 @android @deprecate_profile_moves @ios @jira.cv.13.4 @jira.dv.Future @manual @mobile @moves
-  @regression
-  Scenario: A moves user without data connection and without a tv product won't see the "Mi usuario Movistar Plus+ en dispositivos" entrypoint in the "Seguridad" page
-    Given user has not a "tv" product
-      And user turns on the Airplane mode
-     Then the "settings" list without "[LANG:profile.dashboard.privacy_and_security.movistarplus_email_change_entrypoint]" textfields is displayed
 
   @jira.<jira_id> @android @ios @jira.cv.<cv> @jira.link.parent_test_plan.<parent_test_plan>
   @jira.link.relates_to.NOV-54251 @jira.link.relates_to.NOV-54252 @manual @mobile @regression @vivobr
@@ -529,171 +437,6 @@ Feature: Access to Profile without connectivity
       And the "retry_button" button with "[LANG:noconnectivity.retry_button]" text is displayed
       And clicks on the "navigation_top_bar.close_button" button
       And the "Security And Privacy" page is displayed
-
-  @jira.<jira_id> @<execution_mode> @<priority> @android @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @mobile @moves
-  Scenario Outline: A moves user with <account_type> account type and <role_type> role And without data connection can access to the Security&Privacy screen
-    Given user has a "<account_type>" account type
-      And user has a "<role_type>" role
-      And user turns on the Airplane mode
-     When clicks on the "security_and_privacy_entrypoint" entrypoint
-      And the "Security And Privacy" page is displayed
-     Then the "security_and_privacy_list" list with "<entrypoint_list>" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-    @har
-    Examples:
-          | account_type | role_type | entrypoint_list                                                                                                                                                                                                                                                                                      | priority   | execution_mode | jira_id      |
-          | telco        | any_admin | [LANG:profile.security_and_privacy.biometric_pin_access.page_header];[LANG:profile.security_and_privacy.session_management.session_management];[LANG:profile.dashboard.privacy_and_security.contact_method_entrypoint];[LANG:profile.dashboard.privacy_and_security.wifi_password_change_entrypoint] | regression | manual         | QANOV-205473 |
-
-    Examples:
-          | account_type | role_type | entrypoint_list                                                                                                                                                                                                              | priority   | execution_mode | jira_id      |
-          | legado       | any       | [LANG:profile.security_and_privacy.biometric_pin_access.page_header];[LANG:profile.security_and_privacy.session_management.session_management];[LANG:profile.dashboard.privacy_and_security.wifi_password_change_entrypoint] | regression | manual         | QANOV-205475 |
-
-  @jira.<jira_id> @android @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @manual @mobile @moves @regression
-  Scenario Outline: <account_type> user without data connection can access to Personal Data screen
-    other_affected_versions="2021-09"
-    Given user has a "<account_type>" account type
-      And user turns on the Airplane mode
-     When clicks on the "personal_data_entrypoint" entrypoint
-     Then the "Personal Data" page is displayed
-      And the "Datos personales" header is displayed
-      And the "personal_data_list" list with "<list>" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-    @har
-    Examples:
-          | account_type | list                                                                                                                                                            | jira_id      |
-          | telco        | [LANG:profile.dashboard.personal_data.email_address];[LANG:profile.dashboard.personal_data.phone_number];[LANG:profile.dashboard.personal_data.shop_identifier] | QANOV-205476 |
-
-    Examples:
-          | account_type | list                                                   | jira_id      |
-          | legado       | [LANG:profile.dashboard.personal_data.shop_identifier] | QANOV-205477 |
-
-  @jira.QANOV-205478 @android @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @manual @mobile @moves @smoke
-  Scenario: A moves user with telco postpay account type and admin role without data connection can access to the 'Facturación' screen
-    Given user has a "telco postpay" account type
-      And user has a "admin" role
-      And user turns on the Airplane mode
-     When clicks on the "invoicing_entrypoint" entrypoint
-      And the "Invoicing Profile" page is displayed
-     Then the "invoicing_list" list with "[LANG:profile.dashboard.invoicing.my_payment_methods];[LANG:profile.dashboard.invoicing.billing_address];[LANG:profile.dashboard.invoicing.invoice_claim];[LANG:profile.dashboard.invoicing.digital_invoice]" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-  @jira.QANOV-205479 @android @deprecate_profile_moves @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @manual @mobile @moves @smoke
-  Scenario: A moves user without data connection can access to the 'Configuración de la App' screen in Android devices
-    Given user turns on the Airplane mode
-     When clicks on the "app_configuration_entrypoint" entrypoint
-      And the "App Configuration" page is displayed
-     Then the "app_configuration_list" list with "Gestión de notificaciones;Valóranos en Play Store" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-  @jira.QANOV-205480 @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future @jira.link.parent_test_plan.QANOV-203801
-  @manual @mobile @moves @smoke
-  Scenario: A moves user without data connection can access to the 'Configuración de la App' screen in iOS devices
-    Given user turns on the Airplane mode
-     When clicks on the "app_configuration_entrypoint" entrypoint
-      And the "App Configuration" page is displayed
-     Then the "app_configuration_list" list with "Gestión de notificaciones;Valóranos en App Store" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-  @jira.<jira_id> @<priority> @android @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @manual @mobile @moves
-  Scenario Outline: A moves user with <account_type> account type and <role_type> role without data connection can access to the 'Centro de transparencia' screen
-    Given user has a "<account_type>" account type
-      And user has a "<role_type>" role
-      And user turns on the Airplane mode
-     When clicks on the "transparency_center_entrypoint" entrypoint
-      And the "Transparency Center" page is displayed
-     Then the "transparency_center_list" list with "<entrypoint_list>" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-    Examples:
-          | account_type | role_type | entrypoint_list                                                                | priority   | jira_id      |
-          | telco        | any_admin | Términos y condiciones;Preferencias de privacidad;Consulta y descarga de datos | regression | QANOV-205481 |
-
-    Examples:
-          | account_type | role_type | entrypoint_list                                   | priority   | jira_id      |
-          | legado       | any_admin | Términos y condiciones;Preferencias de privacidad | regression | QANOV-205483 |
-
-  @jira.<jira_id> @android @cert2 @deprecate_profile_moves @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @regression
-  Scenario Outline: <account_type> user without data connection taps on a profile <option> that redirects to a webview: error message will be shown with a refresh button in Android devices
-    Given user has a "<account_type>" account type
-      And user has a "<role_type>" role
-      And user turns on the Airplane mode
-      And waits until the "No Connectivity Warning" warning is displayed
-      And waits until the "No Connectivity Warning" warning is not displayed
-      And user is in the "<initial_page>" page
-     When clicks on the "<option>" entrypoint
-     Then the "No Connectivity Webview" internal webview is displayed
-      And the "no_connectivity_title" textfield with "[LANG:noconnectivity.no_connectivity_title]" text is displayed
-      And the "no_connectivity_text" textfield with "[LANG:noconnectivity.no_connectivity_text]" text is displayed
-      And the "retry_button" button with "[LANG:noconnectivity.retry_button]" text is displayed
-
-    @automatic
-    Examples:
-          | account_type | role_type | initial_page        | option                          | jira_id      |
-          | telco        | any       | Transparency Center | terms_and_conditions_entrypoint | QANOV-205485 |
-          | telco        | any       | Transparency Center | ask_and_download_entrypoint     | QANOV-205487 |
-          | telco        | any_admin | Personal Data       | email_address_entrypoint        | QANOV-205488 |
-          | telco        | any_admin | Personal Data       | phone_number_entrypoint         | QANOV-249098 |
-          | telco        | any_admin | Personal Data       | shop_identifier_entrypoint      | QANOV-249099 |
-
-    @manual
-    Examples:
-          | account_type | role_type | initial_page        | option                                  | jira_id      |
-          | telco        | any       | Privacy Preferences | privacy_preferences_movistar_entrypoint | QANOV-205484 |
-
-    @manual
-    Examples:
-          | account_type | role_type | initial_page        | option                                  | jira_id      |
-          | legado       | any       | Privacy Preferences | privacy_preferences_movistar_entrypoint | QANOV-205486 |
-
-  @jira.<jira_id> @cert2 @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @regression
-  Scenario Outline: <account_type> user without data connection taps on a profile <option> that redirects to a webview: error message will be shown with a refresh button in iOS devices
-    Given user has a "<account_type>" account type
-      And user has a "<role_type>" role
-      And user turns on the Airplane mode
-      And user is in the "<initial_page>" page
-     When clicks on the "<option>" entrypoint
-     Then the "No Connectivity Webview" internal webview is displayed
-      And the "no_connectivity_title" textfield with "[LANG:noconnectivity.no_connectivity_title]" text is displayed
-      And the "no_connectivity_text" textfield with "[LANG:noconnectivity.no_connectivity_text]" text is displayed
-      And the "retry_button" button with "[LANG:noconnectivity.retry_button]" text is displayed
-
-    @automatic @har
-    Examples:
-          | account_type | role_type | initial_page        | option                          | jira_id      |
-          | telco        | any       | Transparency Center | terms_and_conditions_entrypoint | QANOV-212617 |
-
-    @automatic
-    Examples:
-          | account_type | role_type | initial_page        | option                      | jira_id      |
-          | telco        | any       | Transparency Center | ask_and_download_entrypoint | QANOV-212619 |
-          | telco        | any_admin | Personal Data       | email_address_entrypoint    | QANOV-212620 |
-          | telco        | any_admin | Personal Data       | phone_number_entrypoint     | QANOV-266707 |
-          | telco        | any_admin | Personal Data       | shop_identifier_entrypoint  | QANOV-266708 |
-
-    @manual
-    Examples:
-          | account_type | role_type | initial_page        | option                                  | jira_id      |
-          | telco        | any       | Privacy Preferences | privacy_preferences_movistar_entrypoint | QANOV-212616 |
-
-    @manual
-    Examples:
-          | account_type | role_type | initial_page        | option                                  | jira_id      |
-          | legado       | any       | Privacy Preferences | privacy_preferences_movistar_entrypoint | QANOV-212618 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @manual @mobile @regression @<har>
   Scenario Outline: User without data connection taps on the <option> option in the profile screen: error message will be shown with a refresh button

@@ -59,8 +59,8 @@ Feature: Forbidden Use Cases
 
     @raitt_drop1
     Examples:
-          | product | cv   | products                    | parent_test_plan | jira_id      |
-          | blaude  | 13.9 | mobile_line                 |                  | QANOV-242332 |
+          | product | cv   | products    | parent_test_plan | jira_id      |
+          | blaude  | 13.9 | mobile_line |                  | QANOV-242332 |
 
     Examples:
           | product | cv   | products                    | parent_test_plan | jira_id      |
@@ -139,8 +139,8 @@ Feature: Forbidden Use Cases
           | blaude  | 13.10 |                  | QANOV-242365 |
 
     Examples:
-          | product | cv    | parent_test_plan | jira_id      |
-          | o2de    | 14.2  | QANOV-437471     | QANOV-242367 |
+          | product | cv   | parent_test_plan | jira_id      |
+          | o2de    | 14.2 | QANOV-437471     | QANOV-242367 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @manual @mobile @regression
   Scenario Outline: A postpay user with the ACCOUNT_SHOW_DATA forbidden use case cannot access to the billing settings
@@ -167,8 +167,8 @@ Feature: Forbidden Use Cases
           | blaude  | 13.10 | QANOV-291291 |
 
     Examples:
-          | product | cv    | jira_id      |
-          | o2de    | 14.2  | QANOV-291292 |
+          | product | cv   | jira_id      |
+          | o2de    | 14.2 | QANOV-291292 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @manual @mobile @regression @jira.link.parent_test_plan.<parent_test_plan>
   Scenario Outline: A BOX7 user with the CUSTOMER_SHOW_DATA forbidden use case cannot access to "Contact details" screens
@@ -367,8 +367,8 @@ Feature: Forbidden Use Cases
 
     @raitt_drop1
     Examples:
-          | product | cv   | products        | jira_id      |
-          | blaude  | 13.9 | mobile_line     | QANOV-359859 |
+          | product | cv   | products    | jira_id      |
+          | blaude  | 13.9 | mobile_line | QANOV-359859 |
 
     Examples:
           | product | cv   | products                     | jira_id      |
@@ -438,8 +438,8 @@ Feature: Forbidden Use Cases
           | blaude  | 13.10 |                  | QANOV-242382 |
 
     Examples:
-          | product | cv    | parent_test_plan | jira_id      |
-          | o2de    | 14.2  | QANOV-437471     | QANOV-242384 |
+          | product | cv   | parent_test_plan | jira_id      |
+          | o2de    | 14.2 | QANOV-437471     | QANOV-242384 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @manual @mobile @regression @jira.link.parent_test_plan.<parent_test_plan>
   Scenario Outline: A BOX7 user with the CUSTOMER_UPDATE_DATA forbidden use case cannot edit the contact number
@@ -467,8 +467,8 @@ Feature: Forbidden Use Cases
           | blaude  | 13.10 |                  | QANOV-242386 |
 
     Examples:
-          | product | cv    | parent_test_plan | jira_id      |
-          | o2de    | 14.2  | QANOV-437471     | QANOV-242388 |
+          | product | cv   | parent_test_plan | jira_id      |
+          | o2de    | 14.2 | QANOV-437471     | QANOV-242388 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @jira.link.detects.OBO2DE-429 @manual @mobile @regression
   @jira.link.parent_test_plan.<parent_test_plan>
@@ -487,8 +487,8 @@ Feature: Forbidden Use Cases
           | blaude  | 13.10 |                  | QANOV-242394 |
 
     Examples:
-          | product | cv    | parent_test_plan | jira_id      |
-          | o2de    | 14.2  | QANOV-437471     | QANOV-242396 |
+          | product | cv   | parent_test_plan | jira_id      |
+          | o2de    | 14.2 | QANOV-437471     | QANOV-242396 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @manual @mobile @regression
   Scenario Outline: A postpay  user with the CUSTOMER_UPDATE_DATA forbidden use case cannot edit the line number
@@ -574,8 +574,8 @@ Feature: Forbidden Use Cases
 
     @raitt_drop1
     Examples:
-          | product | cv   | products        | parent_test_plan | jira_id      |
-          | blaude  | 14.1 | mobile_line     |                  | QANOV-242401 |
+          | product | cv   | products    | parent_test_plan | jira_id      |
+          | blaude  | 14.1 | mobile_line |                  | QANOV-242401 |
 
     Examples:
           | product | cv   | products                     | parent_test_plan | jira_id      |
@@ -615,12 +615,12 @@ Feature: Forbidden Use Cases
 
     @raitt_drop1
     Examples:
-          | product | cv    | products        | parent_test_plan | jira_id      |
-          | blaude  | 13.10 | mobile_line     |                  | QANOV-242405 |
+          | product | cv    | products    | parent_test_plan | jira_id      |
+          | blaude  | 13.10 | mobile_line |                  | QANOV-242405 |
 
     Examples:
-          | product | cv    | products                     | parent_test_plan | jira_id      |
-          | o2de    | 14.2  | mobile_line;internet_at_home | QANOV-437471     | QANOV-242407 |
+          | product | cv   | products                     | parent_test_plan | jira_id      |
+          | o2de    | 14.2 | mobile_line;internet_at_home | QANOV-437471     | QANOV-242407 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @manual @mobile @regression @jira.link.parent_test_plan.<parent_test_plan>
   Scenario Outline: A postpay user with the ACCOUNT_UPDATE_DATA forbidden use case cannot edit the mailbox billing address
@@ -652,12 +652,12 @@ Feature: Forbidden Use Cases
 
     @raitt_drop1
     Examples:
-          | product | cv    | products        | parent_test_plan | jira_id      |
-          | blaude  | 13.10 | mobile_line     |                  | QANOV-242409 |
+          | product | cv    | products    | parent_test_plan | jira_id      |
+          | blaude  | 13.10 | mobile_line |                  | QANOV-242409 |
 
     Examples:
-          | product | cv    | products                     | parent_test_plan | jira_id      |
-          | o2de    | 14.2  | mobile_line;internet_at_home | QANOV-437471     | QANOV-242411 |
+          | product | cv   | products                     | parent_test_plan | jira_id      |
+          | o2de    | 14.2 | mobile_line;internet_at_home | QANOV-437471     | QANOV-242411 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @manual @mobile @regression @jira.link.parent_test_plan.<parent_test_plan>
   Scenario Outline: A BOX7 user with the ACCOUNT_UPDATE_DATA forbidden use case cannot edit the shipping address
@@ -697,8 +697,8 @@ Feature: Forbidden Use Cases
           | blaude  | 13.10 |                  | QANOV-242390 |
 
     Examples:
-          | product | cv    | parent_test_plan | jira_id      |
-          | o2de    | 14.2  | QANOV-437471     | QANOV-242392 |
+          | product | cv   | parent_test_plan | jira_id      |
+          | o2de    | 14.2 | QANOV-437471     | QANOV-242392 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @manual @mobile @regression
   Scenario Outline: A BOX7 user with the ACCOUNT_UPDATE_DATA forbidden use case cannot edit the phone payments
@@ -727,7 +727,7 @@ Feature: Forbidden Use Cases
           | product | cv   | jira_id      |
           | o2de    | 14.2 | QANOV-242415 |
 
-  @jira.<jira_id> @<product> @android @ios @jira.cv.Future @manual @mobile @regression
+  @jira.<jira_id> @<product> @android @ios @jira.cv.24.3 @manual @mobile @regression
   Scenario Outline: A BOX7 prepay user with the ACCOUNT_UPDATE_RECHARGE_OPTIONS forbidden use case cannot edit the automatic topups
     Forbidden Use Cases (FUC) can be at "customer", "account" or "subscription" level. You can look at the prefix of the
     FUC name to see the level.
@@ -737,33 +737,33 @@ Feature: Forbidden Use Cases
       And user has the "ACCOUNT_UPDATE_RECHARGE_OPTIONS" forbidden use case
       And user has the "Automatic Topup" module configured in CMS for "Automatic Topup" page
       And user is in the "Automatic Topup" page
-     Then the "automatic_topup_title" textfield with "Automatisches Aufladen" text is displayed
+     Then the "automatic_topup_title" textfield with "Automatische Aufladung" text is displayed
       And the "automatic_topup_description" textfield is not displayed
-      And the "balance_low_topup.status_tag" textfield with the "(Deactivated|Activated)" format is displayed
-      And the "balance_low_topup.title" textfield with "Bei wenig Guthaben aufladen" text is displayed
-      And the "balance_low_topup.description" textfield with "Ab welchem Saldo soll dein Guthaben aufgeladen werden?" text is displayed
+      And the "balance_low_topup.status_tag" textfield with the "(Nicht aktiv|Aktiv)" format is displayed
+      And the "balance_low_topup.title" textfield with "Aufladung bei geringem Guthaben" text is displayed
+      And the "balance_low_topup.description" textfield with "Wähle aus, bei welchem Betrag dein Guthaben aufgeladen werden soll." text is displayed
       And the "balance_low_topup.check" checkbox is not displayed
       And the "balance_low_topup.minimum_balance_selector" selector is not displayed
-      And the "balance_low_topup.minimum_balance_value" textfield with the "(Guthaben unter \d+,\d{2} €|Amount not selected)" format is displayed
-      And the "balance_low_topup.minimum_balance_label" textfield with "Minimun amount" text is displayed
-      And the "balance_low_topup.topup_amount_title" textfield with "Guthaben bei obigem Betrag aufladen mit:" text is displayed
+      And the "balance_low_topup.minimum_balance_value" textfield with the "(\d+,\d{2} €|Amount not selected)" format is displayed
+      And the "balance_low_topup.minimum_balance_label" textfield with "Guthaben geringer als" text is displayed
+      And the "balance_low_topup.topup_amount_title" textfield with "Bei erreichen des oben ausgewählten Betrages folgenden Betrag aufladen:" text is displayed
       And the "balance_low_topup.topup_amount_selector" selector is not displayed
       And the "balance_low_topup.topup_amount_value" textfield with the "(\d+,\d{2} €|Amount not selected)" format is displayed
-      And the "balance_low_topup.topup_amount_label" textfield with "Amount to top up" text is displayed
-      And the "same_date_topup.status_tag" textfield with the "(Deactivated|Activated)" format is displayed
-      And the "same_date_topup.title" textfield with "Am gleichen Tag aufladen" text is displayed
-      And the "same_date_topup.description" textfield with "Monat, Tag und Aufladebetrag auswählen" text is displayed
+      And the "balance_low_topup.topup_amount_label" textfield with "Aufladebetrag" text is displayed
+      And the "same_date_topup.status_tag" textfield with the "(Nicht aktiv|Aktiv)" format is displayed
+      And the "same_date_topup.title" textfield with "Monatliche Aufladung" text is displayed
+      And the "same_date_topup.description" textfield with "Wähle aus, an welchem Tag und Monat dein Guthaben aufgeladen werden soll." text is displayed
       And the "same_date_topup.check" checkbox is not displayed
       And the "same_date_topup.frequency_selector" selector is not displayed
-      And the "same_date_topup.frequency_value" textfield with the "(Immer am \d+. des Monats|Amount not selected)" format is displayed
-      And the "same_date_topup.frequency_label" textfield with "Frequency" text is displayed
-      And the "same_date_topup.topup_amount_title" textfield with "Aufladen" text is displayed
+      And the "same_date_topup.frequency_value" textfield with the "(Jeweils am \d+. des Monats|Amount not selected)" format is displayed
+      And the "same_date_topup.frequency_label" textfield with "Aufladung" text is displayed
+      And the "same_date_topup.topup_amount_title" textfield with "Aufladebetrag" text is displayed
       And the "same_date_topup.topup_amount_selector" selector is not displayed
       And the "same_date_topup.topup_amount_value" textfield with the "(\d+,\d{2} €|Amount not selected)" format is displayed
-      And the "same_date_topup.topup_amount_label" textfield with "Amount to top up" text is displayed
-      And the "pay_with_bank_account_when_insufficient_balance.status_tag" textfield with the "(Deactivated|Activated)" format is displayed
-      And the "pay_with_bank_account_when_insufficient_balance.title" textfield with "Bei zu wenig Guthaben per Lastschrift zahlen" text is displayed
-      And the "pay_with_bank_account_when_insufficient_balance.description" textfield with "Wenn ich nicht genug Prepaid-Guthaben habe, soll mein Bankkonto mit den Gebühren belastet werden" text is displayed
+      And the "same_date_topup.topup_amount_label" textfield with "Aufladebetrag" text is displayed
+      And the "pay_with_bank_account_when_insufficient_balance.status_tag" textfield with the "(Nicht aktiv|Aktiv)" format is displayed
+      And the "pay_with_bank_account_when_insufficient_balance.title" textfield with "Optionsgebühren bei nicht ausreichendem Guthaben" text is displayed
+      And the "pay_with_bank_account_when_insufficient_balance.description" textfield with "Gebüren für Optionen und Flatrates sollen von meinem Bankkonto abgebucht werden, wenn das Prepaid-Guthaben nicht ausreicht." text is displayed
       And the "pay_with_bank_account_when_insufficient_balance.check" checkbox is not displayed
       And the "automatic_topup_save_button" button is not displayed
 
@@ -772,25 +772,25 @@ Feature: Forbidden Use Cases
           | blaude  | QANOV-242421 |
           | o2de    | QANOV-242422 |
 
-  @jira.<jira_id> @<product> @android @ios @jira.cv.Future @manual @mobile @regression
+  @jira.<jira_id> @<product> @android @ios @jira.cv.24.3 @manual @mobile @regression
   Scenario Outline: A BOX7 prepay user with the ACCOUNT_UPDATE_RECHARGE_OPTIONS forbidden use case cannot edit the SMS topup
     Forbidden Use Cases (FUC) can be at "customer", "account" or "subscription" level. You can look at the prefix of the
     FUC name to see the level.
+    If the topup with sms is activated, an additional "sms_topup_amount_title" textfield will be displayed with the text "Aufladebetrag".
     Given user has a "box7" account type
       And user has a "prepay" account type
       And user has "bank_account" service in "activated" status
       And user has the "ACCOUNT_UPDATE_RECHARGE_OPTIONS" forbidden use case
       And user has the "SMS topup" module configured in CMS for "SMS Topup" page
       And user is in the "SMS topup" page
-     Then the "sms_topup_title" textfield with "Aufladen per SMS einrichten" text is displayed
+     Then the "sms_topup_title" textfield with "Aufladung über SMS" text is displayed
       And the "sms_topup_description" textfield is not displayed
-      And the "sms_topup_switch_status" textfield with the "(Deactivated|Activated)" format is displayed
-      And the "sms_topup_switch_name" textfield with "Guthaben per SMS aufladen" text is displayed
+      And the "sms_topup_switch_status" textfield with the "(Nicht aktiv|Aktiv)" format is displayed
+      And the "sms_topup_switch_name" textfield with "Aufladung über SMS" text is displayed
       And the "sms_topup_switch" switch is not displayed
       And the "sms_topup_switch_description" textfield is not displayed
-      And the "sms_topup_amount_title" textfield with "Aufladebetrag" text is displayed
       And the "sms_topup_amount_selector" selector is not displayed
-      And the "sms_topup_amount_value" textfield with the "(\d+,\d{2} €|No top up amount selected)" format is displayed
+      And the "sms_topup_amount_value" textfield with the "(\d+,\d{2} €|Aufladebetrag nicht ausgewählt)" format is displayed
       And the "sms_topup_save_button" button is not displayed
 
     Examples:
@@ -917,8 +917,8 @@ Feature: Forbidden Use Cases
           | blaude  | 13.9 | OBO2DE-249 |                  | QANOV-242431 |
 
     Examples:
-          | product | cv   | detects    | parent_test_plan | jira_id      |
-          | o2de    | 14.2 |            | QANOV-437471     | QANOV-242432 |
+          | product | cv   | detects | parent_test_plan | jira_id      |
+          | o2de    | 14.2 |         | QANOV-437471     | QANOV-242432 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @jira.link.detects.<detects> @manual @mobile @regression
   @jira.link.parent_test_plan.<parent_test_plan>
@@ -937,8 +937,8 @@ Feature: Forbidden Use Cases
 
     @raitt_drop1
     Examples:
-          | product | cv   | detects   | parent_test_plan | jira_id      |
-          | blaude  | 14.0 |           |                  | QANOV-242433 |
+          | product | cv   | detects | parent_test_plan | jira_id      |
+          | blaude  | 14.0 |         |                  | QANOV-242433 |
 
     Examples:
           | product | cv   | detects   | parent_test_plan | jira_id      |
@@ -980,8 +980,8 @@ Feature: Forbidden Use Cases
 
     @raitt_drop1
     Examples:
-          | product | cv   | products                        | parent_test_plan | jira_id      |
-          | blaude  | 13.9 | mobile_line                     |                  | QANOV-242437 |
+          | product | cv   | products    | parent_test_plan | jira_id      |
+          | blaude  | 13.9 | mobile_line |                  | QANOV-242437 |
 
     Examples:
           | product | cv   | products                        | parent_test_plan | jira_id      |
@@ -1018,8 +1018,8 @@ Feature: Forbidden Use Cases
           | blaude  | 13.10 | QANOV-242439 |
 
     Examples:
-          | product | cv    | jira_id      |
-          | o2de    | 14.2  | QANOV-242440 |
+          | product | cv   | jira_id      |
+          | o2de    | 14.2 | QANOV-242440 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @manual @mobile @regression
   Scenario Outline: A postpay user with the SUBSCRIPTION_PHONE_NUMBER_PORTING forbidden use case cannot port-in a number
@@ -1052,8 +1052,8 @@ Feature: Forbidden Use Cases
           | blaude  | 13.10 | QANOV-242441 |
 
     Examples:
-          | product | cv    | jira_id      |
-          | o2de    | 14.2  | QANOV-242442 |
+          | product | cv   | jira_id      |
+          | o2de    | 14.2 | QANOV-242442 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @manual @mobile @regression
   Scenario Outline: A postpay user with the SUBSCRIPTION_PHONE_NUMBER_PORTING and SUBSCRIPTION_PHONE_NUMBER_OUT_PORTING forbidden use cases cannot port-in or port-out a number
@@ -1102,11 +1102,11 @@ Feature: Forbidden Use Cases
 
     @raitt_drop1
     Examples:
-          | product | cv   | products                  | parent_test_plan | jira_id      |
-          | blaude  | 13.9 | mobile_line               |                  | QANOV-242445 |
+          | product | cv   | products    | parent_test_plan | jira_id      |
+          | blaude  | 13.9 | mobile_line |                  | QANOV-242445 |
 
     Examples:
-          | product | cv   | products                  | parent_test_plan | jira_id      |
+          | product | cv   | products                     | parent_test_plan | jira_id      |
           | o2de    | 14.2 | mobile_line;internet_at_home | QANOV-437471     | QANOV-242446 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @jira.link.detects.<detects> @manual @mobile @regression
@@ -1127,8 +1127,8 @@ Feature: Forbidden Use Cases
           | blaude  | 13.9 | O2DE-2700 | QANOV-242449 |
 
     Examples:
-          | product | cv   | detects   | jira_id      |
-          | o2de    | 14.2 |           | QANOV-242450 |
+          | product | cv   | detects | jira_id      |
+          | o2de    | 14.2 |         | QANOV-242450 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @manual @mobile @regression
   Scenario Outline: A postpay user with the SUBSCRIPTION_ROAMING forbidden use case cannot consult roaming prices from "Extra International Data Usage" screen
@@ -1166,11 +1166,11 @@ Feature: Forbidden Use Cases
 
     @raitt_drop1
     Examples:
-          | product | cv   | products        | jira_id      |
-          | blaude  | 13.9 | mobile_line     | QANOV-242453 |
+          | product | cv   | products    | jira_id      |
+          | blaude  | 13.9 | mobile_line | QANOV-242453 |
 
     Examples:
-          | product | cv   | products                  | jira_id      |
+          | product | cv   | products                     | jira_id      |
           | o2de    | 14.2 | mobile_line;internet_at_home | QANOV-242454 |
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @manual @mobile @regression
@@ -1189,7 +1189,7 @@ Feature: Forbidden Use Cases
           | product | cv   | jira_id      |
           | blaude  | 13.9 | QANOV-242455 |
 
-     Examples:
+    Examples:
           | product | cv   | jira_id      |
           | o2de    | 14.2 | QANOV-242456 |
 
@@ -1206,11 +1206,11 @@ Feature: Forbidden Use Cases
 
     @raitt_drop1
     Examples:
-          | product | cv   | products                  | parent_test_plan | jira_id      |
-          | blaude  | 13.9 | mobile_line               |                  | QANOV-242457 |
+          | product | cv   | products    | parent_test_plan | jira_id      |
+          | blaude  | 13.9 | mobile_line |                  | QANOV-242457 |
 
     Examples:
-          | product | cv   | products                  | parent_test_plan | jira_id      |
+          | product | cv   | products                     | parent_test_plan | jira_id      |
           | o2de    | 14.2 | mobile_line;internet_at_home | QANOV-437471     | QANOV-242458 |
 
   @jira.QANOV-242459 @android @ios @jira.cv.Future @manual @mobile @o2de @regression @jira.link.parent_test_plan.QANOV-437471

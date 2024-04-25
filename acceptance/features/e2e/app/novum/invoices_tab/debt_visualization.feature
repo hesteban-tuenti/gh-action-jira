@@ -58,8 +58,8 @@ Feature: Debt Visualization
       And clicks on the "navigation_top_bar.back_button" button to go back to the previous page
       And the "Invoices" page is displayed
 
-  @jira.QANOV-600450 @android @ios @jira.cv.Future @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449
-  @mobile @o2es @qa @smoke @webapp @e2e
+  @jira.QANOV-600450 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-142826
+  @jira.link.parent_test_plan.QANOV-600449 @mobile @o2es @qa @smoke @webapp
   Scenario: A telco postpay user logged in as admin without debt acceses debt visualization: Empty case is shown
     Entities are 'TME' (for mobile related services) and 'TDE' (for fixed related services)
     other_affected_versions="2023-23"
@@ -107,7 +107,7 @@ Feature: Debt Visualization
           | brand | cv   | main_title       | jira_id      |
           | moves | 14.5 | Facturas a pagar | QANOV-377190 |
 
-    @jira.parent_test_plan.QANOV-600449 @manual @e2e
+    @e2e @jira.link.parent_test_plan.QANOV-600449 @manual
     Examples:
           | brand | cv     | main_title    | jira_id      |
           | o2es  | Future | Deuda a pagar | QANOV-600451 |
@@ -201,8 +201,8 @@ Feature: Debt Visualization
           | [LANG:payments.landline_entity] | QANOV-67943  |
           | [LANG:payments.mobile_entity]   | QANOV-202425 |
 
-    @jira.cv.Future @jira.parent_test_plan.QANOV-142826
-    @jira.parent_test_plan.QANOV-600449 @manual @o2es @e2e
+    @e2e @jira.cv.Future @jira.link.parent_test_plan.QANOV-142826
+    @jira.link.parent_test_plan.QANOV-600449 @manual @o2es
     Examples:
           | legal_entity                    | jira_id      |
           | [LANG:payments.landline_entity] | QANOV-600452 |
@@ -243,8 +243,8 @@ Feature: Debt Visualization
           | [LANG:payments.landline_entity] | QANOV-202426 |
           | [LANG:payments.mobile_entity]   | QANOV-202427 |
 
-    @jira.cv.Future @jira.parent_test_plan.QANOV-142826
-    @jira.parent_test_plan.QANOV-600449 @manual @o2es @e2e
+    @e2e @jira.cv.Future @jira.link.parent_test_plan.QANOV-142826
+    @jira.link.parent_test_plan.QANOV-600449 @manual @o2es
     Examples:
           | legal_entity                    | jira_id      |
           | [LANG:payments.landline_entity] | QANOV-600454 |
@@ -336,8 +336,8 @@ Feature: Debt Visualization
       And the file with the "Documento_\d{13}.pdf" format is downloaded as a PDF
       And the PDF file is opened
 
-  @jira.QANOV-600456 @android @ios @jira.cv.Future @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449
-  @manual @o2es @regression @e2e
+  @jira.QANOV-600456 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-142826
+  @jira.link.parent_test_plan.QANOV-600449 @manual @o2es @regression
   Scenario: A telco postpay user logged in as admin clicks view details of one of the bills on the "Bill Selection" screen
     Given user has a "telco postpay" account type
       And user has a "admin" role
@@ -358,8 +358,8 @@ Feature: Debt Visualization
       And the "download_message" textfield with "Ahora tu factura está disponible para que la consultes cuando la necesites." text is displayed
       And the "bill_download" button is displayed
 
-  @jira.QANOV-600457 @android @jira.cv.Future @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449
-  @manual @o2es @regression @e2e
+  @jira.QANOV-600457 @android @e2e @jira.cv.Future @jira.link.parent_test_plan.QANOV-142826
+  @jira.link.parent_test_plan.QANOV-600449 @manual @o2es @regression
   Scenario: A telco postpay user logged in as admin clicks view details of one of the bills on the "Bill Selection" screen on Android devices
     Given user has a "telco postpay" account type
       And user has a "admin" role
@@ -380,8 +380,8 @@ Feature: Debt Visualization
       And the file with the "Documento_\d{13}.pdf" format is downloaded as a PDF
       And the PDF file is opened
 
-  @jira.QANOV-600458 @ios @jira.cv.Future @jira.parent_test_plan.QANOV-142826 @jira.parent_test_plan.QANOV-600449 @manual
-  @o2es @regression @e2e
+  @jira.QANOV-600458 @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-142826
+  @jira.link.parent_test_plan.QANOV-600449 @manual @o2es @regression
   Scenario: A telco postpay user logged in as admin clicks view details of one of the bills on the "Bill Selection" screen on iOS devices
     Given user has a "telco postpay" account type
       And user has a "admin" role
@@ -425,7 +425,7 @@ Feature: Debt Visualization
           | brand | jira_id     |
           | moves | QANOV-67946 |
 
-    @jira.cv.Future @jira.parent_test_plan.QANOV-600449 @manual @e2e
+    @e2e @jira.cv.Future @jira.link.parent_test_plan.QANOV-600449 @manual
     Examples:
           | brand | jira_id      |
           | o2es  | QANOV-600459 |

@@ -147,9 +147,9 @@ Feature: Feedback alerts
       And user is in the "Account" page
      Then the "alert" element is on display
       And the "alert.alert_icon" icon is displayed
-      And the "alert.title" textfield with "Why is my bill higher than last month?" text is displayed
-      And the "alert.description" textfield with "Learn why it has increased and how to avoid future extra spendings" text is displayed
-      And the "alert.learn_more_button" button with "Learn more" text is displayed
+      And the "alert.title" textfield with "Warum ist meine Rechnung höher als letzten Monat?" text is displayed
+      And the "alert.description" textfield with "Erfahre den Grund für den Anstieg und wie du Zusatzkosten vermeidest" text is displayed
+      And the "alert.learn_more_button" button with "Mehr erfahren" text is displayed
       And the "alert.close_button" button is not displayed
 
   @jira.QANOV-600329 @android @blaude @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-606554 @manual @mobile

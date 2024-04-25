@@ -2,13 +2,20 @@ name: Triggering Workflow
 
 on:
     workflow_dispatch:
+      inputs:
+        type:
+          description: 'app or web'
+          required: true
+        project:
+          description: 'novum b2p cms'
+          required: true
 
 jobs:
   get_basenames_and_trigger_workflows:
     runs-on: ubuntu-latest
     env:
-        FEATURES_PATH: "./acceptance/features/e2e/app/novum"
-        EXCLUDED_PATH_REGEX: '.*\/(_setup|jenkins|steps|__pycache__)|novum$'
+        FEATURES_PATH: "./acceptance/features/e2e/${{ github.event.inputs.type }}"
+        EXCLUDED_PATH_REGEX: '.*\/(_setup|jenkins|steps|__pycache__)|${{ github.event.inputs.project }}$'
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4

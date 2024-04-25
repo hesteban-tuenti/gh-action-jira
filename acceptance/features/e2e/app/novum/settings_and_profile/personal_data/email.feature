@@ -7,7 +7,7 @@ Feature: Email
       And clicks on the "avatar_tooltip.close_button" element if visible
 
 
-  @jira.QANOV-59913 @android @automatic @cert2 @har @ios @jira.cv.12.1 @jira.link.parent_test_plan.QANOV-525498
+  @jira.QANOV-59913 @android @automatic @cert2 @ios @jira.cv.12.1 @jira.link.parent_test_plan.QANOV-525498
   @jira.link.parent_test_plan.QANOV-56957 @live @mobile @moves @next @sanity
   Scenario: A telco admin with an email stored can access to the Email Modification screen and see it configured in the input field
     other_affected_versions="2021-09"
@@ -250,51 +250,6 @@ Feature: Email
       And the "feedback_message" textfield that contains the "Te hemos enviado un email de confirmación que debes abrir. Revisa tu bandeja de entrada o tu bandeja de spam" text is displayed
       And clicks on the "back_button" button
      Then the "Profile" page is displayed
-
-  @jira.QANOV-59929 @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.12.1 @jira.dv.Future
-  @jira.link.detects.MOVES-6723 @jira.link.parent_test_plan.QANOV-56957 @live @mobile @moves @next @regression
-  Scenario: A telco admin who is in success feedback screen after changing the email can continue modifying personal information
-    other_affected_versions="2021-09"
-    Given user has a "telco" account type
-      And user has a "admin" role
-      And user is in the "Email Contact" page
-     When fills the "email_input_field" inputtext with the "abc4567@gmail.com" text
-      And clicks on the "email_save" button
-      And the "Feedback Personal Data" page is displayed
-      And the "feedback_message" textfield that contains the "Te hemos enviado un email de confirmación que debes abrir. Revisa tu bandeja de entrada o tu bandeja de spam" text is displayed
-      And clicks on the "continue_button" button
-     Then the "Personal Data" page is displayed
-
-  @jira.<jira_id> @<impeded> @android @automation.pending_mock @deprecate_profile_moves @ios @jira.cv.12.1 @jira.dv.Future
-  @jira.link.detects.<detects> @jira.link.parent_test_plan.QANOV-56957 @manual @mobile @moves
-  Scenario Outline: A telco admin goes back to the <destination_screen> page after a <feedback_screen> in the email change process
-    other_affected_versions="2021-09"
-    Given user is in the "<feedback_screen>" page
-      And user has a "telco" account type
-      And user has a "admin" role
-     When clicks on the "<feedback_button>" button
-     Then the "<destination_screen>" page is displayed
-
-    Examples:
-          | feedback_screen    | feedback_button | destination_screen | detects    | impeded      | jira_id     |
-          | Feedback Ko        | back_button     | Profile            |            | impeded_mock | QANOV-59928 |
-          | Feedback Ko        | retry_button    | Email Modification |            | impeded_mock | QANOV-59930 |
-          | Non Existent Email | back_button     | Profile            |            |              | QANOV-59931 |
-          | Non Existent Email | retry_button    | Email Modification | MOVES-6302 |              | QANOV-59932 |
-
-  @jira.QANOV-59933 @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.12.1 @jira.dv.Future
-  @jira.link.detects.ANDROID-9849 @jira.link.parent_test_plan.QANOV-56957 @live @mobile @moves @next @regression
-  Scenario: A telco admin-light with admin-light role will see the login escalation screen when modifiying/adding the email contact
-    App is restarted due to differences navigating back from the Escalation screen. See ANDROID-9849
-    Given user has a "telco" account type
-      And user has a "admin-light" role
-      And user is in the "Email Contact" page
-     When fills the "email_input_field" inputtext with the "abc567@gmail.com" text
-      And clicks on the "email_save" button
-     Then the "Login Escalation Required" page is displayed
-      And terminates the app
-      And launches the app
-      And the "[CONF:landing_tab]" page is displayed
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @jira.link.depends_on.<depends_on>
   @jira.link.parent_test_plan.<parent_test_plan> @manual @mobile @regression

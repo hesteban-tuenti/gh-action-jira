@@ -49,8 +49,8 @@ Feature: My Handy details
       And the "contract_details.total_amount.value" textfield with the "\d+,\d{2} €" format is displayed
       And the "vat_message" textfield with "*Alle Preise sind inkl. Mehrwertsteuer angegeben." text is displayed
       And the "billing_information.title" textfield with "INFORMATIONEN ZUR RECHNUNG" text is displayed
-      And the "billing_information.payment_plan_entrypoint.title" entrypoint with "Ratenplan" text is displayed
-      And the "billing_information.invoices_entrypoint.title" entrypoint with "Rechnung" text is displayed
+      And the "billing_information.payment_plan_entrypoint_text" entrypoint with "Ratenplan" text is displayed
+      And the "billing_information.invoices_entrypoint_text" entrypoint with "Rechnung" text is displayed
       And the "myhandy_repair" module is displayed
       And clicks on the "navigation_top_bar.back_button" button to go back to the previous page
       And the "Account" page is displayed

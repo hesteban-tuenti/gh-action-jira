@@ -31,11 +31,6 @@ Feature: Log out
           | cv   | product | parent_test_plan | jira_id    |
           | 9.12 | vivobr  | QANOV-437387     | QANOV-8374 |
 
-    @automatic @cert2 @deprecate_profile_moves @jira.dv.Future @live @next @qa
-    Examples:
-          | cv   | product | parent_test_plan | jira_id    |
-          | 9.12 | moves   |                  | QANOV-8377 |
-
     @automatic @live @next
     Examples:
           | cv   | product | parent_test_plan | jira_id     |
@@ -46,7 +41,7 @@ Feature: Log out
           | cv     | product | parent_test_plan | jira_id      |
           | Future | o2es    |                  | QANOV-410802 |
 
-  @jira.QANOV-556395 @android @ber @har @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
+  @jira.QANOV-556395 @android @ber @har @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
   @moves @sanity
   Scenario: Moves user can log out
     Given user is logged in with "1" account/s
@@ -81,12 +76,7 @@ Feature: Log out
           | 14.2   | o2de    |                  |            | QANOV-49061  |
           | Future | o2es    |                  |            | QANOV-410803 |
 
-    @deprecate_profile_moves @jira.dv.Future @manual
-    Examples:
-          | cv   | product | parent_test_plan | detects | jira_id    |
-          | 9.12 | moves   |                  |         | QANOV-8381 |
-
-  @jira.QANOV-556396 @android @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @jira.QANOV-556396 @android @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   @regression
   Scenario: Moves user can log out with no connectivity
     Given user is in the "Profile" page
@@ -115,11 +105,6 @@ Feature: Log out
           | vivobr  | QANOV-437387     | 9.12 | QANOV-283332 |
           | o2uk    | QANOV-35253      | 9.12 | QANOV-283333 |
 
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | parent_test_plan | cv   | jira_id      |
-          | moves   |                  | 9.12 | QANOV-283334 |
-
   @jira.<jira_id> @<product> @har @ios @jira.cv.<cv> @jira.link.parent_test_plan.<parent_test_plan>
   @jira.link.relates_to.NOV-335 @mobile @no_automatable @sanity
   Scenario Outline: Remote log out for a user with only a logged account from iOS devices
@@ -139,11 +124,6 @@ Feature: Log out
           | product | parent_test_plan | cv   | jira_id    |
           | vivobr  | QANOV-437387     | 9.12 | QANOV-8382 |
           | o2uk    | QANOV-35253      | 9.12 | QANOV-8383 |
-
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | parent_test_plan | cv   | jira_id    |
-          | moves   |                  | 9.12 | QANOV-8384 |
 
   @jira.QANOV-8386 @android @ber @ios @jira.cv.9.11 @jira.link.relates_to.NOV-2263 @mobile @no_automatable @regression
   @vivobr

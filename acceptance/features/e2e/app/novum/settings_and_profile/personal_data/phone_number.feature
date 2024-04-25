@@ -220,21 +220,6 @@ Feature: Phone Number
       And clicks on the "back_button" button
      Then the "Profile" page is displayed
 
-  @jira.QANOV-59952 @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.12.1 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-56957 @live @mobile @moves @next @regression
-  Scenario: A telco admin who is in success feedback screen after changing the phone number can continue modifying personal information
-    other_affected_versions="2021-09"
-    Given user has a "telco" account type
-      And user has a "admin" role
-      And user is in the "Phone Number Contact" page
-      And user has the "phone number" contact method set in the application
-     When fills the "phone_input_field" inputtext with the "675879999" text
-      And clicks on the "phone_save" button
-      And the "Feedback Personal Data" page is displayed
-      And the "feedback_title" textfield with "Cambios guardados correctamente" text is displayed
-      And clicks on the "continue_button" button
-     Then the "Personal Data" page is displayed
-
   @jira.QANOV-59947 @android @automation.pending_mock @impeded_mock @ios @jira.cv.12.1
   @jira.link.parent_test_plan.QANOV-525498 @jira.link.parent_test_plan.QANOV-56957 @manual @mobile @moves @regression
   Scenario: A telco admin who do not have a contact email saved will not be able to access to the Phone Modification page
@@ -281,42 +266,6 @@ Feature: Phone Number
       And the "modify_another_information" button with "Seguir modificando mi teléfono de contacto" text is displayed
       And the "back_to_account" button with "Volver a mi perfil" text is displayed
       And the "navigation_top_bar.back_button" button is not displayed
-
-  @jira.<jira_id> @android @automation.pending_mock @deprecate_profile_moves @impeded_mock @ios @jira.cv.12.1
-  @jira.dv.Future @jira.link.parent_test_plan.QANOV-56957 @manual @mobile @moves @regression
-  Scenario Outline: A telco admin goes to the <destination_screen> page after a <feedback_screen> in the phone change process
-    internal_checkpoint="If the user does not have a contact email saved, he will not be able to make any management on their contact phones (or even consult)."
-    other_affected_versions="2021-09"
-    Given user is in the "<feedback_screen>" page
-      And user has a "telco" account type
-      And user has a "admin" role
-     When clicks on the "<feedback_button>" button
-     Then the "<destination_screen>" page is displayed
-
-    @automation.pending_mock
-    Examples:
-          | feedback_screen         | feedback_button            | destination_screen | jira_id     |
-          | Feedback Ko             | back_to_account            | Profile            | QANOV-59951 |
-          | Feedback Ko             | retry_button               | Phone Modification | QANOV-59953 |
-          | No Email Saved Feedback | back_to_account            | Profile            | QANOV-59954 |
-          | Email Added Feedback    | modify_another_information | Phone Modification | QANOV-59955 |
-          | Email Added Feedback    | back_to_account            | Profile            | QANOV-59956 |
-
-  @jira.QANOV-59957 @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.12.1 @jira.dv.Future
-  @jira.link.detects.ANDROID-9849 @jira.link.parent_test_plan.QANOV-56957 @live @mobile @moves @next @regression
-  Scenario: A telco admin-light with admin-light role cannot modify/add a phone
-    If the user does not have a contact email saved, he will not be able to make any management on their contact phones (or even consult)
-    App is restarted due to differences navigating back from the Escalation screen. See ANDROID-9849
-    Given user has a "telco" account type
-      And user has a "admin-light" role
-      And user is in the "Phone Number Contact" page
-      And user has the "phone number" contact method set in the application
-     When fills the "phone_input_field" inputtext with the "606975151" text
-      And clicks on the "phone_save" button
-     Then the "Login Escalation Required" page is displayed
-      And terminates the app
-      And launches the app
-      And the "[CONF:landing_tab]" page is displayed
 
   @jira.<jira_id> @<product> @android @ios @jira.cv.<cv> @jira.link.depends_on.<depends_on> @manual @mobile @regression
   Scenario Outline: User without a contact phone number stored can see the "contact number" entrypoint in the "Change Contact Details" screen

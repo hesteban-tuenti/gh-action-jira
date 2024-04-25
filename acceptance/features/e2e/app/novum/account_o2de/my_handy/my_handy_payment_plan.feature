@@ -5,14 +5,14 @@ Feature: My Handy payment plan
   Actions Before each Scenario:
     Given user has a "postpay" account type
       And user has a "my_handy" product in "active" status
-      And user has the "My Handy card" module configured in CMS for "Account" page
+      And user has any of the "device-plan,device-plan-terminated" modules configured in CMS for "dashboard" page
       And user has the "My Handy Details" module configured in CMS for "My Handy Details" page
       And user has the "Payment Plan" module configured in CMS for "Payment Plan" page
 
 
   @jira.QANOV-224647 @android @ber @ios @jira.cv.14.2 @jira.link.depends_on.QANOV-215952
   @jira.link.depends_on.QANOV-215953 @jira.link.depends_on.QANOV-215954 @jira.link.depends_on.QANOV-215955
-  @jira.link.depends_on.QANOV-297968 @manual @mobile @o2de @sanity
+  @jira.link.depends_on.QANOV-297968 @automatic @mobile @o2de @sanity @webapp @qa
   Scenario: Postpay user with a MyHandy product can access to the "Payment Plan" screen
     We will show always the next 3 payments for the user. When he pays, that payment will move to the last position.
     If there is some payment frozen like overdue we will show it at first position until user makes the payment.
@@ -39,7 +39,7 @@ Feature: My Handy payment plan
       And the "myhandy_repair.subtitle" textfield with "Benötigt dein Gerät eine Reparatur?" text is displayed
       And the "myhandy_repair.description" textfield with "Unser Team hilft dir bei der schnellen Reparatur." text is displayed
       And the "myhandy_repair.repair_order_button" button with "Zum Reparatur Auftrag" text is displayed
-      And clicks on the "navigation_top_bar.back_button" button
+      And clicks on the "navigation_top_bar.back_button" button to go back to the previous page
       And the "My Handy Details" page is displayed
 
   @jira.QANOV-269835 @android @ios @jira.cv.14.2 @jira.link.depends_on.QANOV-224647 @manual @mobile @o2de @regression

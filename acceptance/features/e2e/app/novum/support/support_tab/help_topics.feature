@@ -16,16 +16,16 @@ Feature: Help topics
     Given user is in the "Support" page
      When clicks on the "faq_see_all_faqs" entrypoint
      Then the internal webview is displayed
-      And the "FAQ" header is displayed
+      And the "<header>" header is displayed
       And clicks on the "navigation_top_bar.close_button" button
       And the "Support" page is displayed
 
     @automatic @live @next @raitt_drop1
     Examples:
-          | product | cv   | depends_on                             | detects    | jira_id      |
-          | blaude  | 13.9 | QANOV-240364:QANOV-240365:QANOV-240366 | OBO2DE-456 | QANOV-228471 |
+          | product | cv   | header | depends_on                             | detects    | jira_id      |
+          | blaude  | 13.9 | FAQ    | QANOV-240364:QANOV-240365:QANOV-240366 | OBO2DE-456 | QANOV-228471 |
 
     @automatic @live @next
     Examples:
-          | product | cv   | depends_on                                                       | detects             | jira_id      |
-          | o2de    | 14.2 | QANOV-308723:QANOV-308724:QANOV-308725:QANOV-308726:QANOV-308727 | O2DE-2891:O2DE-3083 | QANOV-228472 |
+          | product | cv   | header | depends_on                                                       | detects             | jira_id      |
+          | o2de    | 14.2 | FAQs   | QANOV-308723:QANOV-308724:QANOV-308725:QANOV-308726:QANOV-308727 | O2DE-2891:O2DE-3083 | QANOV-228472 |

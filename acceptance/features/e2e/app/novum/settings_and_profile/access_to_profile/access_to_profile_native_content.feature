@@ -6,33 +6,6 @@ Feature: Access to Profile Native Content
     Given user is in the "Profile" page
 
 
-  @jira.QANOV-205532 @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @regression
-  Scenario: Moves user can access to the notifications management entrypoint in Profile and check the header is right
-    Given user has a "any" account type
-      And user has a "any" role
-      And user is in the "App Configuration" page
-     When clicks on the "notifications_management_entrypoint" entrypoint
-     Then the "Notifications Management" page is displayed
-      And the "[LANG:profile.dashboard.app_configuration.notifications_management.notifications_management_name]" header is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "App Configuration" page is displayed
-
-  @jira.<jira_id> @<client> @cert2 @deprecate_profile_moves @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @manual @mobile @moves @next @regression
-  Scenario Outline: Moves user with <client> client can access to the <entrypoint> entrypoint in Profile
-    Given user has a "any" account type
-      And user has a "any" role
-      And user is in the "App Configuration" page
-     When clicks on the "<entrypoint>" entrypoint
-     Then the "<app>" app is displayed
-      And the "Mi Movistar" page is displayed in the "<app>" app
-
-    Examples:
-          | client  | app        | entrypoint                      | jira_id      |
-          | android | Play Store | rate_us_in_playstore_entrypoint | QANOV-205534 |
-          | ios     | App Store  | rate_us_in_appstore_entrypoint  | QANOV-205535 |
-
   @jira.<jira_id> @<product> @android @automatic @ber @har @ios @jira.link.parent_test_plan.<parent_test_plan>
   @jira.link.relates_to.NOV-100486 @mobile @sanity
   Scenario Outline: User can access to Security And Privacy screen and check the header is right
@@ -43,11 +16,6 @@ Feature: Access to Profile Native Content
       And the "<header>" header is displayed
       And clicks on the "navigation_top_bar.back_button" button
       And the "Profile" page is displayed
-
-    @cert2 @deprecate_profile_moves @jira.cv.13.3 @jira.dv.Future @live @next
-    Examples:
-          | product | parent_test_plan | header                                                      | jira_id     |
-          | moves   | QANOV-203801     | [LANG:profile.dashboard.configuration.privacy_and_security] | QANOV-21768 |
 
     @cert0 @cert1 @jira.cv.11.7 @live @next @qa
     Examples:
@@ -69,20 +37,6 @@ Feature: Access to Profile Native Content
       And the "<header_name>" header is displayed
       And clicks on the "navigation_top_bar.back_button" button
       And the "Security And Privacy" page is displayed
-
-    @automatic @cert2 @deprecate_profile_moves @jira.dv.Future
-    @jira.link.parent_test_plan.QANOV-203801 @live @next @sanity
-    Examples:
-          | product | cv   | account_type | option                          | page_name          | header_name                                                          | parent_test_plan | jira_id    |
-          | moves   | 11.7 | telco        | biometric_pin_access_entrypoint | Pin Biometric      | [LANG:profile.security_and_privacy.biometric_pin_access.page_header] |                  | QANOV-5962 |
-          | moves   | 11.7 | telco        | session_management_entrypoint   | Session Management | [LANG:profile.session_management.page_header]                        |                  | QANOV-5965 |
-
-    @deprecate_profile_moves @impeded_legacy @jira.dv.Future
-    @jira.link.parent_test_plan.QANOV-203801 @no_automatable @regression
-    Examples:
-          | product | cv   | account_type | option                          | page_name          | header_name                                                          | parent_test_plan | jira_id    |
-          | moves   | 11.7 | legado       | biometric_pin_access_entrypoint | Pin Biometric      | [LANG:profile.security_and_privacy.biometric_pin_access.page_header] |                  | QANOV-5979 |
-          | moves   | 11.7 | legado       | session_management_entrypoint   | Session Management | [LANG:profile.session_management.page_header]                        |                  | QANOV-5982 |
 
     @automatic @ber @live @next @qa @smoke @har @old_app
     Examples:
@@ -138,23 +92,6 @@ Feature: Access to Profile Native Content
           | option                          | page_name          | header_name                                                          | jira_id     |
           | biometric_pin_access_entrypoint | Pin Biometric      | [LANG:profile.security_and_privacy.biometric_pin_access.page_header] | QANOV-37517 |
           | session_management_entrypoint   | Session Management | [LANG:profile.session_management.page_header]                        | QANOV-37518 |
-
-  @jira.<jira_id> @android @deprecate_profile_moves @ios @jira.cv.10.8 @jira.dv.Future @jira.link.detects.ANDROID-10245
-  @jira.link.detects.ANDROID-9889 @jira.link.relates_to.NOV-92096 @mobile @moves
-  Scenario Outline: A <account_type> priority user who access to the Profile screen can see the priority banner
-    Given user has a "<account_type>" account type
-      And user has a "priority" membership status
-     Then the "priority" textfield with "[LANG:profile.dashboard.priority]" text is displayed
-
-    @har @manual @smoke
-    Examples:
-          | account_type | jira_id    |
-          | telco        | QANOV-6094 |
-
-    @no_automatable @regression
-    Examples:
-          | account_type | jira_id    |
-          | legado       | QANOV-6097 |
 
   @jira.<jira_id> @<product> @automatic @har @ios @jira.cv.11.8 @jira.link.relates_to.NOV-201245 @mobile @smoke
   Scenario Outline: A <product> user with a device with biometric capabilities and No fingerprint registered in the device can access to the PIN/Biometric screen on iOS devices
@@ -369,11 +306,6 @@ Feature: Access to Profile Native Content
       And the "biometric_access_description" textfield is not displayed
       And the "biometric_access_switch" switch is not displayed
 
-    @cert2 @deprecate_profile_moves @jira.dv.Future @live @next
-    Examples:
-          | product | jira_id    |
-          | moves   | QANOV-6198 |
-
     @live @next @qa @har @old_app
     Examples:
           | product | jira_id    |
@@ -436,13 +368,6 @@ Feature: Access to Profile Native Content
       And the display will adjust to the width of the screen
       And sets the device to "portrait" orientation
 
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | page                 | jira_id    |
-          | moves   | 10.3 | Profile              | QANOV-6183 |
-          | moves   | 10.3 | Security And Privacy | QANOV-6184 |
-          | moves   | 10.3 | Pin Biometric        | QANOV-6185 |
-
     Examples:
           | product | cv    | page                 | jira_id      |
           | vivobr  | 10.3  | Profile              | QANOV-6186   |
@@ -457,19 +382,6 @@ Feature: Access to Profile Native Content
           | o2de    | 14.2  | Profile              | QANOV-286650 |
           | o2de    | 14.2  | Security And Privacy | QANOV-286651 |
           | o2de    | 14.2  | Pin Biometric        | QANOV-286652 |
-
-  @jira.QANOV-6192 @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.10.3 @jira.dv.Future
-  @jira.link.relates_to.NOV-47287 @live @mobile @moves @next @regression
-  Scenario: Moves user can access to the service and commercial notifications management screen
-    Given user is in the "App Configuration" page
-     When clicks on the "notifications_management_entrypoint" entrypoint
-     Then the "Notifications Management" page is displayed
-      And the "service_notification_title" textfield with "Notificaciones de consumo y factura" text is displayed
-      And the "service_notification_description" textfield that contains the "notificaciones de servicio a través de la app" text is displayed
-      And the "service_notification_switch" switch is displayed
-      And the "commercial_notification_title" textfield with "Notificaciones comerciales" text is displayed
-      And the "commercial_notification_description" textfield that contains the "notificaciones comerciales de Movistar en la app" text is displayed
-      And the "commercial_notification_switch" switch is displayed
 
   @jira.QANOV-410699 @android @ber @jira.cv.Future @manual @mobile @o2es @smoke
   Scenario: A user with a device without biometric capabilities can access to the PIN/Biometric screen in Android devices
@@ -574,16 +486,16 @@ Feature: Access to Profile Native Content
           | product | cv    | jira_id      |
           | vivobr  | 14.10 | QANOV-489987 |
 
-  @jira.QANOV-578760 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
-  @smoke
+  @jira.QANOV-578760 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @smoke @har
   Scenario: Moves user with PIN activated can access the Pin Biometric entrypoint
      When clicks on the "pin_biometric_entrypoint" entrypoint
      Then the "Pin Biometric" page is displayed
       And the "PIN/Acceso biométrico" header is displayed
       And the "pin_code_switch" switch is enabled
 
-  @jira.QANOV-578761 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
-  @regression
+  @jira.QANOV-578761 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @regression @har
   Scenario: Moves user with PIN deactivated can access the Pin Biometric entrypoint
      When clicks on the "pin_biometric_entrypoint" entrypoint
      Then the "Pin Biometric" page is displayed

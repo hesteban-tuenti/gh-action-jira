@@ -46,17 +46,6 @@ Feature: Consumption Counters
       And the "extra_data_counter.subtitle" textfield with the "de \d+ (MB|GB|KB)" format is displayed
       And the "extra_data_counter_name" textfield is displayed
 
-  @jira.QANOV-492953 @android @ios @jira.cv.Future @manual @mobile @o2es @regression
-  Scenario: A mobile user can see the limited mobile line consumption counter for roaming
-    Counter name will come from API
-    Given user has a "mobile" product
-      And user is in the "Mobile Dashboard" page
-     Then the "roaming_data_counter" element is on display
-      And the "roaming_data_counter.title" textfield with "Llevas" text is displayed
-      And the "roaming_data_counter.amount" textfield with the "\d+(,\d\d)? (MB|GB|KB)" format is displayed
-      And the "roaming_data_counter.subtitle" textfield with the "de \d+ (MB|GB|KB)" format is displayed
-      And the "roaming_data_counter_name" textfield is displayed
-
   @jira.QANOV-492954 @android @ios @jira.cv.Future @manual @mobile @o2es @regression
   Scenario: A user who has consumed less than 100% of his/her data allowance can see the roundel in dark blue color
     Given user has a "mobile" plan
@@ -117,23 +106,12 @@ Feature: Consumption Counters
       And the amount of the total data displayed in the counter will be the sum of the plan's data plus the extra pack
 
   @jira.QANOV-492964 @android @ber @ios @jira.cv.Future @manual @mobile @o2es @sanity
-  Scenario: A user can see the unlimited landline national minutes consumption counter
+  Scenario: A user can see the unlimited minutes consumption counter
     Landline minutes bundles are always unlimited. Counter name will come from API (Could be something like: Llamadas a fijos)
     Given user has a "landline" product
       And user is in the "Landline Dashboard" page
-     Then the "national_minutes_counter" element is on display
-      And the "national_minutes_counter.title" textfield with "Llevas" text is displayed
-      And the "national_minutes_counter.amount" textfield with the "\d+ min" format is displayed
-      And the "national_minutes_counter.subtitle" textfield with "de ilimitados" text is displayed
-      And the "national_minutes_counter" textfield is displayed
-
-  @jira.QANOV-492965 @android @ios @jira.cv.Future @manual @mobile @o2es @smoke
-  Scenario: A user can see the unlimited landline national minutes consumption counter
-    Landline minutes bundles are always unlimited. Counter name will come from API (Could be something like: Llamadas a móviles)
-    Given user has a "landline" product
-      And user is in the "Landline Dashboard" page
-     Then the "mobile_minutes_counter" element is on display
-      And the "mobile_minutes_counter.title" textfield with "Llevas" text is displayed
-      And the "mobile_minutes_counter.amount" textfield with the "\d+ min" format is displayed
-      And the "mobile_minutes_counter.subtitle" textfield with "de ilimitados" text is displayed
-      And the "mobile_minutes_counter" textfield is displayed
+     Then the "minutes_counter" element is on display
+      And the "minutes_counter.title" textfield with "Llevas" text is displayed
+      And the "minutes_counter.amount" textfield with the "\d+ min" format is displayed
+      And the "minutes_counter.subtitle" textfield with "de ilimitados" text is displayed
+      And the "minutes_counter" textfield is displayed

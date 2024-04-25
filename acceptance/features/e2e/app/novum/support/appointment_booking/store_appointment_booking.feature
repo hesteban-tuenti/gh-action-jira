@@ -25,8 +25,7 @@ Feature: Store Appointment Booking
   @jira.<jira_id> @<ber> @<test_priority> @android @automatic @ios @jira.cv.11.14 @mobile @moves @next @live @cert2
   @webapp
   Scenario Outline: A user can see the list of the nearest Movistar stores with <number_stores> stores near the searched location
-     When opens the "Gestiones.Appointment Booking" deeplink with the app in "killed" status
-      And the "Store Appointment Booking" page is displayed
+    Given user is in the "Store Appointment Booking" page
       And fills the "store_search" inputtext with the "<search_location>" text
       And clicks on the search key for the "store_search" inputtext
       And waits until the "stores_list_tab" element is visible
@@ -707,7 +706,7 @@ Feature: Store Appointment Booking
   @jira.QANOV-25044 @android @automatic @ber @ios @jira.cv.11.14 @jira.link.detects.SUBO-5208
   @jira.link.parent_test_plan.QANOV-67582 @mobile @moves @smoke @cert2 @live @next @qa @webapp
   Scenario: A user can see a summary of the store appointment
-     When opens the "Gestiones.Appointment Booking" deeplink with the app in "killed" status
+    Given user is in the "Store Appointment Booking" page
       And the "Store Appointment Booking" page is displayed
       And fills the "store_search" inputtext with the "[CONF:appointment_booking.search_location]" text
       And clicks on the search key for the "store_search" inputtext
@@ -920,7 +919,7 @@ Feature: Store Appointment Booking
   @jira.link.parent_test_plan.QANOV-96368 @mobile @moves @sanity @qa @webapp
   Scenario: A user can see the confirmation of the store appointment
     Mocks in QA are implemented to work with the 'tomorrow' day. This scenario is automated to run in QA environment picking tomorrow.
-     When opens the "Gestiones.Appointment Booking" deeplink with the app in "killed" status
+    Given user is in the "Store Appointment Booking" page
       And the "Store Appointment Booking" page is displayed
       And fills the "store_search" inputtext with the "[CONF:appointment_booking.search_location]" text
       And clicks on the search key for the "store_search" inputtext

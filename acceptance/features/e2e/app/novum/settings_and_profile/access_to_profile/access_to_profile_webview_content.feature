@@ -6,53 +6,6 @@ Feature: Access to Profile Webview Content
     Given user is in the "Profile" page
 
 
-  @jira.QANOV-205493 @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @regression
-  Scenario: Moves user can access to 'Mis incidencias' option in Profile screen and check the header is right
-    Given user has a "telco" account type
-      And user has a "any_admin" role
-     When clicks on the "my_tickets_entrypoint" entrypoint
-     Then the internal webview with "Mis incidencias" header is displayed
-
-  @jira.QANOV-205494 @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @regression
-  Scenario: Moves user can access to 'Mis pedidos' option in Profile screen and check the header is right
-    Given user has a "telco" account type
-      And user has a "any_admin" role
-     When clicks on the "my_orders_entrypoint" entrypoint
-     Then the "My Orders" page is displayed
-      And the "[LANG:profile.dashboard.my_information.my_orders]" header is displayed
-
-  @jira.QANOV-205495 @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.detects.CHECKOUT-3528 @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @regression
-  Scenario: Moves user can access to the My Payment Methods webview from the entrypoints in the "Facturación" page and check the header is right
-    Given user has a "telco postpay" account type
-      And user has a "admin" role
-      And user is in the "Invoicing Profile" page
-     When clicks on the "payment_methods_entrypoint" entrypoint
-     Then the internal webview is displayed
-      And the header that contains the "[LANG:profile.dashboard.invoicing.my_payment_methods]" text is displayed
-      And clicks on the "navigation_top_bar.close_button" button
-      And the "Invoicing Profile" page is displayed
-
-  @jira.<jira_id> @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @regression
-  Scenario Outline: Moves user can access to the <page_name> webview from the entrypoints in the "Facturación" page and check the header is right
-    Given user has a "telco postpay" account type
-      And user has a "admin" role
-      And user is in the "Invoicing Profile" page
-     When clicks on the "<option>" entrypoint
-     Then the internal webview is displayed
-      And the header that contains the "Área privada Movistar" text is displayed
-      And clicks on the "navigation_top_bar.close_button" button
-      And the "Invoicing Profile" page is displayed
-
-    Examples:
-          | option                     | page_name               | jira_id      |
-          | billing_address_entrypoint | Dirección Facturación   | QANOV-205496 |
-          | invoice_claim_entrypoint   | Reclamación de facturas | QANOV-205497 |
-          | digital_invoice_entrypoint | Factura sin papel       | QANOV-205498 |
-
   @jira.<jira_id> @<mode> @android @cert0 @cert1 @ios @jira.cv.<cv> @jira.link.parent_test_plan.<parent_test_plan> @live
   @mobile @next @o2uk @sanity
   Scenario Outline: A SIM-free O2uk user can access to the "Contact Preferences" webview from the entrypoints in Profile and check the header is right
@@ -90,9 +43,9 @@ Feature: Access to Profile Webview Content
 
     @impeded_env @manual
     Examples:
-          | cv   | account_type | option                          | header_name                                                 | page_name            | ber | plans   | parent_test_plan | jira_id      |
-          | 13.5 | jeri         | personal_information_entrypoint | [LANG:profile.dashboard.my_information.personal_details]    | Personal Information | ber | several | QANOV-200803     | QANOV-204098 |
-          | 13.5 | control_n    | personal_information_entrypoint | [LANG:profile.dashboard.my_information.personal_details]    | Personal Information | ber | several | QANOV-200803     | QANOV-204101 |
+          | cv   | account_type | option                          | header_name                                              | page_name            | ber | plans   | parent_test_plan | jira_id      |
+          | 13.5 | jeri         | personal_information_entrypoint | [LANG:profile.dashboard.my_information.personal_details] | Personal Information | ber | several | QANOV-200803     | QANOV-204098 |
+          | 13.5 | control_n    | personal_information_entrypoint | [LANG:profile.dashboard.my_information.personal_details] | Personal Information | ber | several | QANOV-200803     | QANOV-204101 |
 
   @jira.QANOV-60003 @android @ios @jira.cv.12.0 @jira.link.parent_test_plan.QANOV-437387 @manual @mobile @regression
   @vivobr
@@ -167,10 +120,10 @@ Feature: Access to Profile Webview Content
 
     @old_app
     Examples:
-          | account_type | parent_test_plan | cv     | jira_id      |
-          | beatrix      | QANOV-132965     | 13.10  | QANOV-129653 |
-          | convergente  | QANOV-132965     | 13.10  | QANOV-129654 |
-          | multivivo    | QANOV-132965     | 13.10  | QANOV-129655 |
+          | account_type | parent_test_plan | cv    | jira_id      |
+          | beatrix      | QANOV-132965     | 13.10 | QANOV-129653 |
+          | convergente  | QANOV-132965     | 13.10 | QANOV-129654 |
+          | multivivo    | QANOV-132965     | 13.10 | QANOV-129655 |
 
   @jira.<jira_id> @android @ios @jira.cv.<cv> @jira.link.parent_test_plan.<parent_test_plan> @manual @mobile @smoke
   @vivobr
@@ -191,10 +144,10 @@ Feature: Access to Profile Webview Content
 
     @old_app
     Examples:
-          | account_type | parent_test_plan | cv     | jira_id      |
-          | beatrix      | QANOV-132965     | 13.10  | QANOV-129656 |
-          | convergente  | QANOV-132965     | 13.10  | QANOV-129657 |
-          | multivivo    | QANOV-132965     | 13.10  | QANOV-129658 |
+          | account_type | parent_test_plan | cv    | jira_id      |
+          | beatrix      | QANOV-132965     | 13.10 | QANOV-129656 |
+          | convergente  | QANOV-132965     | 13.10 | QANOV-129657 |
+          | multivivo    | QANOV-132965     | 13.10 | QANOV-129658 |
 
   @jira.<jira_id> @android @ios @jira.cv.<cv> @jira.link.parent_test_plan.<parent_test_plan>
   @jira.link.parent_test_plan.QANOV-537945 @manual @mobile @regression @vivobr
@@ -217,10 +170,10 @@ Feature: Access to Profile Webview Content
 
     @old_app
     Examples:
-          | account_type | parent_test_plan | cv     | jira_id      |
-          | beatrix      | QANOV-132965     | 13.10  | QANOV-129659 |
-          | convergente  | QANOV-132965     | 13.10  | QANOV-129660 |
-          | multivivo    | QANOV-132965     | 13.10  | QANOV-129661 |
+          | account_type | parent_test_plan | cv    | jira_id      |
+          | beatrix      | QANOV-132965     | 13.10 | QANOV-129659 |
+          | convergente  | QANOV-132965     | 13.10 | QANOV-129660 |
+          | multivivo    | QANOV-132965     | 13.10 | QANOV-129661 |
 
   @jira.<jira_id> @android @ios @jira.cv.<cv> @jira.link.parent_test_plan.<parent_test_plan>
   @jira.link.parent_test_plan.QANOV-537945 @manual @mobile @regression @vivobr
@@ -242,10 +195,10 @@ Feature: Access to Profile Webview Content
 
     @old_app
     Examples:
-          | account_type | parent_test_plan | cv     | jira_id      |
-          | beatrix      | QANOV-132965     | 13.10  | QANOV-129662 |
-          | convergente  | QANOV-132965     | 13.10  | QANOV-129663 |
-          | multivivo    | QANOV-132965     | 13.10  | QANOV-129664 |
+          | account_type | parent_test_plan | cv    | jira_id      |
+          | beatrix      | QANOV-132965     | 13.10 | QANOV-129662 |
+          | convergente  | QANOV-132965     | 13.10 | QANOV-129663 |
+          | multivivo    | QANOV-132965     | 13.10 | QANOV-129664 |
 
   @jira.<jira_id> @android @automatic @ber @ios @jira.cv.12.0 @jira.link.detects.<detects>
   @jira.link.parent_test_plan.QANOV-21791 @jira.link.parent_test_plan.QANOV-56585 @jira.link.parent_test_plan.QANOV-66163
@@ -362,104 +315,6 @@ Feature: Access to Profile Webview Content
           | option                          | header_name                                              | page_name            | jira_id     |
           | personal_information_entrypoint | [LANG:profile.dashboard.my_information.personal_details] | Personal Information | QANOV-60015 |
 
-  @jira.<jira_id> @<priority> @<product> @android @deprecate_profile_moves @ios @jira.cv.<cv> @jira.dv.Future
-  @jira.link.depends_on.<depends_on> @jira.link.relates_to.NOV-100486 @mobile
-  Scenario Outline: <account_type> <product> user can access to the "<page_name>" webview from the "Security And Privacy" screen
-    All webviews opens in internal flow mode in Moves
-    Moves Ask and Download page cannot only be checked with a real telco user
-    Given user has a "<account_type>" account type
-      And user has a "<role_type>" role
-      And user is in the "Security And Privacy" page
-     When clicks on the "<option>" entrypoint
-     Then the internal webview with "<header_name>" header is displayed
-      And clicks on the "<button>" button
-      And the "Security And Privacy" page is displayed
-
-    @automatic @cert2 @jira.link.detects.MOVES-5942
-    @jira.link.parent_test_plan.QANOV-203801 @live @next
-    Examples:
-          | product | cv   | account_type | role_type | option                    | page_name        | header_name                | button                         | priority | jira_id      |
-          | moves   | 13.3 | telco        | any_admin | contact_method_entrypoint | Recover password | Recuperación de contraseña | navigation_top_bar.back_button | sanity   | QANOV-205499 |
-
-    @jira.link.parent_test_plan.QANOV-203801 @manual
-    Examples:
-          | product | cv   | account_type | role_type | option                          | page_name            | header_name                      | button                          | priority   | jira_id      |
-          | moves   | 13.3 | telco        | any       | wifi_password_change_entrypoint | Change WiFi password | Configuración de router Movistar | navigation_top_bar.close_button | regression | QANOV-205500 |
-
-    @impeded_legacy @jira.link.parent_test_plan.QANOV-203801 @no_automatable
-    Examples:
-          | product | cv   | account_type | role_type | option                          | page_name            | header_name                      | button                          | priority   | jira_id      |
-          | moves   | 13.3 | legado       | any       | wifi_password_change_entrypoint | Change WiFi password | Configuración de router Movistar | navigation_top_bar.close_button | regression | QANOV-205502 |
-
-  @jira.<jira_id> @<priority> @<product> @android @deprecate_profile_moves @ios @jira.dv.Future
-  @jira.link.relates_to.NOV-100486
-  Scenario Outline: <account_type> <product> user can access to the <page_name> webview from the entrypoints in Profile screen and check the header is right
-    Given user has a "<account_type>" account type
-      And user has a "<role_type>" role
-      And user has a "tv" product
-      And user is in the "Profile" page
-     When clicks on the "<option>" entrypoint
-     Then the internal webview with "<header_name>" header is displayed
-      And clicks on the "<button>" button
-      And the "Profile" page is displayed
-
-    @automatic @cert2 @jira.cv.13.4 @jira.link.parent_test_plan.QANOV-203801 @live
-    @next @qa
-    Examples:
-          | product | account_type | role_type | option                               | page_name       | header_name           | button                         | priority | jira_id      |
-          | moves   | telco        | admin     | movistarplus_email_change_entrypoint | Change M+ email | Área privada Movistar | navigation_top_bar.back_button | sanity   | QANOV-205501 |
-
-    @impeded_legacy @jira.cv.13.4 @jira.link.parent_test_plan.QANOV-203801
-    @no_automatable
-    Examples:
-          | product | account_type | role_type | option                               | page_name       | header_name          | button                          | priority   | jira_id      |
-          | moves   | legado       | any       | movistarplus_email_change_entrypoint | Change M+ email | Comparte en WhatsApp | navigation_top_bar.close_button | regression | QANOV-205503 |
-
-  @jira.<jira_id> @<priority> @android @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @mobile @moves
-  Scenario Outline: A moves user with <account_type> account type and <role_type> role can access to the <page_name> webview from the entrypoints in Transparency Center screen and check the header is right
-    Given user has a "<account_type>" account type
-      And user has a "<role_type>" role
-      And user is in the "Transparency Center" page
-     When clicks on the "<option>" entrypoint
-     Then the internal webview with "<header_name>" header is displayed
-      And clicks on the "<button>" button
-      And the "Transparency Center" page is displayed
-
-    @automatic @cert2 @live @next
-    Examples:
-          | account_type | role_type | option                          | page_name             | header_name                                     | button                         | priority   | jira_id      |
-          | telco        | any       | terms_and_conditions_entrypoint | Terms And Conditions  | [LANG:profile.terms_and_conditions.page_header] | navigation_top_bar.back_button | sanity     | QANOV-205504 |
-          | telco        | any       | ask_and_download_entrypoint     | Ask And Download Data | Consulta y descarga de datos                    | navigation_top_bar.back_button | regression | QANOV-205508 |
-
-    @impeded_legacy @no_automatable
-    Examples:
-          | account_type | role_type | option                          | page_name            | header_name                                     | button                         | priority   | jira_id      |
-          | legado       | any       | terms_and_conditions_entrypoint | Terms And Conditions | [LANG:profile.terms_and_conditions.page_header] | navigation_top_bar.back_button | regression | QANOV-205505 |
-
-  @jira.<jira_id> @<priority> @android @deprecate_profile_moves @ios @jira.cv.14.4 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @mobile
-  Scenario Outline: A moves user with <account_type> account type can access to the <page_name> webview from the entrypoints in Privacy Preferences screen and check the header is right
-    Given user has a "<account_type>" account type
-      And user has a "any" role
-      And user is in the "Privacy Preferences" page
-     When clicks on the "<option>" entrypoint
-     Then the internal webview with "Preferencias de privacidad" header is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Privacy Preferences" page is displayed
-
-    @automatic @cert2 @live @next
-    Examples:
-          | account_type | option                                  | page_name                    | priority   | jira_id      |
-          | telco        | privacy_preferences_movistar_entrypoint | Movistar Privacy Preferences | smoke      | QANOV-205506 |
-          | telco        | others_privacy_preferences_entrypoint   | Other Privacy Preferences    | regression | QANOV-367867 |
-
-    @impeded_legacy @no_automatable
-    Examples:
-          | account_type | option                                  | page_name                    | priority   | jira_id      |
-          | legado       | privacy_preferences_movistar_entrypoint | Movistar Privacy Preferences | regression | QANOV-205507 |
-          | legado       | others_privacy_preferences_entrypoint   | Other Privacy Preferences    | regression | QANOV-367868 |
-
   @jira.<jira_id> @<ber> @<priority> @android @automatic @cert0 @cert1 @ios @jira.cv.11.7 @jira.link.relates_to.NOV-100486
   @live @mobile @next @o2uk
   Scenario Outline: A <account_type> MyO2 user with msisdn products can access to the <page_name> internal webview from the entrypoints in Security And Privacy screen and check the header is right
@@ -553,36 +408,6 @@ Feature: Access to Profile Webview Content
       And the "Forgotten sign in details" header is displayed
       And clicks on the "navigation_top_bar.close_button" button
       And the "Security And Privacy" page is displayed
-
-  @jira.<jira_id> @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.12.1 @jira.dv.Future
-  @jira.link.detects.IOS-7406 @jira.link.parent_test_plan.QANOV-56957 @live @mobile @moves @next @regression
-  Scenario Outline: TELCO user can access to the <page_name> webview from the entrypoint in the Personal Data screen
-    internal_checkpoint="All webviews openend in internal flow mode"
-    other_affected_versions="2021-09"
-    Given user has a "telco" account type
-      And user has a "any_admin" role
-      And user is in the "Personal Data" page
-     When clicks on the "<option>" entrypoint
-     Then the internal webview with "<header_name>" header is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Personal Data" page is displayed
-
-    Examples:
-          | option                   | header_name                                          | page_name     | jira_id     |
-          | email_address_entrypoint | [LANG:profile.dashboard.personal_data.email_address] | Contact Email | QANOV-59910 |
-          | phone_number_entrypoint  | [LANG:profile.dashboard.personal_data.phone_number]  | Contact Phone | QANOV-59911 |
-
-  @jira.QANOV-205509 @android @cert2 @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @manual @mobile @moves @next @regression
-  Scenario: Moves user can access to 'Identificación personal en tiendas' option in Profile screen and check the header is right
-    Given user has a "any" account type
-      And user has a "any_admin" role
-      And user is in the "Personal Data" page
-     When clicks on the "shop_identifier_entrypoint" entrypoint
-     Then the "Shop Identifier" page is displayed
-      And the "[LANG:profile.dashboard.personal_data.shop_identifier]" header is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Personal Data" page is displayed
 
   @jira.<jira_id> @android @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-215691 @manual @mobile @smoke @vivobr
   @old_app
@@ -1144,6 +969,24 @@ Feature: Access to Profile Webview Content
       And clicks on the "navigation_top_bar.back_button" button
       And the "Profile" page is displayed
 
+  @jira.QANOV-621102 @android @e2e @ios @jira.cv.Future @manual @mobile @o2es @regression
+  Scenario: Admin light user can not access to the Contact Email webview from the entrypoint in the Personal Data screen: Login escalation screen is displayed
+    Given user has a "admin-light" role
+      And user is in the "Personal Data" page
+     When clicks on the "email_address_entrypoint" entrypoint
+     Then the "Login Escalation Required" page is displayed
+      And clicks on the "navigation_top_bar.back_button" button
+      And the "Profile" page is displayed
+
+  @jira.QANOV-621103 @android @e2e @ios @jira.cv.Future @manual @mobile @o2es @regression
+  Scenario: Admin light user can not access to the Contact Phone webview from the entrypoint in the Personal Data screen: Login escalation screen is displayed
+    Given user has a "admin-light" role
+      And user is in the "Personal Data" page
+     When clicks on the "phone_number_entrypoint" entrypoint
+     Then the "Login Escalation Required" page is displayed
+      And clicks on the "navigation_top_bar.back_button" button
+      And the "Profile" page is displayed
+
   @jira.QANOV-410716 @android @ber @ios @jira.cv.Future @manual @mobile @o2es @smoke
   Scenario: Admin user can access to the Change Password webview from the entrypoint in Profile screen
     Given user has a "admin" role
@@ -1168,7 +1011,7 @@ Feature: Access to Profile Webview Content
       And clicks on the "navigation_top_bar.back_button" button
       And the "Profile" page is displayed
 
-  @jira.QANOV-556376 @android @ber @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @jira.QANOV-556376 @android @ber @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   @sanity
   Scenario: A moves admin user can access to the "consulta y descarga de datos" webview from the entrypoints in Privacy Management
     Given user has a "admin" role
@@ -1202,8 +1045,8 @@ Feature: Access to Profile Webview Content
           | blaude  | QANOV-558967 |
           | o2de    | QANOV-558968 |
 
-  @jira.QANOV-578762 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
-  @smoke
+  @jira.QANOV-578762 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @smoke @ber
   Scenario: Moves admin user with landline product can access the tokens entrypoint
     Given user has a "admin" role
       And user has a "landline" product
@@ -1220,8 +1063,8 @@ Feature: Access to Profile Webview Content
      When clicks on the "advanced_verification_entrypoint" entrypoint
      Then the "tbd" string is displayed
 
-  @jira.QANOV-578764 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
-  @smoke
+  @jira.QANOV-578764 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @smoke @ber
   Scenario: Moves user with 1 tv can access the movistar plus entrypoint
     Given user has a "admin" role
       And user has "1" products of "tv" type
@@ -1231,7 +1074,7 @@ Feature: Access to Profile Webview Content
       And clicks on the "navigation_top_bar.close_button" button
       And the "Profile" page is displayed
 
-  @jira.QANOV-578765 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @jira.QANOV-578765 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   @regression @tbd
   Scenario: Moves user with >1 tv can access the movistar plus entrypoint
     Given user has a "admin" role

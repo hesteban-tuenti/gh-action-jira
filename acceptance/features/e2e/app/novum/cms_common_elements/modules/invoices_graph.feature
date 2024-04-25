@@ -8,7 +8,8 @@ Feature: Invoices Graph
   @fixture.cms.module.invoices_graph
   Scenario: A user with bills can see the invoices graph module without title
     To be executed in QA
-    Given user has invoices
+    Given user has a "telco postpay" account type
+      And user has invoices
       And the "Last months invoices graph" module is configured in CMS for "Modular Page Configurable Modules" page
      When user is in the "Modular Page Configurable Modules" modular page
       And waits until the "invoices_graph" element is visible
@@ -22,7 +23,8 @@ Feature: Invoices Graph
   @fixture.cms.module.invoices_graph_with_title
   Scenario: A user with bills can see the invoices graph module with title
     To be executed in QA
-    Given user has invoices
+    Given user has a "telco postpay" account type
+      And user has invoices
       And the "Last months invoices graph" module is configured in CMS for "Modular Page Configurable Modules" page
      When user is in the "Modular Page Configurable Modules" modular page
       And waits until the "invoices_graph" element is visible
@@ -36,7 +38,8 @@ Feature: Invoices Graph
   @fixture.cms.module.invoices_graph
   Scenario: A user with bills can select another month in the invoices graph
     To be executed in QA
-    Given user has invoices
+    Given user has a "telco postpay" account type
+      And user has invoices
       And the "Last months invoices graph" module is configured in CMS for "Modular Page Configurable Modules" page
       And user is in the "Modular Page Configurable Modules" modular page
       And waits until the "invoices_graph" element is visible
@@ -50,7 +53,8 @@ Feature: Invoices Graph
   @fixture.cms.module.invoices_graph
   Scenario: A user with bills can select a month in a different page in the invoices graph
     To be executed in QA
-    Given user has invoices
+    Given user has a "telco postpay" account type
+      And user has invoices
       And the "Last months invoices graph" module is configured in CMS for "Modular Page Configurable Modules" page
       And user is in the "Modular Page Configurable Modules" modular page
       And waits until the "invoices_graph" element is visible

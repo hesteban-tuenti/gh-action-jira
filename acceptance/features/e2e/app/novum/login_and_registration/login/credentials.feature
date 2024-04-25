@@ -948,7 +948,7 @@ Feature: Credentials
       And clicks on the "navigation_top_bar.close_button" button
       And the "Splash Screen" page is displayed
 
-  @jira.QANOV-498047 @automatic @blaude @har @ios @jira.cv.14.10 @jira.link.depends_on.QANOV-49059
+  @jira.QANOV-498047 @manual @blaude @har @ios @jira.cv.14.10 @jira.link.depends_on.QANOV-49059
   @jira.link.parent_test_plan.QANOV-494500 @mobile @smoke
   Scenario: A blaude user can see the "Login Credentials" screen on iOS devices in CIAM login
     Given user has set the cookies preferences

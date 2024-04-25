@@ -424,18 +424,6 @@ Feature: OTP Negative
       And the "popup.title" textfield with "Inicio de sesión cancelado" text is displayed
       And the "popup.description" textfield with "Para acceder a Mi O2, tendrás que volver a iniciar sesión." text is displayed
 
-  @jira.QANOV-453633 @android @ios @jira.cv.Future @mobile @no_automatable @o2es @regression
-  Scenario: A blocked user can see an error when trying to login with MobileConnect
-    Given user is blocked
-     When user is in the "O2es Credentials Login" page
-      And clicks on the "selector_tab.phone_number_selector" tab
-      And fills the "phone_number_field" inputtext with the "[CONTEXT:user.blocked_number]" text
-      And clicks on the "continue_button" button
-     Then the "Login Error Screen" page is displayed
-      And the "warning_icon" icon is displayed
-      And the "error_title" textfield with "Has intentado iniciar sesión demasiadas veces" text is displayed
-      And the "error_description" textfield with "Hemos bloqueado temporalmente el acceso a tu cuenta por seguridad. Vuelve a intentarlo más tarde." text is displayed
-
   @jira.QANOV-453634 @android @ios @jira.cv.Future @manual @mobile @o2es @regression
   Scenario: A no o2es can see an error when trying to login with MobileConnect
      When user is in the "O2es Credentials Login" page

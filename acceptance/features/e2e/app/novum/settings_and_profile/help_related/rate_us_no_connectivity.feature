@@ -13,38 +13,11 @@ Feature: Rate us without connectivity
      Then the "Apple_Store" app is displayed
       And the "<string>" string is displayed
 
-    @automatic @cert2 @deprecate_profile_moves @jira.dv.Future @live @next
-    Examples:
-          | product | cv   | page              | entrypoint                     | string                  | depends_on                | jira_id    |
-          | moves   | 11.8 | App Configuration | rate_us_in_appstore_entrypoint | Desactiva el modo Avión | QANOV-205523:QANOV-205524 | QANOV-6889 |
-
     @manual
     Examples:
           | product | cv   | page    | entrypoint         | string               | depends_on                                                                    | jira_id      |
           | blaude  | 14.5 | Profile | rate_us_entrypoint | Imposible conectarse | QANOV-217320:QANOV-217321:QANOV-240222:QANOV-386057:QANOV-386059:QANOV-386061 | QANOV-376071 |
           | o2de    | 14.5 | Profile | rate_us_entrypoint | Imposible conectarse | QANOV-259695:QANOV-259696:QANOV-240223:QANOV-386058:QANOV-386060:QANOV-386062 | QANOV-376073 |
-
-  @jira.QANOV-6751 @automation.hard @deprecate_profile_moves @ios @jira.cv.11.8 @jira.dv.Future
-  @jira.link.depends_on.QANOV-6746 @jira.link.relates_to.NOV-82314 @manual @mobile @moves @regression
-  Scenario: A user without data connectivity clicks on the "Rate us on App Store" option in Profile tab: the badge disappears
-    Given user is in the "App Configuration" page
-      And user turns on the Airplane mode
-      And a "non_numeric" red badge is displayed in the "Valóranos en App Store" item
-     When clicks on the "Valóranos en App Store" entrypoint
-      And clicks on the native "back" button
-     Then the notification badge is not displayed in the "Valóranos en App Store" item
-
-  @jira.QANOV-6752 @android @automation.hard @deprecate_profile_moves @jira.cv.11.8 @jira.dv.Future
-  @jira.link.depends_on.QANOV-6746 @manual @mobile @moves @regression
-  Scenario: A user without data connectivity who clicked on the "Rate us on Play Store" will continue seeing the badge after dismissing the popup
-    Given user is in the "App Configuration" page
-      And user turns on the Airplane mode
-      And a "non_numeric" red badge is displayed in the "Valóranos en App Store" item
-     When clicks on the "Valóranos en Play Store" entrypoint
-      And the "No Connection" popup is displayed
-      And clicks on the "cancel" button
-     Then the "Profile" page is displayed
-      And the notification badge is displayed in the "Valóranos en App Store" item
 
   @jira.<jira_id> @<product> @android @jira.cv.<cv> @jira.link.depends_on.<depends_on> @jira.link.detects.ANDROID-13442
   @jira.link.relates_to.NOV-199867 @manual @mobile @regression
@@ -58,11 +31,6 @@ Feature: Rate us without connectivity
       And the "message" textfield with "[LANG:noconnectivity.no_connectivity_text]" text is displayed
       And the "retry" button with "[LANG:noconnectivity.retry_button]" text is displayed
       And the "cancel" button with "[LANG:noconnectivity.cancel_button]" text is displayed
-
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | page              | entrypoint                      | depends_on                | jira_id    |
-          | moves   | 11.8 | App Configuration | rate_us_in_playstore_entrypoint | QANOV-205523:QANOV-205524 | QANOV-6888 |
 
     Examples:
           | product | cv   | page    | entrypoint         | depends_on                                                                    | jira_id      |
@@ -79,11 +47,6 @@ Feature: Rate us without connectivity
       And the "No Connection" popup is displayed
       And clicks on the "navigation_top_bar.close_button" button
      Then the "<page>" page is displayed
-
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | page              | entrypoint                      | depends_on | jira_id    |
-          | moves   | 11.8 | App Configuration | rate_us_in_playstore_entrypoint | QANOV-6888 | QANOV-6890 |
 
     Examples:
           | product | cv   | page    | entrypoint         | depends_on   | jira_id      |
@@ -106,11 +69,6 @@ Feature: Rate us without connectivity
       And the "message_textfield" textfield with "[LANG:app_rating.app_rating_android.message]" text is displayed
       And the "rating_star_bar" image is displayed
       And the "not_now_button" button with "[LANG:app_rating.app_rating_android.button]" text is displayed
-
-    @deprecate_profile_moves @jira.dv.Future
-    Examples:
-          | product | cv   | page              | entrypoint                      | logo          | depends_on | jira_id    |
-          | moves   | 11.8 | App Configuration | rate_us_in_playstore_entrypoint | movistar_logo | QANOV-6888 | QANOV-6891 |
 
     Examples:
           | product | cv   | page    | entrypoint         | logo        | depends_on   | jira_id      |

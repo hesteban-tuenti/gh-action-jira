@@ -5,62 +5,6 @@ Feature: Access to Profile Entrypoints First Level
   Actions Before the Feature:
     Given user is in the "Profile" page
 
-
-  @jira.QANOV-205489 @android @automatic @cert2 @ber @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @sanity @har
-  Scenario: Moves telco admin with data connection selects Profile icon: Profile screen is opened with all common options for telco
-    Given user has a "telco" account type
-      And user has a "admin" role
-     Then the "settings" list with "[LANG:profile.dashboard.personal_data.entrypoint];[LANG:profile.dashboard.my_orders];[LANG:profile.dashboard.invoicing.entrypoint];[LANG:profile.dashboard.my_tickets];[LANG:profile.dashboard.configuration.security_and_privacy];[LANG:profile.dashboard.app_configuration.entrypoint];[LANG:profile.dashboard.transparency_center.entrypoint]" textfields is displayed
-      And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-  @jira.QANOV-205490 @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @sanity @har
-  Scenario: Moves telco admin-light with data connection selects Profile icon: Profile screen is opened with all common options for telco
-    Given user has a "telco" account type
-      And user has a "admin-light" role
-     Then the "settings" list with "[LANG:profile.dashboard.personal_data.entrypoint];[LANG:profile.dashboard.my_orders];[LANG:profile.dashboard.invoicing.entrypoint];[LANG:profile.dashboard.my_tickets];[LANG:profile.dashboard.configuration.security_and_privacy];[LANG:profile.dashboard.app_configuration.entrypoint];[LANG:profile.dashboard.transparency_center.entrypoint]" textfields is displayed
-      And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-  @jira.QANOV-205491 @android @deprecate_profile_moves @impeded_legacy @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @manual @mobile @moves @regression
-  Scenario: Moves legado admin with data connection selects Profile icon: Profile screen is opened with all options enabled
-    Given user has a "legado" account type
-      And user has a "any_admin" role
-     Then the "settings" list with "[LANG:profile.dashboard.personal_data.entrypoint];[LANG:profile.dashboard.configuration.security_and_privacy];[LANG:profile.dashboard.app_configuration.entrypoint];[LANG:profile.dashboard.transparency_center.entrypoint]" textfields is displayed
-      And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-  @jira.QANOV-228044 @android @automatic @cert2 @deprecate_profile_moves @har @jira.cv.13.4 @jira.dv.Future @live @mobile
-  @moves @next @smoke
-  Scenario: A moves user with a tv product will see the 'Mi usuario Movistar Plus+ en dispositivos' in the "Profile" page on Android devices
-    Given user has a "tv" product
-      And scrolls up
-     Then the "settings" list with "[LANG:profile.dashboard.privacy_and_security.movistarplus_email_change_entrypoint]" textfields is displayed
-
-  @jira.QANOV-287452 @automatic @cert2 @deprecate_profile_moves @har @ios @jira.cv.13.4 @jira.dv.Future @live @mobile
-  @moves @next @smoke
-  Scenario: A moves user with a tv product will see the 'Mi usuario Movistar Plus+ en dispositivos' in the "Profile" page on iOS devices
-    Given user has a "tv" product
-     Then the "settings" list with "[LANG:profile.dashboard.privacy_and_security.movistarplus_email_change_entrypoint]" textfields is displayed
-
-  @jira.QANOV-228045 @android @deprecate_profile_moves @ios @jira.cv.13.4 @jira.dv.Future @manual @mobile @moves
-  @regression
-  Scenario: A moves user without a tv product won't see the "Mi usuario Movistar Plus+ en dispositivos" entrypoint in the "Profile" page
-    Given user has not a "tv" product
-     Then the "settings" list without "[LANG:profile.dashboard.privacy_and_security.movistarplus_email_change_entrypoint]" textfields is displayed
-
-  @jira.QANOV-355070 @android @deprecate_profile_moves @har @ios @jira.cv.14.3 @jira.dv.Future @live @manual @mobile
-  @moves @next @smoke
-  Scenario: A moves user with a landline product will see the 'Mis tokens' entrypoint in the "Profile" page
-    Given user has a "landline" product
-     Then the "settings" list with "[LANG:profile.dashboard.my_tokens]" textfields is displayed
-
-  @jira.QANOV-355071 @android @deprecate_profile_moves @ios @jira.cv.14.3 @jira.dv.Future @manual @mobile @moves
-  @regression
-  Scenario: A moves user without a landline product won't see the "Mis tokens" entrypoint in the "Profile" page
-    Given user has not a "landline" product
-     Then the "settings" list without "[LANG:profile.dashboard.my_tokens]" textfields is displayed
-
   @jira.QANOV-6147 @android @automatic @ber @cert0 @cert1 @har @ios @jira.cv.10.3 @jira.link.parent_test_plan.QANOV-24947
   @jira.link.relates_to.NOV-47204 @live @mobile @next @o2uk @sanity
   Scenario: O2uk postpay user with data connection selects Profile icon: Profile screen is opened with all options enabled
@@ -173,17 +117,17 @@ Feature: Access to Profile Entrypoints First Level
       And scrolls up
 
     Examples:
-          | account_type | settings_list                                                                                                                                                                                                                    | role      | ber | har | cv     | detects | parent_test_plan          | automated | priority | jira_id      |
-          | beatrix      | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy]                                               | admin     | ber |     | 13.10  |         | QANOV-132965              | manual    | smoke    | QANOV-129639 |
-          | multivivo    | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy]                                               | admin     |     | har | 13.10  |         | QANOV-132965              | manual    | smoke    | QANOV-129641 |
-          | multivivo    | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy]                                               | dependent |     |     | 13.10  |         | QANOV-132965:QANOV-228584 | manual    | smoke    | QANOV-129643 |
+          | account_type | settings_list                                                                                                                                                                      | role      | ber | har | cv    | detects | parent_test_plan          | automated | priority | jira_id      |
+          | beatrix      | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | admin     | ber |     | 13.10 |         | QANOV-132965              | manual    | smoke    | QANOV-129639 |
+          | multivivo    | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | admin     |     | har | 13.10 |         | QANOV-132965              | manual    | smoke    | QANOV-129641 |
+          | multivivo    | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | dependent |     |     | 13.10 |         | QANOV-132965:QANOV-228584 | manual    | smoke    | QANOV-129643 |
 
     @old_app
     Examples:
-          | account_type | settings_list                                                                                                                                                                                                                    | role      | ber | har | cv     | detects | parent_test_plan          | automated | priority | jira_id      |
-          | beatrix      | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | admin     |     |     | Future |         | QANOV-215691              | manual    | smoke    | QANOV-223417 |
-          | multivivo    | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | admin     |     |     | Future |         | QANOV-215691              | manual    | smoke    | QANOV-223419 |
-          | multivivo    | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | dependent |     |     | Future |         | QANOV-215691              | manual    | smoke    | QANOV-223421 |
+          | account_type | settings_list                                                                                                                                                                                                                    | role      | ber | har | cv     | detects | parent_test_plan | automated | priority | jira_id      |
+          | beatrix      | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | admin     |     |     | Future |         | QANOV-215691     | manual    | smoke    | QANOV-223417 |
+          | multivivo    | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | admin     |     |     | Future |         | QANOV-215691     | manual    | smoke    | QANOV-223419 |
+          | multivivo    | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | dependent |     |     | Future |         | QANOV-215691     | manual    | smoke    | QANOV-223421 |
 
   @jira.<jira_id> @<automated> @<ber> @android @ios @jira.cv.<cv> @jira.link.parent_test_plan.<parent_test_plan>
   @jira.link.parent_test_plan.QANOV-437387 @live @mobile @next @smoke @vivobr
@@ -195,10 +139,10 @@ Feature: Access to Profile Entrypoints First Level
       And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
 
     Examples:
-          | account_type  | settings_list                                                                                                                                                                                                                    | ber | cv     | parent_test_plan | automated | jira_id      |
-          | legacy prepay | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy]                                               | ber | 12.0   |                  | automatic | QANOV-204108 |
-          | jeri          | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy]                                               |     | 13.5   | QANOV-200803     | manual    | QANOV-204109 |
-          | control_n     | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy]                                               |     | 13.5   | QANOV-200803     | manual    | QANOV-204110 |
+          | account_type  | settings_list                                                                                                                                                                      | ber | cv   | parent_test_plan | automated | jira_id      |
+          | legacy prepay | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | ber | 12.0 |                  | automatic | QANOV-204108 |
+          | jeri          | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] |     | 13.5 | QANOV-200803     | manual    | QANOV-204109 |
+          | control_n     | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] |     | 13.5 | QANOV-200803     | manual    | QANOV-204110 |
 
     @old_app
     Examples:
@@ -218,9 +162,9 @@ Feature: Access to Profile Entrypoints First Level
 
     @impeded_mock @manual
     Examples:
-          | account_status | settings_list                                                                                                                                                                                                                    | har | cv     | parent_test_plan | jira_id      |
-          | active         | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy]                                               | har | 13.10  | QANOV-132965     | QANOV-129645 |
-          | pending        | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.configuration.security_and_privacy]                                                                                                             |     | 12.4   | QANOV-56585      | QANOV-56948  |
+          | account_status | settings_list                                                                                                                                                                      | har | cv    | parent_test_plan | jira_id      |
+          | active         | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | har | 13.10 | QANOV-132965     | QANOV-129645 |
+          | pending        | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.configuration.security_and_privacy]                                                               |     | 12.4  | QANOV-56585      | QANOV-56948  |
 
     @impeded_mock @manual @old_app
     Examples:
@@ -238,15 +182,15 @@ Feature: Access to Profile Entrypoints First Level
       And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
 
     Examples:
-          | account_status | settings_list                                                                                                                                                           | cv     | parent_test_plan | impeded      | jira_id      |
-          | active         | [LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy]                                               | 13.10  | QANOV-132965     |              | QANOV-134871 |
-          | pending        | [LANG:profile.dashboard.configuration.security_and_privacy]                                                                                                             | 12.4   | QANOV-56585      | impeded_mock | QANOV-56949  |
+          | account_status | settings_list                                                                                                             | cv    | parent_test_plan | impeded      | jira_id      |
+          | active         | [LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | 13.10 | QANOV-132965     |              | QANOV-134871 |
+          | pending        | [LANG:profile.dashboard.configuration.security_and_privacy]                                                               | 12.4  | QANOV-56585      | impeded_mock | QANOV-56949  |
 
     @old_app
     Examples:
-          | account_status | settings_list                                                                                                                                                           | cv     | parent_test_plan | impeded      | jira_id      |
-          | active         | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | Future | QANOV-215691     |              | QANOV-223430 |
-          | pending        | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.configuration.security_and_privacy]                                                               | Future | QANOV-215691     |              | QANOV-223431 |
+          | account_status | settings_list                                                                                                                                                           | cv     | parent_test_plan | impeded | jira_id      |
+          | active         | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | Future | QANOV-215691     |         | QANOV-223430 |
+          | pending        | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.configuration.security_and_privacy]                                                               | Future | QANOV-215691     |         | QANOV-223431 |
 
   @jira.<jira_id> @<impeded> @android @ios @jira.cv.<cv> @jira.link.parent_test_plan.<parent_test_plan>
   @jira.link.parent_test_plan.QANOV-437387 @manual @mobile @smoke @vivobr
@@ -259,15 +203,15 @@ Feature: Access to Profile Entrypoints First Level
       And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
 
     Examples:
-          | account_status | settings_list                                                                                                                                                           | cv     | parent_test_plan | impeded      | jira_id      |
-          | active         | [LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy]                                               | 13.10  | QANOV-132965     |              | QANOV-194417 |
-          | pending        | [LANG:profile.dashboard.configuration.security_and_privacy]                                                                                                             | 12.4   | QANOV-56585      | impeded_mock | QANOV-60023  |
+          | account_status | settings_list                                                                                                             | cv    | parent_test_plan | impeded      | jira_id      |
+          | active         | [LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | 13.10 | QANOV-132965     |              | QANOV-194417 |
+          | pending        | [LANG:profile.dashboard.configuration.security_and_privacy]                                                               | 12.4  | QANOV-56585      | impeded_mock | QANOV-60023  |
 
     @old_app
     Examples:
-          | account_status | settings_list                                                                                                                                                           | cv     | parent_test_plan | impeded      | jira_id      |
-          | active         | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | Future | QANOV-215691     |              | QANOV-223432 |
-          | pending        | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.configuration.security_and_privacy]                                                               | Future | QANOV-215691     |              | QANOV-223433 |
+          | account_status | settings_list                                                                                                                                                           | cv     | parent_test_plan | impeded | jira_id      |
+          | active         | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | Future | QANOV-215691     |         | QANOV-223432 |
+          | pending        | [LANG:profile.dashboard.my_information.token];[LANG:profile.dashboard.configuration.security_and_privacy]                                                               | Future | QANOV-215691     |         | QANOV-223433 |
 
 
   @jira.<jira_id> @android @ios @jira.cv.<cv> @jira.link.parent_test_plan.<parent_test_plan>
@@ -280,8 +224,8 @@ Feature: Access to Profile Entrypoints First Level
       And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
 
     Examples:
-          | settings_list                                                                                                                                                                                                                    | cv   | parent_test_plan | jira_id      |
-          | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy]                                               | 24.3 | QANOV-360171     | QANOV-360361 |
+          | settings_list                                                                                                                                                                      | cv   | parent_test_plan | jira_id      |
+          | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | 24.3 | QANOV-360171     | QANOV-360361 |
 
     @old_app
     Examples:
@@ -299,8 +243,8 @@ Feature: Access to Profile Entrypoints First Level
       And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
 
     Examples:
-          | settings_list                                                                                                                                                                                                                    | cv   | parent_test_plan | jira_id      |
-          | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy]                                               | 24.3 | QANOV-360171     | QANOV-360363 |
+          | settings_list                                                                                                                                                                      | cv   | parent_test_plan | jira_id      |
+          | [LANG:profile.dashboard.my_information.personal_details];[LANG:profile.dashboard.my_information.identity_confirmation];[LANG:profile.dashboard.configuration.security_and_privacy] | 24.3 | QANOV-360171     | QANOV-360363 |
 
     @old_app
     Examples:
@@ -351,50 +295,6 @@ Feature: Access to Profile Entrypoints First Level
           | beatrix      | QANOV-403117 |
           | multivivo    | QANOV-403118 |
 
-  @jira.QANOV-6179 @android @deprecate_profile_moves @ios @jira.cv.11.6 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-21052 @jira.link.relates_to.NOV-163886 @mobile @moves @no_automatable @regression
-  Scenario: A Telco-in user with data connection selects Profile icon: user will see several options enabled
-    Given user has a "telco-in" account type
-     Then the "settings" list with "[LANG:profile.dashboard.personal_data.entrypoint];[LANG:profile.dashboard.configuration.security_and_privacy];[LANG:profile.dashboard.app_configuration.entrypoint];[LANG:profile.dashboard.transparency_center.entrypoint]" textfields is displayed
-      And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-  @jira.QANOV-6181 @android @deprecate_profile_moves @ios @jira.cv.11.8 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-21049 @jira.link.relates_to.NOV-194616 @mobile @moves @no_automatable @regression
-  Scenario: A Telco-out user with data connection selects Profile icon: user will see several options enabled
-    QA user: qamoves-telco-out
-    Given user has a "telco-out" account type
-     Then the "settings" list with "[LANG:profile.dashboard.personal_data.entrypoint];[LANG:profile.dashboard.invoicing.entrypoint];[LANG:profile.dashboard.configuration.security_and_privacy];[LANG:profile.dashboard.app_configuration.entrypoint];[LANG:profile.dashboard.transparency_center.entrypoint]" textfields is displayed
-      And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-  @jira.<jira_id> @<test_priority> @android @deprecate_profile_moves @ios @jira.cv.12.9 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-131587 @manual @mobile @moves
-  Scenario Outline: User without subscriptions and with a '<plan_order>' plan order on track will see all the Profile first level entries
-    QA user: qamoves-18 , qamoves-19
-    Given user has a "telco postpay" account type
-      And user has a "any_admin" role
-      And user has a "<plan_order>" order on track
-      And user has "0" active subscriptions
-     Then the "settings" list with "[LANG:profile.dashboard.personal_data.entrypoint];[LANG:profile.dashboard.my_orders];[LANG:profile.dashboard.configuration.security_and_privacy];[LANG:profile.dashboard.app_configuration.entrypoint];[LANG:profile.dashboard.transparency_center.entrypoint]" textfields is displayed
-      And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-    Examples:
-          | plan_order | test_priority | jira_id      |
-          | any_plan   | smoke         | QANOV-142133 |
-
-  @jira.<jira_id> @android @deprecate_profile_moves @ios @jira.cv.12.9 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-131587 @manual @mobile @moves @regression
-  Scenario Outline: User without subscriptions and with a '<plan_order>' plan order on track with some issue will see all the Profile first level entries
-    QA user: qamoves-16 , qamoves-17
-    Given user has a "telco postpay" account type
-      And user has a "any_admin" role
-      And user has a "<plan_order>" order on track with some issue
-      And user has "0" active subscriptions
-     Then the "settings" list with "[LANG:profile.dashboard.personal_data.entrypoint];[LANG:profile.dashboard.my_orders];[LANG:profile.dashboard.configuration.security_and_privacy];[LANG:profile.dashboard.app_configuration.entrypoint];[LANG:profile.dashboard.transparency_center.entrypoint]" textfields is displayed
-      And the "log_out_button" entrypoint with "[LANG:profile.dashboard.log_out]" text is displayed
-
-    Examples:
-          | plan_order | jira_id      |
-          | any_plan   | QANOV-152256 |
 
   @jira.<jira_id> @<product> @android @automatic @ber @ios @jira.cv.14.4 @jira.link.detects.<detects> @live @mobile @next
   @sanity @har
@@ -554,7 +454,7 @@ Feature: Access to Profile Entrypoints First Level
   Scenario: Vivo user can see the logout entrypoint in red color
      Then the "log_out_button" entrypoint is displayed in "red" color
 
-  @jira.QANOV-556365 @android @ber @har @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
+  @jira.QANOV-556365 @android @ber @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
   @moves @sanity
   Scenario: Moves admin user can see all the entrypoints for the Profile tab
     The personal data entrypoint list can also include Mis tokens entrypoint if user has a landline product
@@ -571,7 +471,7 @@ Feature: Access to Profile Entrypoints First Level
       And the "log_out_link" link with "[LANG:profile.dashboard.log_out]" text is displayed
       And the "log_out_icon" icon is displayed
 
-  @jira.QANOV-556366 @android @ber @har @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
+  @jira.QANOV-556366 @android @ber @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
   @moves @sanity
   Scenario: Moves admin light user can see all the entrypoints for the Profile tab
     Given user has a "admin light" role
@@ -583,7 +483,7 @@ Feature: Access to Profile Entrypoints First Level
       And the "log_out_link" link with "[LANG:profile.dashboard.log_out]" text is displayed
       And the "log_out_icon" icon is displayed
 
-  @jira.QANOV-578747 @android @ber @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
+  @jira.QANOV-578747 @android @ber @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
   @moves @smoke
   Scenario: Moves admin user with a contact email can see it in the contact mail entrypoint
     Given user has a "admin" role
@@ -591,7 +491,7 @@ Feature: Access to Profile Entrypoints First Level
      Then the "contact_email_entrypoint" entrypoint is displayed
       And the "contact_email_current" textfield with "[CONTEXT:contact_method_email]" text is displayed
 
-  @jira.QANOV-578748 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @jira.QANOV-578748 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   @regression
   Scenario: Moves admin user without a contact email can see the contact mail entrypoint without an email
     Given user has a "admin" role
@@ -599,7 +499,7 @@ Feature: Access to Profile Entrypoints First Level
      Then the "contact_email_entrypoint" entrypoint is displayed
       And the "contact_email_current" textfield is not displayed
 
-  @jira.QANOV-578749 @android @ber @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
+  @jira.QANOV-578749 @android @ber @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
   @moves @smoke
   Scenario: Moves admin user with a contact phone can see it in the contact phone entrypoint
     Given user has a "admin" role
@@ -607,7 +507,7 @@ Feature: Access to Profile Entrypoints First Level
      Then the "contact_phone_entrypoint" entrypoint is displayed
       And the "contact_phone_current" textfield with "[CONTEXT:contact_method_phone]" text is displayed
 
-  @jira.QANOV-578750 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @jira.QANOV-578750 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   @regression
   Scenario: Moves admin user without a contact phone can see the contact phone entrypoint without an email
     Given user has a "admin" role
@@ -615,14 +515,14 @@ Feature: Access to Profile Entrypoints First Level
      Then the "contact_phone_entrypoint" entrypoint is displayed
       And the "contact_phone_current" textfield is not displayed
 
-  @jira.QANOV-578751 @android @ber @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
+  @jira.QANOV-578751 @android @ber @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
   @moves @smoke
   Scenario: Moves admin can see the payments method entrypoint
     Given user has a "admin" role
      Then the "payment_method_entrypoint" entrypoint is displayed
       And the "payment_method_entrypoint.title" textfield with "Tarjeta y Cuenta bancaria" text is displayed
 
-  @jira.QANOV-578752 @android @ber @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
+  @jira.QANOV-578752 @android @ber @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
   @moves @smoke
   Scenario: Moves admin with landline product can see the tokens entrypoint
     Given user has a "admin" role
@@ -630,14 +530,14 @@ Feature: Access to Profile Entrypoints First Level
      Then the "tokens_entrypoint" entrypoint with "Mis tokens" text is displayed
       And the "tokens_description" textfield with "Consigue tokens y gana recompensas" text is displayed
 
-  @jira.QANOV-578753 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @jira.QANOV-578753 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   @regression
   Scenario: Moves admin without landline product can not see the tokens entrypoint
     Given user has a "admin" role
       And user has not a "landline" product
      Then the "tokens_entrypoint" entrypoint is not displayed
 
-  @jira.QANOV-578754 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @jira.QANOV-578754 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   @smoke
   Scenario: Moves admin with tv product and a Movistar+ email can see the Movistar Plus entrypoint
     Given user has a "admin" role
@@ -646,7 +546,7 @@ Feature: Access to Profile Entrypoints First Level
      Then the "movistar_plus_entrypoint" entrypoint with "Cambio usuario Movistar Plus+" text is displayed
       And the "movistar_plus_email" textfield is displayed
 
-  @jira.QANOV-578755 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @jira.QANOV-578755 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   @regression
   Scenario: Moves admin with satelite tv product can see the Movistar Plus entrypoint
     Given user has a "admin" role
@@ -654,14 +554,14 @@ Feature: Access to Profile Entrypoints First Level
      Then the "movistar_plus_entrypoint" entrypoint with "Cambio usuario Movistar Plus+" text is displayed
       And the "movistar_plus_email" textfield is not displayed
 
-  @jira.QANOV-578756 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @jira.QANOV-578756 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   @regression
   Scenario: Moves admin with ott product can not see the Movistar Plus entrypoint
     Given user has a "admin" role
       And user has a "ott" product
      Then the "movistar_plus_entrypoint" entrypoint is not displayed
 
-  @jira.QANOV-578757 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @jira.QANOV-578757 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   @regression
   Scenario: Moves admin with >1 tv product can see the Movistar Plus entrypoint
     Given user has a "admin" role
@@ -669,34 +569,34 @@ Feature: Access to Profile Entrypoints First Level
      Then the "movistar_plus_entrypoint" entrypoint with "Cambio usuario Movistar Plus+" text is displayed
       And the "movistar_plus_email" textfield is not displayed
 
-  @jira.QANOV-578758 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @jira.QANOV-578758 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   @smoke
   Scenario: Moves user with PIN enabled can see the pin/biometric entrypoint entrypoint
     Given user has "PIN" feature "enabled" in the application
      Then the "pin_biometric_entrypoint" entrypoint with "PIN / Acceso biométrico" text is displayed
       And the "pin_biometric_status" textfield with "Activado" text is displayed
 
-  @jira.QANOV-578759 @android @ber @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
+  @jira.QANOV-578759 @android @ber @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
   @moves @smoke
   Scenario: Moves user with PIN disabled can see the pin/biometric entrypoint entrypoint
     Given user has "PIN" feature "disabled" in the application
      Then the "pin_biometric_entrypoint" entrypoint with "PIN / Acceso biométrico" text is displayed
       And the "pin_biometric_status" textfield with "Desactivado" text is displayed
 
-  @jira.QANOV-596628 @android @ber @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
+  @jira.QANOV-596628 @android @ber @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
   @moves @smoke
   Scenario: User with phone number stored as recovery method can see it in the recovery method entrypoint
     Given user has "phone_number" as recovery method
      Then the "recovery_method_subtitle" textfield with "[CONTEXT:recovery_phone_number]" text is displayed
 
-  @jira.QANOV-596629 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
-  @smoke
+  @jira.QANOV-596629 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @smoke @ber
   Scenario: User with email stored as recovery method can see it in the recovery method entrypoint
     Given user has "email" as recovery method
      Then the "recovery_method_subtitle" textfield with "[CONTEXT:recovery_email]" text is displayed
 
-  @jira.QANOV-596630 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @jira.QANOV-596630 @android @e2e @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   @regression
-  Scenario: User without recovery method won't see a subtitle it in the recovery entrypoint
+  Scenario: User without recovery method will see custom sunbtitle in the recovery entrypoint
     Given user has no recovery method
-     Then the "recovery_method_subtitle" textfield is not displayed
+     Then the "recovery_method_subtitle" textfield is displayed

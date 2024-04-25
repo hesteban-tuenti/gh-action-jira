@@ -401,7 +401,6 @@ Feature: Support tab content
   @jira.QANOV-408275 @android @ber @ios @jira.cv.Future @manual @mobile @o2es @sanity @tbd
   Scenario: An o2es user can access to the Support tab content
     TBD the modules for the cms.
-    Whatsapp support card is only displayed within support service time from 9 to 22 (Mon-Sun)
     Given user is in the "Account" page
       And user has the "Phone Assistance,Chat Assistance,Email Assistance,Whatsapp Assistance,Availabilty Times,More Info,Incidences,New Incidence" modules configured in CMS for "Support" page
      When clicks on the "navigation_tab_bar.support_tab" tab
@@ -412,6 +411,7 @@ Feature: Support tab content
       And each card in the "contact_methods" carousel has the "icon" field
       And each card in the "contact_methods" carousel has the "text" field
       And the "contact_methods.phone" card is displayed
+      And the "contact_methods.whatsapp" card is displayed
       And the "contact_methods.email" card is displayed
       And the "more_info" module is displayed
       And the "more_info.icon" icon is displayed
@@ -419,15 +419,15 @@ Feature: Support tab content
       And the "more_info.description" textfield is displayed
       And the "more_info.chevron" textfield is displayed
       And the "incidences_title" textfield is displayed
-      And the "new_incidence_module" module is displayed
-      And the "new_incidence_module.icon" icon is displayed
-      And the "new_incidence_module.title" textfield is displayed
-      And the "new_incidence_module.description" textfield is displayed
-      And the "new_incidence_module.button" button is displayed
       And the "incidences_module" module is displayed
       And the "incidences_module.icon" icon is displayed
       And the "incidences_module.title" textfield is displayed
       And the "incidences_module.description" textfield is displayed
       And the "incidences_module.chevron" element is on display
+      And the "new_incidence_module" module is displayed
+      And the "new_incidence_module.icon" icon is displayed
+      And the "new_incidence_module.title" textfield is displayed
+      And the "new_incidence_module.description" textfield is displayed
+      And the "new_incidence_module.button" button is displayed
       And the "whatsapp_availabilty_times_title" textfield is displayed
       And the "whatsapp_availabilty_times_description" textfield is displayed

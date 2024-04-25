@@ -585,16 +585,6 @@ Feature: Credentials negative
       And the "message" textfield with "Por favor, genérala de nuevo para acceder. Error: F4N865VKLP" text is displayed
       And the "accept" button with "Nueva contraseña" text is displayed
 
-  @jira.QANOV-453618 @android @ios @jira.cv.Future @mobile @no_automatable @o2es @regression
-  Scenario: User can see an technical problems error when trying to log in with user/pwd
-     When user is in the "O2es Credentials Login" page
-      And fills the "identifier_inputtext" inputtext with the "[CONTEXT:user.legado_user_user]" text
-      And fills the "password_field" inputtext with the "[CONTEXT:user.password]" text
-      And clicks on the "continue_button" button
-     Then the "Login Error" popup is displayed
-      And the "popup.title" textfield with "Algo ha ido mal" text is displayed
-      And the "popup.description" textfield with "En este momento no es posible iniciar sesión en Mi O2 por motivos técnicos. Por favor, inténtalo más tarde." text is displayed
-
   @jira.QANOV-453619 @android @ios @jira.cv.Future @mobile @no_automatable @o2es @regression
   Scenario: Migrated legado user without password can see an error when trying to log in with user/pwd
     Error Code 208

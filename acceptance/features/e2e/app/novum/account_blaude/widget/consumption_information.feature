@@ -238,7 +238,7 @@ Feature: Consumption information
       And the "balance_value" textfield with the "\d+,\d\d €" format is displayed
       And the "balance_value" textfield is displayed in "black" color
 
-  @jira.QANOV-292412 @android @blaude @ios @jira.cv.14.4 @jira.link.detects.ANDROID-13266 @mobile @regression @har
+  @jira.QANOV-292412 @android @blaude @ios @jira.cv.14.4 @jira.link.detects.ANDROID-13266 @manual @mobile @regression @har
   Scenario: Prepay user with balance 0 can see his/her balance in red on the Account widget
     Given user has a "prepay" account type
       And user has a "0" balance

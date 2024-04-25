@@ -5,178 +5,6 @@ Feature: Access to Profile Entrypoints Second Level
   Actions Before each Scenario:
     Given user is in the "Profile" page
 
-
-  @jira.<jira_id> @android @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @mobile @moves
-  Scenario Outline: A moves user with <account_type> account type and <role_type> role can access to the Security&Privacy screen
-    Given user has a "<account_type>" account type
-      And user has a "<role_type>" role
-     When clicks on the "security_and_privacy_entrypoint" entrypoint
-      And the "Security And Privacy" page is displayed
-      And the "Seguridad" header is displayed
-     Then the "security_and_privacy_list" list with "<entrypoint_list>" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-    @automatic @cert2 @live @next @sanity @har
-    Examples:
-          | account_type | role_type | entrypoint_list                                                                                                                                                                                                        | jira_id      |
-          | telco        | any_admin | [LANG:profile.dashboard.privacy_and_security.contact_method_entrypoint];[LANG:profile.security_and_privacy.biometric_pin_access.page_header];[LANG:profile.security_and_privacy.session_management.session_management] | QANOV-205517 |
-
-    @impeded_legacy @no_automatable @regression
-    Examples:
-          | account_type | role_type | entrypoint_list                                                                                                                                                                                                              | jira_id      |
-          | legado       | any       | [LANG:profile.security_and_privacy.biometric_pin_access.page_header];[LANG:profile.security_and_privacy.session_management.session_management];[LANG:profile.dashboard.privacy_and_security.wifi_password_change_entrypoint] | QANOV-205519 |
-
-  @jira.QANOV-295106 @android @deprecate_profile_moves @har @ios @jira.cv.14.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-293817 @manual @mobile @moves @sanity
-  Scenario: An ADMIN moves user can see the change password option in the Security&Privacy screen
-    This test can be closed after the regression of Digital Hub and update QANOV-205517 instead
-    Given user has a "admin" role
-     When clicks on the "security_and_privacy_entrypoint" entrypoint
-      And the "Security And Privacy" page is displayed
-      And the "Seguridad" header is displayed
-     Then the "[LANG:profile.security_and_privacy.change_password.entrypoint]" entrypoint is displayed
-
-  @jira.QANOV-295106 @android @deprecate_profile_moves @ios @jira.cv.14.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-293817 @manual @mobile @moves @regression
-  Scenario: An ADMIN moves user can see the change password option in the Security&Privacy screen
-    This test can be closed after the regression of Digital Hub and update QANOV-205517 instead
-    Given user has a "admin" role
-     When clicks on the "security_and_privacy_entrypoint" entrypoint
-      And the "Security And Privacy" page is displayed
-      And clicks on the "[LANG:profile.security_and_privacy.change_password.entrypoint]" entrypoint
-     Then the internal webview with "Área privada Movistar" header is displayed
-      And the "Cambio de contraseña" string is displayed
-
-  @jira.<jira_id> @android @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-131587 @jira.link.parent_test_plan.QANOV-203801 @manual @mobile @moves @regression
-  Scenario Outline: User without subscriptions and with a '<plan_order>' plan order on track can access to the Security&Privacy screen
-    Given user has a "telco postpay" account type
-      And user has a "any_admin" role
-      And user has a "<plan_order>" order on track
-      And user has "0" active subscriptions
-     When clicks on the "security_and_privacy_entrypoint" entrypoint
-      And the "Security And Privacy" page is displayed
-     Then the "security_and_privacy_list" list with "[LANG:profile.security_and_privacy.biometric_pin_access.page_header];[LANG:profile.security_and_privacy.session_management.session_management];[LANG:profile.dashboard.privacy_and_security.contact_method_entrypoint];[LANG:profile.dashboard.privacy_and_security.wifi_password_change_entrypoint]" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-    Examples:
-          | plan_order | test_priority | jira_id      |
-          | any_plan   | smoke         | QANOV-205520 |
-
-  @jira.<jira_id> @android @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-131587 @jira.link.parent_test_plan.QANOV-203801 @manual @mobile @moves @regression
-  Scenario Outline: User without subscriptions and with a '<plan_order>' plan order on track with some issue can access to the Security&Privacy screen
-    Given user has a "telco postpay" account type
-      And user has a "any_admin" role
-      And user has a "<plan_order>" order on track with some issue
-      And user has "0" active subscriptions
-     When clicks on the "security_and_privacy_entrypoint" entrypoint
-      And the "Security And Privacy" page is displayed
-     Then the "security_and_privacy_list" list with "[LANG:profile.security_and_privacy.biometric_pin_access.page_header];[LANG:profile.security_and_privacy.session_management.session_management];[LANG:profile.dashboard.privacy_and_security.contact_method_entrypoint];[LANG:profile.dashboard.privacy_and_security.wifi_password_change_entrypoint]" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-    Examples:
-          | plan_order     | jira_id      |
-          | fusion;pikolin | QANOV-205521 |
-
-  @jira.QANOV-205522 @android @automatic @cert2 @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @smoke @har
-  Scenario: A moves user with telco postpay account type and admin role can access to the 'Facturación' screen
-    Given user has a "telco postpay" account type
-      And user has a "admin" role
-     When clicks on the "invoicing_entrypoint" entrypoint
-      And the "Invoicing Profile" page is displayed
-     Then the "invoicing_list" list with "[LANG:profile.dashboard.invoicing.my_payment_methods];[LANG:profile.dashboard.invoicing.billing_address];[LANG:profile.dashboard.invoicing.invoice_claim];[LANG:profile.dashboard.invoicing.digital_invoice]" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-  @jira.QANOV-322974 @android @deprecate_profile_moves @ios @jira.cv.14.1 @jira.dv.Future @manual @mobile @moves
-  @regression
-  Scenario: An ADMIN LIGHT user can't access to "Facturación" option: user escalation is required
-    Given user has a "telco postpay" account type
-      And user has a "admin-light" role
-     When clicks on the "invoicing_entrypoint" entrypoint
-     Then the "Login Escalation Required" page is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-  @jira.QANOV-205523 @android @automatic @cert2 @deprecate_profile_moves @har @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @smoke
-  Scenario: A moves user can access to the 'Configuración de la App' screen in Android devices
-     When clicks on the "app_configuration_entrypoint" entrypoint
-      And the "App Configuration" page is displayed
-     Then the "app_configuration_list" list with "[LANG:profile.dashboard.app_configuration.notifications_management.notifications_management_name];[LANG:profile.dashboard.app_configuration.play_store]" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-  @jira.QANOV-205524 @automatic @cert2 @deprecate_profile_moves @har @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @live @mobile @moves @next @smoke
-  Scenario: A moves user can access to the 'Configuración de la App' screen in iOS devices
-     When clicks on the "app_configuration_entrypoint" entrypoint
-      And the "App Configuration" page is displayed
-     Then the "app_configuration_list" list with "[LANG:profile.dashboard.app_configuration.notifications_management.notifications_management_name];[LANG:profile.dashboard.app_configuration.app_store]" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-  @jira.<jira_id> @android @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @mobile @moves
-  Scenario Outline: A moves user with <account_type> account type and <role_type> role can access to the 'Centro de transparencia' screen
-    Given user has a "<account_type>" account type
-      And user has a "<role_type>" role
-     When clicks on the "transparency_center_entrypoint" entrypoint
-      And the "Transparency Center" page is displayed
-     Then the "transparency_center_list" list with "<entrypoint_list>" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-    @automatic @cert2 @har @live @next @sanity
-    Examples:
-          | account_type | role_type | entrypoint_list                                                                                                                                                                                  | jira_id      |
-          | telco        | any_admin | [LANG:profile.dashboard.transparency_center.terms_and_conditions];[LANG:profile.dashboard.transparency_center.privacy_preferences];[LANG:profile.dashboard.transparency_center.ask_and_download] | QANOV-205525 |
-
-    @impeded_legacy @no_automatable @regression
-    Examples:
-          | account_type | role_type | entrypoint_list                                                                                                                    | jira_id      |
-          | legado       | any_admin | [LANG:profile.dashboard.transparency_center.terms_and_conditions];[LANG:profile.dashboard.transparency_center.privacy_preferences] | QANOV-205527 |
-
-  @jira.<jira_id> @android @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-131587 @jira.link.parent_test_plan.QANOV-203801 @manual @mobile @moves @regression
-  Scenario Outline: User without subscriptions and with a '<plan_order>' plan order on track can access to the 'Centro de transparencia' screen
-    Given user has a "telco postpay" account type
-      And user has a "any_admin" role
-      And user has a "<plan_order>" order on track
-      And user has "0" active subscriptions
-     When clicks on the "transparency_center_entrypoint" entrypoint
-      And the "Transparency Center" page is displayed
-     Then the "transparency_center_list" list with "Términos y condiciones;Preferencias de privacidad;Consulta y descarga de datos" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-    Examples:
-          | plan_order | test_priority | jira_id      |
-          | any_plan   | smoke         | QANOV-205528 |
-
-  @jira.<jira_id> @android @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-131587 @jira.link.parent_test_plan.QANOV-203801 @manual @mobile @moves @regression
-  Scenario Outline: User without subscriptions and with a '<plan_order>' plan order on track with some issue can access to the 'Centro de transparencia' screen
-    Given user has a "telco postpay" account type
-      And user has a "any_admin" role
-      And user has a "<plan_order>" order on track with some issue
-      And user has "0" active subscriptions
-     When clicks on the "transparency_center_entrypoint" entrypoint
-      And the "Transparency Center" page is displayed
-     Then the "transparency_center_list" list with "Términos y condiciones;Preferencias de privacidad;Consulta y descarga de datos" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-    Examples:
-          | plan_order     | jira_id      |
-          | fusion;pikolin | QANOV-205529 |
-
   @jira.<jira_id> @<product> @android @ber @ios @jira.cv.<cv> @jira.link.parent_test_plan.<parent_test_plan>
   @jira.link.relates_to.NOV-47205 @mobile @sanity
   Scenario Outline: A <product> user with <account_type> account type can access to the Security&Privacy screen
@@ -267,52 +95,6 @@ Feature: Access to Profile Entrypoints Second Level
           | 10.3 | legacy prepay | QANOV-24141                                      | QANOV-189491 |
           | 12.4 | AO2 postpay   | QANOV-24140                                      | QANOV-189492 |
           | 12.0 | device        | QANOV-35253:QANOV-24141:QANOV-77438:QANOV-178803 | QANOV-189493 |
-
-  @jira.QANOV-6201 @android @deprecate_profile_moves @ios @jira.cv.11.6 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-21052 @jira.link.relates_to.NOV-163887 @mobile @moves @no_automatable @regression
-  Scenario: A Telco in user can access to the Security&Privacy screen
-    Given user has a "telco-in" account type
-     When clicks on the "security_and_privacy_entrypoint" entrypoint
-     Then the "Security And Privacy" page is displayed
-      And the "security_and_privacy_list" list with "[LANG:profile.security_and_privacy.biometric_pin_access.page_header];[LANG:profile.security_and_privacy.session_management.session_management];[LANG:profile.dashboard.privacy_and_security.wifi_password_change_entrypoint]" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-  @jira.QANOV-6202 @android @deprecate_profile_moves @ios @jira.cv.11.8 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-21049 @jira.link.relates_to.NOV-194615 @mobile @moves @no_automatable @regression
-  Scenario: A Telco out user can access to the Security&Privacy screen
-    Given user has a "telco-out" account type
-     When clicks on the "security_and_privacy_entrypoint" entrypoint
-     Then the "Security and Privacy" page is displayed
-      And the "security_and_privacy_list" list with "[LANG:profile.security_and_privacy.biometric_pin_access.page_header];[LANG:profile.security_and_privacy.session_management.session_management];[LANG:profile.dashboard.privacy_and_security.contact_method_entrypoint];[LANG:profile.dashboard.privacy_and_security.wifi_password_change_entrypoint]" entrypoints is displayed
-      And the "privacy_preferences" entrypoint is not displayed
-      And the "contact_methods" entrypoint is not displayed
-      And the "access_download_data" entrypoint is not displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-  @jira.<jira_id> @android @deprecate_profile_moves @ios @jira.cv.13.3 @jira.dv.Future
-  @jira.link.parent_test_plan.QANOV-203801 @mobile @moves @regression
-  Scenario Outline: <account_type> user can access to Personal Data screen
-    other_affected_versions="2021-09"
-    Given user has a "<account_type>" account type
-      And clicks on the "avatar_tooltip.close_button" element if visible
-     When clicks on the "personal_data_entrypoint" entrypoint
-     Then the "Personal Data" page is displayed
-      And the "Datos personales" header is displayed
-      And the "personal_data_list" list with "<list>" entrypoints is displayed
-      And clicks on the "navigation_top_bar.back_button" button
-      And the "Profile" page is displayed
-
-    @automatic @cert2 @har @live @next
-    Examples:
-          | account_type | list                                                                                                                                                            | jira_id      |
-          | telco        | [LANG:profile.dashboard.personal_data.email_address];[LANG:profile.dashboard.personal_data.phone_number];[LANG:profile.dashboard.personal_data.shop_identifier] | QANOV-205530 |
-
-    @impeded_legacy @no_automatable
-    Examples:
-          | account_type | list                                                   | jira_id      |
-          | legado       | [LANG:profile.dashboard.personal_data.shop_identifier] | QANOV-205531 |
 
   @jira.<jira_id> @<product> @android @automatic @ber @ios @jira.cv.<cv> @jira.link.detects.<detects>
   @jira.link.parent_test_plan.<parent_test_plan> @live @mobile @next @smoke @har
@@ -1267,12 +1049,12 @@ Feature: Access to Profile Entrypoints Second Level
 
   @jira.QANOV-410670 @android @ios @jira.cv.Future @manual @mobile @o2es @regression
   Scenario: A user without personal data completed can access to the "Personal data" screen: No personal data is displayed
+    Users always have a bank account, so that will be displayed
     Given user has not completed the personal data
      When clicks on the "personal_data" entrypoint
      Then the "Personal Data" page is displayed
       And the "phone_number_data" textfield is not displayed
       And the "email_address_data" textfield is not displayed
-      And the "bank_account_data" textfield is not displayed
 
   @jira.QANOV-491884 @android @ios @jira.cv.Future @manual @mobile @o2es @smoke
   Scenario: A user has not verified the contacts methods: An alert is displayed in the Personal Data page
@@ -1285,6 +1067,13 @@ Feature: Access to Profile Entrypoints Second Level
       And the "verify_alert.message" textfield is displayed
       And the "verify_alert.link" link is displayed
 
+  @jira.QANOV-491884 @android @ios @jira.cv.Future @manual @mobile @o2es @regression @e2e
+  Scenario: A user verified the contacts methods: alert is not displayed in the Personal Data page
+    Given user has verified the personal data
+     When clicks on the "personal_data" entrypoint
+     Then the "Personal Data" page is displayed
+      And the "verify_alert" alert is not displayed
+
   @jira.QANOV-491885 @android @ios @jira.cv.Future @manual @mobile @o2es @smoke
   Scenario: An admin user clicks on the alert to verify contact methods from Personal Data screen: OB webview is displayed
     Given user has not verified the personal data
@@ -1292,8 +1081,8 @@ Feature: Access to Profile Entrypoints Second Level
      When clicks on the "personal_data" entrypoint
       And the "Personal Data" page is displayed
       And clicks on the "alert.link" link
-     Then the internal webview is displayed
-      And clicks on the "navigation_top_bar.back_button" button
+     Then the browser webview is displayed
+      And clicks on the "navigation_top_bar.close_button" button
       And the "Personal Data" page is displayed
 
   @jira.QANOV-491886 @android @ios @jira.cv.Future @manual @mobile @o2es @regression
@@ -1305,7 +1094,7 @@ Feature: Access to Profile Entrypoints Second Level
       And clicks on the "alert.link" link
      Then the "O2es Escalation Login" page is displayed
 
-  @jira.QANOV-556367 @android @ber @har @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
+  @jira.QANOV-556367 @android @ber @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile
   @moves @sanity
   Scenario: A moves user can access to the 'Términos y condiciones' page from profile tab
      When clicks on the "terms_and_conditions_entrypoint" entrypoint
@@ -1314,8 +1103,8 @@ Feature: Access to Profile Entrypoints Second Level
       And clicks on the "navigation_top_bar.back_button" button
       And the "Profile" page is displayed
 
-  @jira.QANOV-556368 @android @har @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
-  @sanity
+  @jira.QANOV-556368 @android @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @sanity @ber
   Scenario: A moves admin user can access to the 'Gestión de tu privacidad' page from profile tab
     Given user has a "admin" role
      When clicks on the "privacy_management_entrypoint" entrypoint
@@ -1325,7 +1114,7 @@ Feature: Access to Profile Entrypoints Second Level
       And clicks on the "navigation_top_bar.back_button" button
       And the "Profile" page is displayed
 
-  @jira.QANOV-556369 @android @har @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
+  @jira.QANOV-556369 @android @ios @jira.cv.24.3 @jira.link.parent_test_plan.QANOV-525498 @manual @mobile @moves
   @sanity
   Scenario: A moves admin-light user can access to the 'Gestión de tu privacidad' page from profile tab
     Given user has a "admin" role

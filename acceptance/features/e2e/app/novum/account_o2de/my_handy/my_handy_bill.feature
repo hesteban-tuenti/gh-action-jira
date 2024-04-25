@@ -5,7 +5,7 @@ Feature: My Handy Bill
   Actions Before each Scenario:
     Given user has a "postpay" account type
       And user has a "my_handy" product
-      And user has the "My Handy card" module configured in CMS for "Account" page
+      And user has any of the "device-plan,device-plan-terminated" modules configured in CMS for "dashboard" page
       And user has the "My Handy Details" module configured in CMS for "My Handy Details" page
       And user has the "My Handy Bill" module configured in CMS for "My Handy Bill" page
 
@@ -13,7 +13,7 @@ Feature: My Handy Bill
   @jira.QANOV-325149 @android @automation.pending_mock @ber @e2e @ios @jira.cv.14.2 @jira.dv.Future
   @jira.link.depends_on.QANOV-215952 @jira.link.depends_on.QANOV-215953 @jira.link.depends_on.QANOV-215954
   @jira.link.depends_on.QANOV-215955 @jira.link.depends_on.QANOV-297968 @jira.link.depends_on.QANOV-326792
-  @jira.link.parent_test_plan.QANOV-607136 @manual @mobile @o2de @smoke
+  @jira.link.parent_test_plan.QANOV-607136 @automatic @mobile @o2de @smoke @next @live
   Scenario: Postpay user with a MyHandy product can access the "Bills" webview
     Given user has the matching subscription selected in the account
       And user is in the "My Handy Details" page

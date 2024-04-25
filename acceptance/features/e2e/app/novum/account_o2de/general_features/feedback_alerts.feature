@@ -198,7 +198,7 @@ Feature: Feedback alerts
      Then the "alert" element is on display
       And the "alert.5g_icon" icon is displayed
       And the "alert.title" textfield with "Note on 5G SA" text is displayed
-      And the "alert.description" textfield with the "Your \d+ tariff is 5G SA capable. One or more of your SIM cards are too old to use 5G SA and need to be replaced." format is displayed
+      And the "alert.description" textfield with the "Some of your products are 5G SA capable but one or more of your SIM cards are too old to use 5G SA and need to be replaced. You can exchange them without any costs." format is displayed
       And the "alert.order_sim_button" button with "Order SIM" text is displayed
       And the "alert.5g_info_button" button with "What is 5G SA" text is displayed
       And the "alert.close_button" button is displayed
@@ -249,9 +249,9 @@ Feature: Feedback alerts
       And user is in the "Account" page
      Then the "alert" element is on display
       And the "alert.alert_icon" icon is displayed
-      And the "alert.title" textfield with "Why is my bill higher than last month?" text is displayed
-      And the "alert.description" textfield with "Learn why it has increased and how to avoid future extra spendings" text is displayed
-      And the "alert.learn_more_button" button with "Learn more" text is displayed
+      And the "alert.title" textfield with "Warum ist meine Rechnung höher als letzten Monat?" text is displayed
+      And the "alert.description" textfield with "Erfahre den Grund für den Anstieg und wie du Zusatzkosten vermeidest" text is displayed
+      And the "alert.learn_more_button" button with "Mehr erfahren" text is displayed
       And the "alert.close_button" button is not displayed
 
   @jira.QANOV-600336 @android @e2e @ios @jira.cv.Future @jira.link.parent_test_plan.QANOV-606554 @manual @mobile @o2de

@@ -55,8 +55,8 @@ Feature: Dashboard
 
     @automatic @next @live
     Examples:
-          | internet_at_home_product | ber | test_priority | jira_id      |
-          | dsl                      | ber | sanity        | QANOV-38257  |
+          | internet_at_home_product | ber | test_priority | jira_id     |
+          | dsl                      | ber | sanity        | QANOV-38257 |
 
     @manual
     Examples:
@@ -104,6 +104,7 @@ Feature: Dashboard
       And user has a "my_handy" product in "active" status
       And user has the matching subscription selected in the account
       And user has any of the "device-plan,device-plan-terminated" modules configured in CMS for "dashboard" page
+      And user has the "services-summary" module configured in CMS for "dashboard" page
      Then the "myhandy" module is displayed
       And the "promo" module is not displayed
       And the "highlighted_services" module is displayed
