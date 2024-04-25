@@ -25,6 +25,7 @@ jobs:
         shell: bash
         run: |
           basenames=$(find ${{ env.FEATURES_PATH }} -maxdepth 1 -type d | grep -v -E "${{ env.EXCLUDED_PATH_REGEX }}")
+          echo "Basename: $basenames"
           for name in $basenames; do
             echo "Basename: $name"
             curl -X POST \
