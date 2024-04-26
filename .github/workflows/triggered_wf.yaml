@@ -40,7 +40,7 @@ jobs:
 
           files=$(find ${{ github.event.inputs.basename }} -type f -name "$feature")
 
-          if [ -n "${{ github.event.inputs.feature }}"];then
+          if [ -n "${{ github.event.inputs.feature }}" ];then
             file_array=($files)
             num_files=${#file_array[@]}
             if [ $num_files > 1 ]; then
@@ -48,6 +48,7 @@ jobs:
               exit 1
             fi
           fi
+
           matrix="::set-output name=matrix::{\"include\":["
           for file in $files; do
             file=$(echo $file | sed 's|./acceptance/||')
