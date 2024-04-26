@@ -44,7 +44,7 @@ jobs:
           if [ -n "${{ github.event.inputs.feature }}" ];then
             file_array=($files)
             num_files=${#file_array[@]}
-            if [ $num_files gt 1 ]; then
+            if [ $num_files -gt 1 ]; then
               echo "Multiple files found, please provide a more specific basename"
               exit 1
             fi
