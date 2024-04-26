@@ -33,6 +33,7 @@ jobs:
           else
             echo "Feature file provided: ${{ github.event.inputs.feature }}"
             feature="${{ github.event.inputs.feature }}"
+          fi
 
           files=$(find ${{ github.event.inputs.basename }} -type f -name "$feature")
           echo "Found files: $files"
