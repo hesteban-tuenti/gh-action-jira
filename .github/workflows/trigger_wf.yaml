@@ -3,29 +3,30 @@ name: Triggering Workflow
 on:
     workflow_dispatch:
       inputs:
-        type:
-          description: 'app or web'
-          required: true
         project:
-          description: 'novum b2p cms'
           required: true
+          type: choice
+          description: 'Project name'
+          options:
+            - 'QANOV'
+            - 'QABP'
 
 jobs:
   get_basenames_and_trigger_workflows:
     runs-on: ubuntu-latest
-    env:
-        FEATURES_PATH: "./acceptance/features/e2e/${{ github.event.inputs.type }}/${{ github.event.inputs.project }}"
-        EXCLUDED_PATH_REGEX: '.*\/(_setup|jenkins|steps|__pycache__)|${{ github.event.inputs.project }}$'
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      
-      - name: Retrieve all basenames and trigger workflows
-        id: set-matrix-base
+  
+      - name: Trigger workflows for QANOV app
+        if: ${{ inputs.project == 'QANOV'}}
+        env:
+          FEATURES_PATH: "./acceptance/features/e2e/app/novum"
+          EXCLUDED_PATH_REGEX: '.*\/(_setup|jenkins|steps|__pycache__)|novum$'
         shell: bash
         run: |
           basenames=$(find ${{ env.FEATURES_PATH }} -maxdepth 1 -type d | grep -v -E "${{ env.EXCLUDED_PATH_REGEX }}")
-          echo "Basename: $basenames"
+          echo "Basenames: $basenames"
           for name in $basenames; do
             echo "Basename: $name"
             curl -X POST \
@@ -35,9 +36,85 @@ jobs:
             -d "{
                 \"ref\": \"main\",
                 \"inputs\": {
-                  \"basename\": \"$name\"
+                  \"basename\": \"$name\",
+                  \"project\": \"${{ inputs.project}}\"
                     }
                 }"
             break
           done
-          
+
+      - name: Trigger workflows for QANOV web
+        if: ${{ inputs.project == 'QANOV'}}
+        id: set-matrix-base
+        env:
+          FEATURES_PATH: "./acceptance/features/e2e/web/novum"
+          EXCLUDED_PATH_REGEX: '.*\/(_setup|jenkins|steps|__pycache__)|novum$'
+        shell: bash
+        run: |
+          basenames=$(find ${{ env.FEATURES_PATH }} -maxdepth 1 -type d | grep -v -E "${{ env.EXCLUDED_PATH_REGEX }}")
+          echo "Basenames: $basenames"
+          for name in $basenames; do
+            echo "Basename: $name"
+            curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.WF_PAT }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/triggered_wf.yaml/dispatches \
+            -d "{
+                \"ref\": \"main\",
+                \"inputs\": {
+                  \"basename\": \"$name\",
+                  \"project\": \"${{ inputs.project}}\"
+                    }
+                }"
+            break
+          done
+
+      - name: Trigger workflows for QANOV cms
+        if: ${{ inputs.project == 'QANOV'}}
+        env:
+          FEATURES_PATH: "./acceptance/features/e2e/web/cms"
+          EXCLUDED_PATH_REGEX: '.*\/(_setup|jenkins|steps|__pycache__)|cms$'
+        shell: bash
+        run: |
+          basenames=$(find ${{ env.FEATURES_PATH }} -maxdepth 1 -type d | grep -v -E "${{ env.EXCLUDED_PATH_REGEX }}")
+          echo "Basenames: $basenames"
+          for name in $basenames; do
+            echo "Basename: $name"
+            curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.WF_PAT }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/triggered_wf.yaml/dispatches \
+            -d "{
+                \"ref\": \"main\",
+                \"inputs\": {
+                  \"basename\": \"$name\",
+                  \"project\": \"${{ inputs.project}}\"
+                    }
+                }"
+            break
+          done
+
+      - name: Trigger workflows for QABP
+        if: ${{ inputs.project == 'QABP'}}
+        env:
+          FEATURES_PATH: "./acceptance/features/e2e/app/b2p"
+          EXCLUDED_PATH_REGEX: '.*\/(_setup|jenkins|steps|__pycache__)|b2p$'
+        shell: bash
+        run: |
+          basenames=$(find ${{ env.FEATURES_PATH }} -maxdepth 1 -type d | grep -v -E "${{ env.EXCLUDED_PATH_REGEX }}")
+          echo "Basenames: $basenames"
+          for name in $basenames; do
+            echo "Basename: $name"
+            curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.WF_PAT }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/triggered_wf.yaml/dispatches \
+            -d "{
+                \"ref\": \"main\",
+                \"inputs\": {
+                  \"basename\": \"$name\",
+                  \"project\": \"${{ inputs.project}}\"
+                    }
+                }"
+            break
+          done  

@@ -2,6 +2,9 @@ name: Triggered Workflow
 on:
   workflow_dispatch:
     inputs:
+      project:
+        description: 'Project name'
+        required: true
       basename:
         description: 'Directory basename to search for features'
         required: true
@@ -35,20 +38,23 @@ jobs:
   run-action:
     needs: get_matrix_features
     runs-on: ubuntu-latest
-    env:
-        PROJECT: "QANOV"
-        LOCALES: "blaude:blaude_de-de,vivobr:vivobr_pt-br,o2uk:o2uk_en-gb,moves:moves_es-es,o2de:o2de_de-de,o2es:o2es_es-es"
-        ENVIRONMENTS: "blaude:blaude-live,vivobr:vivobr-live,o2uk:o2uk-live,moves:moves-live,o2de:o2de-live,o2es:o2es-live"
     strategy:
         matrix: ${{fromJson(needs.get_matrix_features.outputs.matrix)}}
     steps:
         - name: Checkout repo
-          uses: actions/checkout@v4 
+          uses: actions/checkout@v4
+        
+        - name: Get locales and environments
+          id: get_locales_env
+          uses: './.github/actions/get-locales-environment'
+          with:
+            project: ${{ github.event.inputs.project }}
+
         - name: Run action for each file
           id: get-jira-version
           uses: './.github/actions/update-scenarios'
           with:
-            project: ${{ env.PROJECT }}
+            project: ${{ github.event.inputs.project }}
             feature: ${{ matrix.feature }}
-            locales: ${{ env.LOCALES }}
-            environments: ${{ env.ENVIRONMENTS }}
+            locales: ${{ steps.get_locales_env.outputs.locales }}
+            environments: ${{ steps.get_locales_env.outputs.environments }}

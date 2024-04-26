@@ -1,0 +1,24 @@
+name: Return project locales and environment
+description: 'Return project locales and environment for jira upload' 
+
+inputs:
+  project:
+    required: true
+    description: "project"
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Return project locales QANOV
+      if: ${{ inputs.project == 'QANOV'}}
+      shell: bash
+      run: |
+        echo "locales=blaude:blaude_de-de,vivobr:vivobr_pt-br,o2uk:o2uk_en-gb,moves:moves_es-es,o2de:o2de_de-de,o2es:o2es_es-es" >> $GITHUB_OUTPUT
+        echo "environments=blaude:blaude-live,vivobr:vivobr-live,o2uk:o2uk-live,moves:moves-live,o2de:o2de-live,o2es:o2es-live" >> $GITHUB_OUTPUT
+    
+    - name: Return project locales QABP
+      if: ${{ inputs.project == 'QABP'}}
+      shell: bash
+      run: |
+        echo "locales=was:was_de-de" >> $GITHUB_OUTPUT
+        echo "environments=was:was-live" >> $GITHUB_OUTPUT
