@@ -6,6 +6,14 @@ inputs:
     required: true
     description: "project"
 
+outputs:
+  locales:
+    description: "Jira upload locales"
+    value: ${{ steps.get_locales_env.outputs.locales }}
+  environments:
+    description: "Jira upload environments"
+    value: ${{ steps.get_locales_env.outputs.environments }}
+
 runs:
   using: 'composite'
   steps:
@@ -17,6 +25,7 @@ runs:
         echo "environments=blaude:blaude-live,vivobr:vivobr-live,o2uk:o2uk-live,moves:moves-live,o2de:o2de-live,o2es:o2es-live" >> $GITHUB_OUTPUT
     
     - name: Return project locales QABP
+      id: get_locales_env
       if: ${{ inputs.project == 'QABP'}}
       shell: bash
       run: |

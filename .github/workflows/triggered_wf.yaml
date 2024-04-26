@@ -46,12 +46,12 @@ jobs:
         
         - name: Get locales and environments
           id: get_locales_env
-          # uses: './.github/actions/get-locales-environment'
-          # with:
-          #   project: ${{ github.event.inputs.project }}
-          run: |
-            echo "locales=was:was_de-de" >> $GITHUB_OUTPUT
-            echo "environments=was:was-live" >> $GITHUB_OUTPUT
+          uses: './.github/actions/get-locales-environment'
+          with:
+            project: ${{ github.event.inputs.project }}
+          # run: |
+          #   echo "locales=was:was_de-de" >> $GITHUB_OUTPUT
+          #   echo "environments=was:was-live" >> $GITHUB_OUTPUT
 
         - name: Run action for each file
           id: get-jira-version
