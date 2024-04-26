@@ -8,6 +8,9 @@ on:
       basename:
         description: 'Directory basename to search for features'
         required: true
+      feature:
+        description: 'Feature file to run'
+        required: false
 
 jobs:
   get_matrix_features:
@@ -24,9 +27,18 @@ jobs:
         id: set-matrix-features
         shell: bash
         run: |
-          files=$(find ${{ github.event.inputs.basename }} -type f -name "*.feature")
+          if [ -z "${{ github.event.inputs.feature }}" ]; then
+            echo "Feature file not provided, searching for all features in ${{ github.event.inputs.basename }}"
+            feature="*.feature"
+          else
+            echo "Feature file provided: ${{ github.event.inputs.feature }}"
+            feature="${{ github.event.inputs.feature }}"
+
+          files=$(find ${{ github.event.inputs.basename }} -type f -name "$feature")
+          echo "Found files: $files"
           matrix="::set-output name=matrix::{\"include\":["
           for file in $files; do
+            file=$(echo $file | sed 's|./acceptance/||')
             matrix="${matrix}{\"feature\":\"${file}\"},"
           done
           matrix="${matrix%?}]}" # remove trailing comma and close array
