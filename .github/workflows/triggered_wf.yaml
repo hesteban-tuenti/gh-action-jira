@@ -35,6 +35,8 @@ jobs:
             feature="${{ github.event.inputs.feature }}"
           fi
           echo "Feature: $feature"
+          echo "pwd: $(pwd)"
+          echo "$(ls -la ${{ github.event.inputs.basename }})"
 
           files=$(find ${{ github.event.inputs.basename }} -type f -name "$feature")
           echo "Found files: $files"
