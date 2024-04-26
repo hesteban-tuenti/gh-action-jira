@@ -39,11 +39,12 @@ jobs:
           echo "path: ${{ github.event.inputs.basename }}"
 
           files=$(find ${{ github.event.inputs.basename }} -type f -name "$feature")
+          echo "Files found: $files"
 
           if [ -n "${{ github.event.inputs.feature }}" ];then
             file_array=($files)
             num_files=${#file_array[@]}
-            if [ $num_files > 1 ]; then
+            if [ $num_files gt 1 ]; then
               echo "Multiple files found, please provide a more specific basename"
               exit 1
             fi
