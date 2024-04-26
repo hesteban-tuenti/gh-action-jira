@@ -34,11 +34,11 @@ jobs:
             echo "Feature file provided: ${{ github.event.inputs.feature }}"
             feature="${{ github.event.inputs.feature }}"
           fi
-          # echo "Feature: $feature"
-          # echo "pwd: $(pwd)"
-          # echo "$(ls -la ${{ github.event.inputs.basename }})"
+          echo "Feature: $feature"
+          echo "pwd: $(pwd)"
+          echo "path: ${{ github.event.inputs.basename }}"
 
-          files=$(find ${{ github.event.inputs.basename }} -type f -name "kk.feature")
+          files=$(find ${{ github.event.inputs.basename }} -type f -name "$feature")
           echo "Found files: $files"
           matrix="::set-output name=matrix::{\"include\":["
           for file in $files; do
