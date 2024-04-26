@@ -35,7 +35,7 @@ jobs:
             feature="${{ github.event.inputs.feature }}"
           fi
 
-          files=$(find ${{ github.event.inputs.basename }} -type f -name "$feature")
+          files=$(find ${{ github.event.inputs.basename }} -type f -name "${feature}")
           echo "Found files: $files"
           matrix="::set-output name=matrix::{\"include\":["
           for file in $files; do
