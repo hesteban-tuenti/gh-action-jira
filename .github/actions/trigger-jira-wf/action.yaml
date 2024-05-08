@@ -1,0 +1,38 @@
+name: Trigger Jira workflow
+description: 'Trigger Jira workflow'
+
+inputs:
+  project:
+    required: true
+    description: "project"
+  feature_path:
+    required: true
+    description: "feature path"
+  excluded_path:
+    required: true
+    description: "excluded paths"
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Trigger Jira workflow
+      shell: bash
+      run: |
+          basenames=$(find ${{ inputs.feature_path }} -maxdepth 1 -type d | grep -v -E "${{ inputs.excluded_path }}")
+          echo "Basenames: $basenames"
+          for name in $basenames; do
+            echo "Basename: $name"
+            curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.WF_PAT }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/triggered_wf.yaml/dispatches \
+            -d "{
+                \"ref\": \"main\",
+                \"inputs\": {
+                  \"basename\": \"$name\",
+                  \"project\": \"${{ inputs.project}}\"
+                    }
+                }"
+            break
+          done
+  

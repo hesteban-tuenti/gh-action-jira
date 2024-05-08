@@ -23,25 +23,11 @@ jobs:
         env:
           FEATURES_PATH: "./acceptance/features/e2e/app/novum"
           EXCLUDED_PATH_REGEX: '.*\/(_setup|jenkins|steps|__pycache__)|novum$'
-        shell: bash
-        run: |
-          basenames=$(find ${{ env.FEATURES_PATH }} -maxdepth 1 -type d | grep -v -E "${{ env.EXCLUDED_PATH_REGEX }}")
-          echo "Basenames: $basenames"
-          for name in $basenames; do
-            echo "Basename: $name"
-            curl -X POST \
-            -H "Authorization: Bearer ${{ secrets.WF_PAT }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/triggered_wf.yaml/dispatches \
-            -d "{
-                \"ref\": \"main\",
-                \"inputs\": {
-                  \"basename\": \"$name\",
-                  \"project\": \"${{ inputs.project}}\"
-                    }
-                }"
-            break
-          done
+        uses: './.github/actions/trigger-jira-wf'
+        with:
+          project: ${{ github.event.inputs.project }}
+          features_path: ${{ env.FEATURES_PATH }}
+          excluded_path: ${{ env.EXCLUDED_PATH_REGEX }}
 
       - name: Trigger workflows for QANOV web
         if: ${{ inputs.project == 'QANOV'}}
@@ -49,72 +35,30 @@ jobs:
         env:
           FEATURES_PATH: "./acceptance/features/e2e/web/novum"
           EXCLUDED_PATH_REGEX: '.*\/(_setup|jenkins|steps|__pycache__)|novum$'
-        shell: bash
-        run: |
-          basenames=$(find ${{ env.FEATURES_PATH }} -maxdepth 1 -type d | grep -v -E "${{ env.EXCLUDED_PATH_REGEX }}")
-          echo "Basenames: $basenames"
-          for name in $basenames; do
-            echo "Basename: $name"
-            curl -X POST \
-            -H "Authorization: Bearer ${{ secrets.WF_PAT }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/triggered_wf.yaml/dispatches \
-            -d "{
-                \"ref\": \"main\",
-                \"inputs\": {
-                  \"basename\": \"$name\",
-                  \"project\": \"${{ inputs.project}}\"
-                    }
-                }"
-            break
-          done
+        uses: './.github/actions/trigger-jira-wf'
+        with:
+          project: ${{ github.event.inputs.project }}
+          features_path: ${{ env.FEATURES_PATH }}
+          excluded_path: ${{ env.EXCLUDED_PATH_REGEX }}
 
       - name: Trigger workflows for QANOV cms
         if: ${{ inputs.project == 'QANOV'}}
         env:
           FEATURES_PATH: "./acceptance/features/e2e/web/cms"
           EXCLUDED_PATH_REGEX: '.*\/(_setup|jenkins|steps|__pycache__)|cms$'
-        shell: bash
-        run: |
-          basenames=$(find ${{ env.FEATURES_PATH }} -maxdepth 1 -type d | grep -v -E "${{ env.EXCLUDED_PATH_REGEX }}")
-          echo "Basenames: $basenames"
-          for name in $basenames; do
-            echo "Basename: $name"
-            curl -X POST \
-            -H "Authorization: Bearer ${{ secrets.WF_PAT }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/triggered_wf.yaml/dispatches \
-            -d "{
-                \"ref\": \"main\",
-                \"inputs\": {
-                  \"basename\": \"$name\",
-                  \"project\": \"${{ inputs.project}}\"
-                    }
-                }"
-            break
-          done
+        uses: './.github/actions/trigger-jira-wf'
+        with:
+          project: ${{ github.event.inputs.project }}
+          features_path: ${{ env.FEATURES_PATH }}
+          excluded_path: ${{ env.EXCLUDED_PATH_REGEX }}
 
       - name: Trigger workflows for QABP
         if: ${{ inputs.project == 'QABP'}}
         env:
           FEATURES_PATH: "./acceptance/features/e2e/app/b2p"
           EXCLUDED_PATH_REGEX: '.*\/(_setup|jenkins|steps|__pycache__)|b2p$'
-        shell: bash
-        run: |
-          basenames=$(find ${{ env.FEATURES_PATH }} -maxdepth 1 -type d | grep -v -E "${{ env.EXCLUDED_PATH_REGEX }}")
-          echo "Basenames: $basenames"
-          for name in $basenames; do
-            echo "Basename: $name"
-            curl -X POST \
-            -H "Authorization: Bearer ${{ secrets.WF_PAT }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/triggered_wf.yaml/dispatches \
-            -d "{
-                \"ref\": \"main\",
-                \"inputs\": {
-                  \"basename\": \"$name\",
-                  \"project\": \"${{ inputs.project}}\"
-                    }
-                }"
-            break
-          done  
+        uses: './.github/actions/trigger-jira-wf'
+        with:
+          project: ${{ github.event.inputs.project }}
+          features_path: ${{ env.FEATURES_PATH }}
+          excluded_path: ${{ env.EXCLUDED_PATH_REGEX }}

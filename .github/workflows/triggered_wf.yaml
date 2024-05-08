@@ -83,7 +83,6 @@ jobs:
             fi
 
         - name: Run action for each file
-          id: get-jira-version
           uses: './.github/actions/update-scenarios'
           with:
             project: ${{ github.event.inputs.project }}
