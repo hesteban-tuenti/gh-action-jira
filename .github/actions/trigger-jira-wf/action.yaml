@@ -8,7 +8,7 @@ inputs:
   project:
     required: true
     description: "project"
-  feature_path:
+  features_path:
     required: true
     description: "feature path"
   excluded_path:
@@ -21,7 +21,7 @@ runs:
     - name: Trigger Jira workflow
       shell: bash
       run: |
-          basenames=$(find ${{ inputs.feature_path }} -maxdepth 1 -type d | grep -v -E "${{ inputs.excluded_path }}")
+          basenames=$(find ${{ inputs.features_path }} -maxdepth 1 -type d | grep -v -E "${{ inputs.excluded_path }}")
           echo "Basenames: $basenames"
           for name in $basenames; do
             echo "Basename: $name"
