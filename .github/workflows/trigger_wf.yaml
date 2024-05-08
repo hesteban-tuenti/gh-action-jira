@@ -59,6 +59,7 @@ jobs:
           EXCLUDED_PATH_REGEX: '.*\/(_setup|jenkins|steps|__pycache__)|b2p$'
         uses: './.github/actions/trigger-jira-wf'
         with:
+          secret_toke: ${{ secrets.WF_PAT }}
           project: ${{ github.event.inputs.project }}
           features_path: ${{ env.FEATURES_PATH }}
           excluded_path: ${{ env.EXCLUDED_PATH_REGEX }}
