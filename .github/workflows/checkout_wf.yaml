@@ -15,7 +15,7 @@ jobs:
             ref: "${{ github.ref }}"
             token: ${{ secrets.GITHUB_TOKEN }}
 
-        - name: List files
+        - name: List files before venv
           run: ls -la
             
         - name: echo workspace
