@@ -1,0 +1,22 @@
+name: Test checkout
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+    build:
+      runs-on: ubuntu-latest
+    
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+          with:
+            ref: "${{ github.ref }}"
+            token: ${{ secrets.GITHUB_TOKEN }}
+
+        - name: List files
+          run: ls -la
+            
+        - name: echo workspace
+          run: echo $GITHUB_WORKSPACE
