@@ -1,6 +1,11 @@
 name: Test checkout
 on:
   workflow_dispatch:
+    inputs:
+      ignore_cache:
+        description: 'Ignore cache and recreate venv'
+        required: false
+        default: 'false'
 
 jobs:
     build:
@@ -19,6 +24,13 @@ jobs:
         - name: echo workspace
           run: echo $GITHUB_WORKSPACE
 
+        - name: Recreate venv if required
+          id: recreate
+          if: ${{ github.event.inputs.ignore_cache == 'true' }}
+          run: |
+            echo "Recreating venv"
+            rm -rf ${{ github.workspace }}/.venv
+
         - name: Find cache
           id: cache
           uses: actions/cache@v4
@@ -27,6 +39,7 @@ jobs:
             key: venv-${{ runner.os }}-${{ runner.arch }}-pip-${{ hashFiles('acceptance/requirements.txt') }}
             lookup-only: true
 
+            
         - name: Create venv
           if: steps.cache.outputs.cache-hit != 'true'
           uses: './.github/actions/setup-venv'
