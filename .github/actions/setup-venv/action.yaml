@@ -1,0 +1,12 @@
+name: Settup venv
+description: 'Set up venv'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Create venv
+      shell: bash
+      run: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install -r acceptance/requirements.txt
