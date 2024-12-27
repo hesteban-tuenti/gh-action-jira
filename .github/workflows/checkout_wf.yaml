@@ -20,3 +20,11 @@ jobs:
             
         - name: echo workspace
           run: echo $GITHUB_WORKSPACE
+
+        - name: Clean workspace
+          shell: bash -leo pipefail {0}
+          run:
+            rm -rf ${{ github.workspace }}/*
+
+        - name: List files after clean
+          run: ls -la
