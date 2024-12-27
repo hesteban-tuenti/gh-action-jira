@@ -2,14 +2,14 @@ name: Test checkout
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
     build:
       runs-on: ubuntu-latest
     
       steps:
-        - name: Checkout
+        - name: Checkout code
           uses: actions/checkout@v2
           with:
             ref: "${{ github.ref }}"
