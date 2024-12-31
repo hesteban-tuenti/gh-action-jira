@@ -15,7 +15,7 @@ jobs:
         run: |
           echo "Fetching list of cache key"
           cacheKeys=$(gh cache list --ref $BRANCH --limit 10 --json id --jq '.[].id')
-          echo "Cache key ids: $cacheKeys"
+          echo "Cache_key ids: $cacheKeys"
           
 
           ## Setting this to not fail the workflow while deleting cache keys.
@@ -23,11 +23,11 @@ jobs:
           echo "Deleting caches..."
           for cacheKey in $cacheKeys
           do
-              echo "Deleting cache key id: $cacheKey"
+              echo "Deleting cache_key id: $cacheKey"
               gh cache delete $cacheKey
           done
           echo "Done"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.WF_PAT }}
           GH_REPO: ${{ github.repository }}
           BRANCH: refs/heads/${{ github.event.inputs.branch }}
