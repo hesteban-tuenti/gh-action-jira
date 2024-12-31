@@ -20,5 +20,5 @@ jobs:
       - name: Clean cache
         uses: './.github/actions/clean-cache'
         with:
-          secret_token: ${{ secrets.WF_PAT }}
+          secret_token: ${{ secrets.WF_NEW }}
           branch: ${{ github.event.inputs.branch }}
