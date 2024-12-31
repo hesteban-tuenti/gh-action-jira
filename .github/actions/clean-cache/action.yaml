@@ -16,5 +16,5 @@ runs:
       shell: bash -leo pipefail {0}
       run: bash ${{ github.action_path }}/entrypoint.sh
       env:
-          GH_TOKEN: ${{ github.event.inputs.secret_token }}
-          BRANCH: refs/heads/${{ github.event.inputs.branch }}
+          GH_TOKEN: ${{ inputs.secret_token }}
+          BRANCH: refs/heads/${{ inputs.branch }}
