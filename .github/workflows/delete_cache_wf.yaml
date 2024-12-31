@@ -28,6 +28,6 @@ jobs:
           done
           echo "Done"
         env:
-          GH_TOKEN: ${{ secrets.WF_PAT }}
+          GH_TOKEN: ${{ secrets.WF_NEW }}
           GH_REPO: ${{ github.repository }}
           BRANCH: refs/heads/${{ github.event.inputs.branch }}
