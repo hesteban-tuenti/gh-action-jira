@@ -1,0 +1,20 @@
+name: Clean cache
+description: 'Remove cache for a given branch ref'
+
+inputs:
+  branch:
+    required: true
+    description: 'Branch ref'
+  secret_token:
+    required: true
+    description: 'Secret token'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Clean cache
+      shell: bash -leo pipefail {0}
+      run: bash ${{ github.action_path }}/entrypoint.sh
+      env:
+          GH_TOKEN: ${{ github.event.inputs.secret_token }}
+          BRANCH: refs/heads/${{ github.event.inputs.branch }}
