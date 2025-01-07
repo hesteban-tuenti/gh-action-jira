@@ -12,6 +12,9 @@ jobs:
       runs-on: ubuntu-latest
     
       steps:
+        - name: Dummy step
+          run: echo "This is a dummy step"
+        
         - name: Checkout code
           uses: actions/checkout@v2
           with:
