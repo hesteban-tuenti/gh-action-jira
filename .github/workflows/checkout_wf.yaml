@@ -1,6 +1,11 @@
 name: Test checkout
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: branch
+        required: false
+        default: 'main'
 
 jobs:
     build:
@@ -10,7 +15,7 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v2
           with:
-            ref: "${{ github.ref }}"
+            ref: ${{ github.event.inputs.branch }}
             token: ${{ secrets.GITHUB_TOKEN }}
 
         - name: List files before venv
